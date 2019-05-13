@@ -6,21 +6,22 @@ import java.util.List;
 public class Building implements IManageElevators{
 
     /** Lista pięter*/
-    List<Floor> floorList = new ArrayList <>();
+    private List<Floor> floorList = new ArrayList <>();
     /** Lista wind*/
-    List<Elevator> elevatorList = new ArrayList <>();
+    private List<Elevator> elevatorList = new ArrayList <>();
 
+    public int usunto;
     /** Konstruktor klasy Building*/
     Building( int numberOfFloors, int numberOfElevators){
         // Dodawanie pięter do budynku
-        for( int i = 0; i < numberOfFloors)
+        for( int i = 0; i < numberOfFloors; i++)
         {
             floorList.add(new Floor());
         }
         // Dodawanie wind do budynku
-        for( int i = 0; i < numberOfElevators)
+        for( int i = 0; i < numberOfElevators; i++)
         {
-            elevatorList.add(new Elevator());
+            elevatorList.add(new Elevator(usunto));
         }
     }
 
@@ -40,17 +41,18 @@ public class Building implements IManageElevators{
     }
 
     @Override
-    private int CheckOnWhichFloorTheMostPassangers(){
+    public int CheckOnWhichFloorTheMostPassangers(){
+        //TO DO
+        return 0;
+    }
+
+    @Override
+    public void CheckTheNumberOfElevatorPassangers() {
         //TO DO
     }
 
     @Override
-    private void CheckTheNumberOfElevatorPassangers() {
-        //TO DO
-    }
-
-    @Override
-    private void GiveTheNewTargetElevator(Elevator){
+    public void GiveTheNewTargetElevator(Elevator elevator){
         //TO DO
     }
 
