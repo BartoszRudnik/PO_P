@@ -8,7 +8,7 @@ public class Floor {
     List<Passanger> passengerList = new ArrayList <>();
 
     /**Metoda Pokazująca długość kolejki*/
-    public int getQueueLength(){
+    public int GetQueueLength(){
         return passengerList.size();
     }
 
