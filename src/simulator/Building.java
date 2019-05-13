@@ -3,57 +3,75 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Publiczna klasa budynku*/
-public class Building implements IManageElevators{
+public class Building implements IManageElevators
+{
 
     /** Lista pięter*/
-    private List<Floor> floorList = new ArrayList <>();
+    List<Floor> floorList = new ArrayList <>();
     /** Lista wind*/
-    private List<Elevator> elevatorList = new ArrayList <>();
+    List<Elevator> elevatorList = new ArrayList <>();
+    /** Maksymalna liczba pasazerow */
+    private int MaxPassangerNumber=8;
 
-    public int usunto;
     /** Konstruktor klasy Building*/
-    Building( int numberOfFloors, int numberOfElevators){
-        // Dodawanie pięter do budynku
-        for( int i = 0; i < numberOfFloors; i++)
+    Building( int numberOfFloors, int numberOfElevators)
+    {
+        /** Dodawanie pięter do budynku */
+        for( int i = 0; i < numberOfFloors;i++)
         {
             floorList.add(new Floor());
         }
-        // Dodawanie wind do budynku
-        for( int i = 0; i < numberOfElevators; i++)
+        /** Dodawanie wind do budynku */
+        for( int i = 0; i < numberOfElevators;i++)
         {
-            elevatorList.add(new Elevator(usunto));
+            elevatorList.add(new Elevator(MaxPassangerNumber));
         }
     }
 
-    /** Metoda zwracająca liczbę pięter*/
-    public int GetNumberOfFloors(){
-        return floorList.size();
-    }
-
-    /** Metoda zwracająca liczbę wind*/
-    public int GetNumberOfElevators(){
-        return elevatorList.size();
+    @Override
+    public void ManageElevators()
+    {
+        int WhichElevator=0,MinDiference=elevatorList.size(),ActualDiference=0;
+        /** GetNumberOfFreePlaces() */
+        for(int i=0;i<elevatorList.size();i++)
+        {
+            if (Elevator[i].GetNumberOfFreePlaces() > 0)
+            {
+                ActualDiference=Math.abs(Elevator.GiveTargetFloor()-Elevator.GetCurrentFloor);
+            }
+            if(ActualDiference<MinDiference)
+            {
+                MinDiference=ActualDiference;
+                WhichElevator=i;
+            }
+        }
+        if(Elevator[WhichElevator].GetCurrentFloor()>Elevator.GiveTargetFloor())
+            Elevator[WhichElevator].GoDown(Elevator.GiveTargetFloor());
+        else
+            Elevator[WhichElevator].GoUp(Elevator.GiveTargetFloor());
     }
 
     @Override
-    public void ManageElevators(){
-        //TO DO
+    private int CheckOnWhichFloorTheMostPassangers()
+    {
+        /** Maksymalna ilosc pasazerow na pietrze*/
+        int MaxNumberPassangers=0;
+        /** Numer 'maksymalnego pietra' */
+        int MostPassangerFloor=-1;
+        for(int i=0;i<=numberOfFloors;i++)
+        {
+            if(floorList.get(i).GetQueueLength()>MaxNumberPassangers)
+            {
+                MaxNumberPassangers=floorList.get(i).GetQueueLength();
+                MostPassangerFloor=i;
+            }
+        }
+        return MostPassangerFloor;
     }
 
     @Override
-    public int CheckOnWhichFloorTheMostPassangers(){
-        //TO DO
-        return 0;
+    private void GiveTheNewTargetElevator(Elevator elevator,int target)
+    {
+        elevator.GiveTargerFloor(target);
     }
-
-    @Override
-    public void CheckTheNumberOfElevatorPassangers() {
-        //TO DO
-    }
-
-    @Override
-    public void GiveTheNewTargetElevator(Elevator elevator){
-        //TO DO
-    }
-
 }
