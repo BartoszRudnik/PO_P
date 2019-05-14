@@ -17,11 +17,15 @@ public class PassengerCreator
         numberOfPassengers = data.NumberOfPassangers();
         for( int i = 0; i < numberOfPassengers; i++)
         {
-            /** Sprawdzamy czy dane sa spojne */
-            if( data.GetTargetFloor(i) <= numberOfFloors && data.GetStartFloor(i) <= numberOfFloors)
-            {
+            /** Sprawdzamy czy piętro pasażera istnieje */
+            if( data.GetTargetFloor(i) <= numberOfFloors && data.GetStartFloor(i) <= numberOfFloors){
                 /** Dodajemy do listy stworzonego opisanego pasazera */
-                passangerList.add(new Passanger(data.GetTime(i),data.GetStartFloor(i),data.GetTargetFloor(i)));
+                if( data.GetIsPrivileged(i) == 0){
+                    passangerList.add(new Passanger(data.GetTime(i),data.GetStartFloor(i),data.GetTargetFloor(i)));
+                }
+                else {
+                    passangerList.add(new PrivilegedPassanger(data.GetTime(i), data.GetStartFloor(i), data.GetTargetFloor(i)));
+                }
             }
         }
     }

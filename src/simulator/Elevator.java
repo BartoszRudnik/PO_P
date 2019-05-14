@@ -44,7 +44,6 @@ public class Elevator implements IElevator {
             // Sprawdzanie czy obecne piętro jest jego piętrem docelowym
             if( passanger.getTargetFloor() == currentFloor)
             {
-                passanger.GetOut();
                 passengerList.remove(passanger);
                 number--;
             }

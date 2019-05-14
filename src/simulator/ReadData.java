@@ -1,4 +1,5 @@
 package simulator;
+import java.io.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,8 +12,8 @@ public class ReadData{
     private int[] TargetFloor;
     private int[] IsPrivileged;
 
-    /** Metoda wczytujaca dane */
-    public void Read(String filename) throws IOException{
+    /** Metoda wczytujaca dane pasażerów z pilku */
+    public void ReadData(String filename) throws IOException{
         BufferedReader FileIn=null;
         try{
             FileIn=new BufferedReader(new FileReader(filename));

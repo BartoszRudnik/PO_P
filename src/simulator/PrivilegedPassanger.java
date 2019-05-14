@@ -4,7 +4,6 @@ package simulator;
 public class PrivilegedPassanger extends Passanger {
     PrivilegedPassanger( int startTime, int startFloor, int targetFloor){
         super( startTime, startFloor, targetFloor);
-        SetYourselfFirstInQueue();
     }
 
     /** Metoda ustawiająca pasażera na początku kolejki*/

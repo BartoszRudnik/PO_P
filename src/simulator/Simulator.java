@@ -1,7 +1,9 @@
 package simulator;
 import java.util.Scanner;
 
-/* Klasa symulacji */
+/* Klasa symulacji
+ * Główna klasa pliku, zawiera funkcją main
+  * */
 public class Simulator {
 
     public static void main(String[]args){

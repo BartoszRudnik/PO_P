@@ -25,8 +25,6 @@ public class Floor {
         /** Tutaj pasażerowie są dodawani do windy */
         for( int i = 0; i < freePlaces; i++)
         {
-            // Wchodzenie pasażera do windy
-            passengerList.get(i).GetInto(elevator);
             // Dodawanie pasażera do windy
             elevator.AddPassanger(passengerList.get(i));
             // Pasażer jest usuwany z listy pasażerów oczekujących

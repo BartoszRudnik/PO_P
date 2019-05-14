@@ -27,7 +27,7 @@ public class Building{
         }
     }
 
-    /** Metoda zwracająca daną windę*/
+    /** @param index Metoda zwracająca daną windę*/
     public Elevator GetElevator(int index){
         return elevatorList.get(index);
     }
