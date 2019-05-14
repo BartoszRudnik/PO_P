@@ -10,7 +10,7 @@ public class Control implements IManageElevators{
         int WhichElevator = 0;
         /** Najmniejsza różnica między piętrem z największą kolejką a windą*/
         int MinDiference = building.GetNumberOfFloors();
-        /** Aktualna różnica*/
+        /** Aktualna różnica między piętrem z największą kolejką a windą*/
         int ActualDiference = 0;
         /** Index, numer piętra z największą kolejką*/
         int indexFloor = CheckOnWhichFloorTheMostPassangers();

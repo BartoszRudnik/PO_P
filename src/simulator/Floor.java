@@ -4,7 +4,7 @@ import java.util.List;
 
 /** Publiczna klasa piętra*/
 public class Floor {
-    /** Lista pasażeró*/
+    /** Lista pasażerów*/
     List<Passanger> passengerList = new ArrayList <>();
 
     /**Metoda Pokazująca długość kolejki*/
@@ -13,9 +13,7 @@ public class Floor {
     }
 
     /** Metoda dodająca pasażera */
-    public void AddPassenger( Passanger passanger)
-
-    {
+    public void AddPassenger( Passanger passanger){
         passengerList.add(passanger);
     }
 
@@ -29,7 +27,9 @@ public class Floor {
         {
             // Wchodzenie pasażera do windy
             passengerList.get(i).GetInto(elevator);
-            // Pasażer jest usuwany z listy pasażerów piętra
+            // Dodawanie pasażera do windy
+            elevator.AddPassanger(passengerList.get(i));
+            // Pasażer jest usuwany z listy pasażerów oczekujących
             passengerList.remove(passengerList.get(i));
         }
     }

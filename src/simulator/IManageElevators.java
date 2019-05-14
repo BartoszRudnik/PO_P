@@ -10,5 +10,5 @@ public interface IManageElevators {
     /** Metoda sprawdzania liczby pasażerów w windzie (Elevator) */
     void CheckTheNumberOfElevatorPassangers();
     /** Metoda nadawania nowego docelowego piętra (Floor) dla danej windy (Elevator)*/
-    void GiveTheNewTargetElevator(Elevator elevator);
+    void GiveTheNewTargetElevator(Elevator elevator, int newTarget);
 }

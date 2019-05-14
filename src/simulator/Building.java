@@ -3,15 +3,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Publiczna klasa budynku*/
-public class Building implements IManageElevators
-{
+public class Building{
 
     /** Lista pięter*/
-    List<Floor> floorList = new ArrayList <>();
+    private List<Floor> floorList = new ArrayList <>();
     /** Lista wind*/
-    List<Elevator> elevatorList = new ArrayList <>();
+    private List<Elevator> elevatorList = new ArrayList <>();
     /** Maksymalna liczba pasazerow */
-    private int MaxPassangerNumber=8;
+    private int MaxPassangerNumber = 8;
 
     /** Konstruktor klasy Building*/
     Building( int numberOfFloors, int numberOfElevators)
@@ -28,59 +27,23 @@ public class Building implements IManageElevators
         }
     }
 
-    @Override
-    public void ManageElevators()
-    {
-        /** Indeks najbliższej windy*/
-        int WhichElevator = 0;
-        /** Najmniejsza różnica między piętrem z największą kolejką a windą*/
-        int MinDiference = floorList.size();
-        /** Aktualna różnica*/
-        int ActualDiference = 0;
-        /** Index, numer piętra z największą kolejką*/
-        int indexFloor = CheckOnWhichFloorTheMostPassangers();
-
-        /** Wyszukiwanie minimalnej różnicy */
-        for(int i = 0; i < elevatorList.size(); i++)
-        {
-            /** Różnica między daną windą a piętrem z największą kolejką */
-            if (elevatorList.get(i).GetNumberOfFreePlaces() > 0){
-                ActualDiference = Math.abs( elevatorList.get(i).GetCurrentFloor() - indexFloor);
-            }
-            /** Jeśli dana różnica między piętrem a winą jest mniejsza od minimalnej, to wpisz ją za minimalną*/
-            if(ActualDiference < MinDiference){
-                // Przypisanie nowej minimalnej różnicy
-                MinDiference = ActualDiference;
-                // Pzypisanie nowego indeksu najbliższej windy
-                WhichElevator = i;
-            }
-        }
-        elevatorList.get(WhichElevator).GiveTargetFloor(indexFloor);
+    /** Metoda zwracająca daną windę*/
+    public Elevator GetElevator(int index){
+        return elevatorList.get(index);
     }
 
-    @Override
-    private int CheckOnWhichFloorTheMostPassangers()
-    {
-        /** Maksymalna ilosc pasazerow na pietrze*/
-        int MaxNumberPassangers=0;
-
-        /** Index piętra z największą liczbę pasażerów */
-        int MostPassangerFloor = -1;
-
-        for(int i=0; i<=floorList.size(); i++)
-        {
-            if(floorList.get(i).GetQueueLength() > MaxNumberPassangers)
-            {
-                MaxNumberPassangers = floorList.get(i).GetQueueLength();
-                MostPassangerFloor = i;
-            }
-        }
-        return MostPassangerFloor;
+    /** Metoda zwracająca dane piętro*/
+    public Floor GetFloor(int index){
+        return floorList.get(index);
     }
 
-    @Override
-    public void GiveTheNewTargetElevator(Elevator elevator,int newTarget)
-    {
-        elevator.GiveTargetFloor(newTarget);
+    /** Metoda zwracająca liczbę pięter w bdynku*/
+    public int GetNumberOfFloors(){
+        return floorList.size();
+    }
+
+    /** Metoda zwracająca liczbę wind w budynku*/
+    public int GetNumberOfElevators(){
+        return elevatorList.size();
     }
 }

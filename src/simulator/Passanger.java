@@ -15,6 +15,7 @@ public class Passanger implements IEnterElevator, ISelectFloor{
 
     @Override
     public void GetInto(Elevator elevator){
+
     }
 
     @Override
