@@ -2,8 +2,8 @@ package simulator;
 
 /** Publiczna klasa Pasażera uprzywilejowanego*/
 public class PrivilegedPassanger extends Passanger {
-    PrivilegedPassanger( int targetFloor){
-        super(targetFloor);
+    PrivilegedPassanger( int startTime, int startFloor, int targetFloor){
+        super( startTime, startFloor, targetFloor);
         SetYourselfFirstInQueue();
     }
 

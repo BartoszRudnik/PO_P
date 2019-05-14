@@ -31,7 +31,7 @@ public class Control implements IManageElevators{
                 WhichElevator = i;
             }
         }
-        building.GetElevator(WhichElevator).GiveTargetFloor(indexFloor);
+        building.GetElevator(WhichElevator).setTargetFloor(indexFloor);
     }
 
     /** Metoda zwracająca numer piętra z największą liczbą czekających w kolejce*/
@@ -60,6 +60,6 @@ public class Control implements IManageElevators{
     @Override
     public void setTheNewTargetElevator(Elevator elevator, int newTarget)
     {
-        elevator.GiveTargetFloor(newTarget);
+        elevator.setTargetFloor(newTarget);
     }
 }

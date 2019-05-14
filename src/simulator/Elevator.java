@@ -26,7 +26,7 @@ public class Elevator implements IElevator {
     }
 
     /** Metoda nadająca docelowe piętro windzie*/
-    public void GiveTargetFloor(int targetFloor){
+    public void setTargetFloor(int targetFloor){
         this.targetFloor = targetFloor;
     }
 
@@ -42,7 +42,7 @@ public class Elevator implements IElevator {
             // Wybrany pasażer
             Passanger passanger = passengerList.get(number);
             // Sprawdzanie czy obecne piętro jest jego piętrem docelowym
-            if( passanger.targetFloor == currentFloor)
+            if( passanger.getTargetFloor() == currentFloor)
             {
                 passanger.GetOut();
                 passengerList.remove(passanger);

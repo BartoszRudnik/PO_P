@@ -3,24 +3,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Klasa tworząca wszystkie obiekty pasarzerów w symulacji*/
-public class PassengerCreator {
+public class PassengerCreator
+{
     private int numberOfPassengers;
 
     private List<Passanger> passangerList = new ArrayList <>();
+    /** Tworzymy obiekt do wczytywania danych */
     ReadData data = new ReadData();
 
-    PassengerCreator( int numberOfFloors){
-
+    PassengerCreator( int numberOfFloors)
+    {
+        /** Wyznaczamy liczbe pasazerow */
         numberOfPassengers = data.NumberOfPassangers();
-        for( int i = 0; i < numberOfPassengers; i++){
-            if( data.GetTargetFloor(i) <= numberOfFloors && data.GetStartFloor(i) <= numberOfFloors){
-
+        for( int i = 0; i < numberOfPassengers; i++)
+        {
+            /** Sprawdzamy czy dane sa spojne */
+            if( data.GetTargetFloor(i) <= numberOfFloors && data.GetStartFloor(i) <= numberOfFloors)
+            {
+                /** Dodajemy do listy stworzonego opisanego pasazera */
+                passangerList.add(new Passanger(data.GetTime(i),data.GetStartFloor(i),data.GetTargetFloor(i)));
             }
         }
     }
 
+    public void AddingPassengers( Building building, int currentTime ){
+        while(passangerList.get(0).getStartTime() == currentTime){
+            building.GetFloor(passangerList.get(0).getStartFloor()).AddPassenger(passangerList.get(0));
+            passangerList.remove(0);
+        }
+    }
 
+    /** Metoda wyznaczajaca liczbe wczytanych zestawow danych pasazerow */
     public void setNumberOfPassengers(int numberOfPassengers) {
         this.numberOfPassengers = numberOfPassengers;
     }
 }
+
+
