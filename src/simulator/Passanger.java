@@ -1,10 +1,15 @@
 package simulator;
 
 /** Publiczna klasa pasażera*/
-public class Passanger implements IEnterElevator, ISelectFloor{
-    int targetFloor;
+public class Passanger implements IEnterElevator, ISelectFloor{\
+    protected int startTime;
+    protected int startFloor;
+    protected int targetFloor;
 
-    Passanger( int targetFloor){
+
+    Passanger( int startTime, int startFloor, int targetFloor){
+        this.startTime = targetFloor;
+        this.startFloor = targetFloor;
         this.targetFloor = targetFloor;
     }
 

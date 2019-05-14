@@ -1,10 +1,11 @@
 package simulator;
 
+/** Klasa sterująca windami w budynku*/
 public class Control implements IManageElevators{
 
-    Building building;
+    /** Głąwna metoda sterowania windami*/
     @Override
-    public void ManageElevators()
+    public void ManageElevators( Building building)
     {
         /** Indeks najbliższej windy*/
         int WhichElevator = 0;
@@ -13,7 +14,7 @@ public class Control implements IManageElevators{
         /** Aktualna różnica między piętrem z największą kolejką a windą*/
         int ActualDiference = 0;
         /** Index, numer piętra z największą kolejką*/
-        int indexFloor = CheckOnWhichFloorTheMostPassangers();
+        int indexFloor = CheckOnWhichFloorTheMostPassangers(building);
 
         /** Wyszukiwanie minimalnej różnicy */
         for(int i = 0; i < building.GetNumberOfElevators(); i++)
@@ -35,7 +36,7 @@ public class Control implements IManageElevators{
 
     /** Metoda zwracająca numer piętra z największą liczbą czekających w kolejce*/
     @Override
-    public int CheckOnWhichFloorTheMostPassangers()
+    public int CheckOnWhichFloorTheMostPassangers( Building building)
     {
         /** Maksymalna ilosc pasazerow na pietrze*/
         int MaxNumberPassangers=0;
@@ -57,13 +58,8 @@ public class Control implements IManageElevators{
 
     /** Nadanie nowego celu windzie*/
     @Override
-    public void GiveTheNewTargetElevator(Elevator elevator, int newTarget)
+    public void setTheNewTargetElevator(Elevator elevator, int newTarget)
     {
         elevator.GiveTargetFloor(newTarget);
-    }
-
-    @Override
-    public void CheckTheNumberOfElevatorPassangers(){
-
     }
 }

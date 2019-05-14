@@ -2,13 +2,17 @@ package simulator;
 
 /** Publiczny interfejs zarządzania Elevators */
 public interface IManageElevators {
+
     /** Metoda zarządzania windami (Elevator) */
-    void ManageElevators();
+    void ManageElevators(Building building);
+
     /** Metoda sprawdzania na którym piętrze (Floor) znajduje się najwięcej pasażerów (Passanger)
      * Zwraca numer piętra z największą ilością pasażerów */
-    int CheckOnWhichFloorTheMostPassangers();
-    /** Metoda sprawdzania liczby pasażerów w windzie (Elevator) */
-    void CheckTheNumberOfElevatorPassangers();
+    int CheckOnWhichFloorTheMostPassangers(Building building);
+
+    /** Metoda sprawdzania liczby pasażerów w windzie (Elevator)
+    void CheckTheNumberOfElevatorPassangers(); */
+
     /** Metoda nadawania nowego docelowego piętra (Floor) dla danej windy (Elevator)*/
-    void GiveTheNewTargetElevator(Elevator elevator, int newTarget);
+    void setTheNewTargetElevator(Elevator elevator, int newTarget);
 }
