@@ -1,42 +1,43 @@
 package simulator;
-import java.io.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 /** Klasa wczytująca plik*/
-public class ReadData{
+public class ReadData {
     /** Tablice dla danych opisujacych pasazera */
     private int[] time;
     private int[] StartFloor;
     private int[] TargetFloor;
     private int[] IsPrivileged;
 
+    ReadData() {
+        Read("test.txt");
+    }
+
     /** Metoda wczytujaca dane pasażerów z pilku */
-    public void ReadData(String filename) throws IOException{
-        BufferedReader FileIn=null;
-        try{
-            FileIn=new BufferedReader(new FileReader(filename));
-            /** Zmienna odpowiedzialna za indeksy tablic */
-            int i=0;
-            /** Odpowiedniki typu string dla pol opisujacych pasazera */
-            String stime=FileIn.readLine();
-            String sStartFloor=FileIn.readLine();
-            String sTargetFloor=FileIn.readLine();
-            String sIsPrivileged=FileIn.readLine();
-            while(stime!=null){
-                /** Zamienianie danych typu string i umieszczanie ich w tablicach */
-                time[i]=Integer.parseInt(stime);
-                StartFloor[i]=Integer.parseInt(sStartFloor);
-                TargetFloor[i]=Integer.parseInt(sTargetFloor);
-                IsPrivileged[i]=Integer.parseInt(sIsPrivileged);
-                i++;
-            }
-        }
-        finally{
-            if(FileIn!=null)
-                FileIn.close();
-        }
+    public void Read(String filename)
+    {
+                try
+                {
+                    List<String> allLines = Files.readAllLines(Paths.get("test.txt"));
+                    int j=0;
+                    for(int i=0;i<allLines.size()/4;i++)
+                    {
+                        time[i]=Integer.parseInt(allLines.get(j));
+                        j++;
+                        StartFloor[i]=Integer.parseInt(allLines.get(j));
+                        j++;
+                        TargetFloor[i]=Integer.parseInt(allLines.get(j));
+                        j++;
+                        IsPrivileged[i]=Integer.parseInt(allLines.get(j));
+                        j++;
+                    }
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
     }
 
     /** Metoda zwracajaca ilosc danych w tablicy */
