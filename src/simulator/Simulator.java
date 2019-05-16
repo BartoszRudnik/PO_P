@@ -4,7 +4,8 @@ import java.util.Scanner;
 /* Klasa symulacji
  * Główna klasa pliku, zawiera funkcją main
   * */
-public class Simulator {
+public class Simulator
+{
 
     public static void main(String[]args){
         int numberOfFloors;
