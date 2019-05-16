@@ -41,6 +41,11 @@ public class PassengerCreator
     public void setNumberOfPassengers(int numberOfPassengers) {
         this.numberOfPassengers = numberOfPassengers;
     }
+
+    public Passanger ReturnPassenger(int index)
+    {
+        return passangerList.get(index);
+    }
 }
 
 
