@@ -8,6 +8,6 @@ public class PrivilegedPassanger extends Passanger {
 
     /** Metoda ustawiająca pasażera na początku kolejki*/
     public void SetYourselfFirstInQueue(){
-        // TO DO
+        //TODO
     }
 }

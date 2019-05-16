@@ -13,7 +13,7 @@ public class ReadData {
     private int[] IsPrivileged;
 
     ReadData() {
-        Read("test.txt");
+        Read("Data Base.txt");
     }
 
     /** Metoda wczytujaca dane pasażerów z pilku */
@@ -21,7 +21,7 @@ public class ReadData {
     {
                 try
                 {
-                    List<String> allLines = Files.readAllLines(Paths.get("test.txt"));
+                    List<String> allLines = Files.readAllLines(Paths.get(filename));
                     int j=0;
                     for(int i=0;i<allLines.size()/4;i++)
                     {
