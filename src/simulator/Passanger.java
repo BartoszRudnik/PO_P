@@ -32,4 +32,23 @@ public class Passanger implements ISelectFloor{
     public int SelectFloor(){
         return targetFloor;
     }
+
+    public boolean GoInto(Elevator elevator){
+        if(elevator.GetNumberOfFreePlaces()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean GetOut( int currentFloor){
+        if( currentFloor == targetFloor){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
 }

@@ -13,7 +13,7 @@ public class ReadData{
     private int[] IsPrivileged;
 
     /** Metoda wczytujaca dane pasażerów z pilku */
-    public void ReadData(String filename) throws IOException{
+    public void Read(String filename) throws IOException{
         BufferedReader FileIn=null;
         try{
             FileIn=new BufferedReader(new FileReader(filename));
