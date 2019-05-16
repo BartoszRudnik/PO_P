@@ -19,25 +19,23 @@ public class ReadData {
     /** Metoda wczytujaca dane pasażerów z pilku */
     public void Read(String filename)
     {
-                try
+        {
+            try
+            {
+                List<String> allLines = Files.readAllLines(Paths.get(filename));
+
+                for(int i=0;i<allLines.size();i++)
                 {
-                    List<String> allLines = Files.readAllLines(Paths.get(filename));
-                    int j=0;
-                    for(int i=0;i<allLines.size()/4;i++)
-                    {
-                        time[i]=Integer.parseInt(allLines.get(j));
-                        j++;
-                        StartFloor[i]=Integer.parseInt(allLines.get(j));
-                        j++;
-                        TargetFloor[i]=Integer.parseInt(allLines.get(j));
-                        j++;
-                        IsPrivileged[i]=Integer.parseInt(allLines.get(j));
-                        j++;
-                    }
-                } catch (IOException e)
-                {
-                    e.printStackTrace();
+                    int helper=Integer.parseInt(allLines.get(i));
+                    System.out.println(helper);
+                    StartFloor[i] = helper;
                 }
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 
     /** Metoda zwracajaca ilosc danych w tablicy */

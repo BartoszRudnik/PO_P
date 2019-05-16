@@ -18,7 +18,7 @@ public class Simulator{
 
         Building building = new Building( numberOfFloors, numberOfElevators);
         Control control = new Control();
-        PassengerCreator PCreator= new PassengerCreator(10);
-        System.out.println(PCreator.ReturnPassenger(1));
+        ReadData data = new ReadData();
+        System.out.println(data.GetStartFloor(4));
     }
 }
