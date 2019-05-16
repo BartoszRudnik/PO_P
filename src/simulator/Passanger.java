@@ -1,7 +1,7 @@
 package simulator;
 
 /** Publiczna klasa pasażera*/
-public class Passanger implements ISelectFloor{
+public class Passanger implements ISelectFloor, IEnterElevator{
     private int startTime;
     private int startFloor;
     private int targetFloor;
@@ -33,6 +33,10 @@ public class Passanger implements ISelectFloor{
         return targetFloor;
     }
 
+    /**
+     * Metoda wchodzenia do windy
+     * Pasażer wchodzi do windy jeśli w windzie jest miejsce
+     * */
     public boolean GoInto(Elevator elevator){
         if(elevator.GetNumberOfFreePlaces()>0){
             return true;
@@ -42,6 +46,10 @@ public class Passanger implements ISelectFloor{
         }
     }
 
+    /**
+     * Metoda wychodzenia z windy
+     * Pasażer wychodzi z windy jeśli obecne piętro jest jego docelowym piętrem
+     * */
     public boolean GetOut( int currentFloor){
         if( currentFloor == targetFloor){
             return true;

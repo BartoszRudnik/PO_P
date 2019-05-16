@@ -2,9 +2,13 @@ package simulator;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Klasa tworząca wszystkie obiekty pasarzerów w symulacji*/
+/**
+ * Klasa tworząca wszystkie obiekty pasarzerów w symulacji
+ * Wyożystując klasę ReadData tworzy pasażerów argumentami dostarczonymi przez nią
+ * */
 public class PassengerCreator
 {
+    /** Pole zawierające liczbę danych pasażerów, które zawiera ReadData*/
     private int numberOfPassengers;
 
     private List<Passanger> passangerList = new ArrayList <>();
