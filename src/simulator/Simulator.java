@@ -1,5 +1,6 @@
 package simulator;
 import java.util.Scanner;
+import java.io.*;
 
 /* Klasa symulacji
  * Główna klasa pliku, zawiera funkcją main
@@ -17,6 +18,7 @@ public class Simulator{
 
         Building building = new Building( numberOfFloors, numberOfElevators);
         Control control = new Control();
-
+        PassengerCreator PCreator= new PassengerCreator(10);
+        System.out.println(PCreator.ReturnPassenger(1));
     }
 }
