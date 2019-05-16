@@ -19,6 +19,11 @@ public class Simulator{
         Building building = new Building( numberOfFloors, numberOfElevators);
         Control control = new Control();
         ReadData data = new ReadData();
-        System.out.println(data.GetStartFloor(4));
+
+        /** Test klasy ReadData */
+        System.out.println(data.GetTime(0));
+        System.out.println(data.GetStartFloor(0));
+        System.out.println(data.GetTargetFloor(0));
+        System.out.println(data.GetIsPrivileged(0));
     }
 }
