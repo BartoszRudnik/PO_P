@@ -2,7 +2,10 @@ package simulator;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Publiczna klasa piętra*/
+/**
+ * Publiczna klasa piętra
+ * Zawiera w sobie kolejkę pasażerów
+ * */
 public class Floor {
     /** Lista pasażerów*/
     List<Passanger> passengerList = new ArrayList <>();
