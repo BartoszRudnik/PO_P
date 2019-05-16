@@ -7,10 +7,10 @@ import java.util.List;
 /** Klasa wczytująca plik*/
 public class ReadData {
     /** Tablice dla danych opisujacych pasazera */
-    private int[] time;
-    private int[] StartFloor;
-    private int[] TargetFloor;
-    private int[] IsPrivileged;
+    private int[] time= new int [10];
+    private int[] StartFloor=new int[10];
+    private int[] TargetFloor=new int[10];
+    private int[] IsPrivileged=new int [10];
 
     ReadData() {
         Read("test.txt");
@@ -21,8 +21,10 @@ public class ReadData {
     {
                 try
                 {
-                    List<String> allLines = Files.readAllLines(Paths.get("test.txt"));
+                    /** Wczytujemy caly plik tekstowy do allLines */
+                    List<String>allLines = Files.readAllLines(Paths.get(filename));
                     int j=0;
+                    /** Dodajemy do tablic odpowiednie pola*/
                     for(int i=0;i<allLines.size()/4;i++)
                     {
                         time[i]=Integer.parseInt(allLines.get(j));
@@ -34,7 +36,8 @@ public class ReadData {
                         IsPrivileged[i]=Integer.parseInt(allLines.get(j));
                         j++;
                     }
-                } catch (IOException e)
+                }
+                catch (IOException e)
                 {
                     e.printStackTrace();
                 }
