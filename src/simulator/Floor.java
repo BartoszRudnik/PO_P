@@ -17,18 +17,13 @@ public class Floor {
         passengerList.add(passanger);
     }
 
-    public void LetPassengerOut( Elevator elevator)
-    {
-        // Pole liczby wolnych miejsc w windzie
-        int freePlaces = elevator.GetNumberOfFreePlaces();
-
+    public void LetPassengerOut( Elevator elevator) {
         /** Tutaj pasażerowie są dodawani do windy */
-        for( int i = 0; i < freePlaces; i++)
-        {
+        while (passengerList.get(0).GoInto(elevator) == true) {
             // Dodawanie pasażera do windy
-            elevator.AddPassanger(passengerList.get(i));
+            elevator.AddPassanger(passengerList.get(0));
             // Pasażer jest usuwany z listy pasażerów oczekujących
-            passengerList.remove(passengerList.get(i));
+            passengerList.remove(passengerList.get(0));
         }
     }
 }

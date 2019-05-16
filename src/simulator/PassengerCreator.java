@@ -42,6 +42,7 @@ public class PassengerCreator
         this.numberOfPassengers = numberOfPassengers;
     }
 
+    /** Zwracanie pasażera -- do testów*/
     public Passanger ReturnPassenger(int index)
     {
         return passangerList.get(index);

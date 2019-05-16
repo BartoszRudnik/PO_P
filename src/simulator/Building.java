@@ -2,7 +2,10 @@ package simulator;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Publiczna klasa budynku*/
+/** Publiczna klasa budynku
+ * W budynku znajdują się windy i piętra
+ * Symbolizują je listy floorList (dla pięter) i elevatorList (dla wind)
+ * */
 public class Building{
 
     /** Lista pięter*/
@@ -16,13 +19,11 @@ public class Building{
     Building( int numberOfFloors, int numberOfElevators)
     {
         /** Dodawanie pięter do budynku */
-        for( int i = 0; i < numberOfFloors;i++)
-        {
+        for( int i = 0; i < numberOfFloors;i++){
             floorList.add(new Floor());
         }
         /** Dodawanie wind do budynku */
-        for( int i = 0; i < numberOfElevators;i++)
-        {
+        for( int i = 0; i < numberOfElevators;i++){
             elevatorList.add(new Elevator(MaxPassangerNumber));
         }
     }

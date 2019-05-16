@@ -37,18 +37,14 @@ public class Elevator implements IElevator {
 
     /** Metoda wypuszczająca pasażerów z windy*/
     public void LetPassenger(){
-        int number = 0;
-        do{
-            // Wybrany pasażer
-            Passanger passanger = passengerList.get(number);
+        for(int number = 0; number < passengerList.size(); number++){
+
             // Sprawdzanie czy obecne piętro jest jego piętrem docelowym
-            if( passanger.getTargetFloor() == currentFloor)
-            {
-                passengerList.remove(passanger);
+            if( passengerList.get(number).GetOut(currentFloor)){
+                passengerList.remove(number);
                 number--;
             }
-            number++;
-        }while(number < passengerList.size());
+        }
     }
 
     /** Metoda ruchu windy */
