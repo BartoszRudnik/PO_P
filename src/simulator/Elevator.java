@@ -76,7 +76,6 @@ public class Elevator implements IElevator {
     }
 
     /** Metoda sprawdzająca obecność pasażerów uprzywilejowanych w windzie */
-
     public boolean CheckIsPrivilegedPassengerInElevator()
     {
         if(passengerList.contains(PrivilegedPassanger))
@@ -84,5 +83,6 @@ public class Elevator implements IElevator {
         else
             return false;
     }
+
 
 }
