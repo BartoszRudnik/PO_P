@@ -79,7 +79,10 @@ public class Elevator implements IElevator {
 
     public boolean CheckIsPrivilegedPassengerInElevator()
     {
-        // przegląda liste pasażerów i zwraca true lub false
+        if(passengerList.contains(PrivilegedPassanger))
+            return true;
+        else
+            return false;
     }
 
 }
