@@ -66,20 +66,6 @@ public class Elevator implements IElevator {
         passengerList.add(passanger);
     }
 
-    /** Metoda wypuszczająca pasażerów z windy*/
-    public void LetPassenger(){
-        for(int number = 0; number < passengerList.size(); number++){
-
-            // Sprawdzanie czy obecne piętro jest piętrem docelowym danego pasażera windy
-            if( passengerList.get(number).GetOut(currentFloor)){
-                passengerList.remove(number);
-                number--;
-            }
-        }
-        // Usuwanie danego piętra z listy pięter docelowych
-        listTargetFloors.remove(0);
-    }
-
     /** Metoda ruchu windy */
     @Override
     public void Move(){
@@ -150,6 +136,20 @@ public class Elevator implements IElevator {
     /** Metoda pokazująca czy winda jest otwarta */
     public  boolean showIsOpen(){
         return isOpen;
+    }
+
+    /** Metoda wypuszczająca pasażerów z windy*/
+    private void LetPassenger(){
+        for(int number = 0; number < passengerList.size(); number++){
+
+            // Sprawdzanie czy obecne piętro jest piętrem docelowym danego pasażera windy
+            if( passengerList.get(number).GetOut(currentFloor)){
+                passengerList.remove(number);
+                number--;
+            }
+        }
+        // Usuwanie danego piętra z listy pięter docelowych
+        listTargetFloors.remove(0);
     }
 
     /** Metoda jazdy windy w górę*/
