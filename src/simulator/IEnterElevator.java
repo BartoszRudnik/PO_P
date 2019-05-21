@@ -4,8 +4,8 @@ package simulator;
 public interface IEnterElevator {
 
     /** Metoda wchodzenia do windy*/
-    void GetInto();
+    boolean GoInto(Elevator elevator);
 
     /** Metoda wychodzenia z windy*/
-    void GetOut();
+    boolean GetOut( int currentFloor);
 }
