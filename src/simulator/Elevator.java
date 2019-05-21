@@ -75,4 +75,15 @@ public class Elevator implements IElevator {
     private void GoDown(){
         currentFloor--;
     }
+
+    /** Metoda sprawdzająca obecność pasażerów uprzywilejowanych w windzie */
+    public boolean CheckIsPrivilegedPassengerInElevator()
+    {
+        if(passengerList.contains(PrivilegedPassanger))
+            return true;
+        else
+            return false;
+    }
+
+
 }
