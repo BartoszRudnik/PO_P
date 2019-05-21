@@ -20,7 +20,7 @@ public class Building{
     {
         /** Dodawanie pięter do budynku */
         for( int i = 0; i < numberOfFloors; i++){
-            floorList.add(new Floor());
+            floorList.add(new Floor(i));
         }
         /** Dodawanie wind do budynku */
         for( int i = 0; i < numberOfElevators;i++){

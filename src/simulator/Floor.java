@@ -9,6 +9,16 @@ import java.util.List;
 public class Floor {
     /** Lista pasażerów*/
     List<Passanger> passengerList = new ArrayList <>();
+    /** Numer piętra*/
+    private int number;
+    Floor( int number){
+        this.number = number;
+    }
+
+    /** Metoda zwracająca numer piętra*/
+    public int getNumber() {
+        return number;
+    }
 
     /**Metoda Pokazująca długość kolejki*/
     public int GetQueueLength(){
@@ -22,11 +32,16 @@ public class Floor {
 
     public void LetPassengerOut( Elevator elevator) {
         /** Tutaj pasażerowie są dodawani do windy */
-        while (passengerList.get(0).GoInto(elevator) == true) {
-            // Dodawanie pasażera do windy
-            elevator.AddPassanger(passengerList.get(0));
-            // Pasażer jest usuwany z listy pasażerów oczekujących
-            passengerList.remove(passengerList.get(0));
+        if(passengerList.size() > 0){
+            while (passengerList.get(0).GoInto(elevator) == true) {
+                // Dodawanie pasażera do windy
+                elevator.AddPassanger(passengerList.get(0));
+                // Pasażer jest usuwany z listy pasażerów oczekujących
+                passengerList.remove(passengerList.get(0));
+                if( passengerList.size() < 1){
+                    break;
+                }
+            }
         }
     }
 }
