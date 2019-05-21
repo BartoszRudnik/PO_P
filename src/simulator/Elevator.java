@@ -3,17 +3,31 @@ package simulator;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.abs;
+
 /** Publiczna klasa windy*/
 public class Elevator implements IElevator {
+    // Pole liczby jednostek czasu otwarcia windy
+    private int timeOpen = 1;
+    // Pole mówiące o tym, czy winda jest otwarta
+    private boolean isOpen;
+    // Pole maksymalnej liczby pasażerów
     private int maxNumberOfPassanger;
+    // Pole obecnego piętra windy
     private int currentFloor;
-    private int targetFloor;
+    // Pole piętra, na które winda została wezwana
+    private Floor call = null;
+    // Lista pasażerów windy
     private List<Passanger> passengerList = new ArrayList<>();
+    // Lista wybranych pięter
+    private List<Integer> listTargetFloors = new ArrayList<>();
 
-    /** Konstruktor windy*/
+
+    /** @param maxNumberOfPassanger Konstruktor windy*/
     Elevator( int maxNumberOfPassanger){
         this.maxNumberOfPassanger = maxNumberOfPassanger;
-        currentFloor = 1;
+        currentFloor = 0;
+        isOpen = false;
     }
 
     /** Metoda zwracająza obecne piętro windy*/
@@ -26,9 +40,25 @@ public class Elevator implements IElevator {
         return maxNumberOfPassanger - passengerList.size();
     }
 
-    /** Metoda nadająca docelowe piętro windzie*/
+    /**
+     * Metoda nadająca docelowe piętro windzie
+     * Dodaje je na koniec listy
+     * */
+    @Override
     public void setTargetFloor(int targetFloor){
-        this.targetFloor = targetFloor;
+        listTargetFloors.add(targetFloor);
+    }
+
+    /**
+     * Metoda nadająca docelowe piętro windzie o większym piorytecie
+     * */
+    public void setTargetFloor(int targetFloor, int priority){
+        listTargetFloors.add(priority, targetFloor);
+    }
+
+    /** Metoda nadająca nowe wezwanie*/
+    public void setCall( Floor newCall){
+        call = newCall;
     }
 
     /** Metoda dodająca pasażera do windy*/
@@ -40,30 +70,86 @@ public class Elevator implements IElevator {
     public void LetPassenger(){
         for(int number = 0; number < passengerList.size(); number++){
 
-            // Sprawdzanie czy obecne piętro jest jego piętrem docelowym
+            // Sprawdzanie czy obecne piętro jest piętrem docelowym danego pasażera windy
             if( passengerList.get(number).GetOut(currentFloor)){
                 passengerList.remove(number);
                 number--;
             }
         }
+        // Usuwanie danego piętra z listy pięter docelowych
+        listTargetFloors.remove(0);
     }
 
     /** Metoda ruchu windy */
+    @Override
     public void Move(){
-        /**
-         * Jeśli docelowe piętro jest wyżej od obecnego to jedź w górę
-         * Jeśli docelowe piętro jest niżej od obecnego to jedź w dół
-         * W przeciwnym wypadku jesteś na piętrze docelowym, więc wysadź pasażerów
-         */
-        if( targetFloor > currentFloor){
-            GoUp();
+        // Pole piętra docelowego
+        int targetFloor;
+        // Pole dystansu między piętrem wezwanym a obecnym
+        int difference;
+        /** Jeśli winda została wezwana i posiada wybrane piętra*/
+        if(call != null && listTargetFloors.size() != 0){
+            difference = abs(call.getNumber() - currentFloor);
+            // Jeśli winda ma niewielki dystans do wezwanego piętra to tam jedzie
+            if( difference < 4){
+                targetFloor = call.getNumber();
+            }
+            else{
+                targetFloor = listTargetFloors.get(0);
+            }
         }
-        else if( targetFloor < currentFloor){
-            GoDown();
+        /** Jeśli winda została wezwana i nie posada żadych celów*/
+        else if(call != null){
+            targetFloor = call.getNumber();
+        }
+        /**Jeśli winda nie została wezwana i ma cele*/
+        else if( listTargetFloors.size() != 0){
+            targetFloor = listTargetFloors.get(0);
         }
         else{
-            LetPassenger();
+            isOpen = false;
+            return;
         }
+
+        if( isOpen == false){
+
+            //Jeśli docelowe piętro jest wyżej od obecnego to jedź w górę
+            if( targetFloor > currentFloor){
+                GoUp();
+            }
+            //Jeśli docelowe piętro jest niżej od obecnego to jedź w dół
+            else if( targetFloor < currentFloor){
+                GoDown();
+            }
+            //W przeciwnym wypadku jesteś na piętrze docelowym, więc wysadź pasażerów
+            else{
+                setOpenElevator(true);
+                timeOpen = 1;
+                LetPassenger();
+            }
+        }
+        else{
+            if(timeOpen < 1)
+                setOpenElevator(false);
+            else
+                timeOpen--;
+        }
+    }
+
+    /** Metoda sprawdzająca obecność pasażerów uprzywilejowanych w windzie */
+    public int getNumberOfPrivilegedPassaenger(){
+        int numberOfPrivileged = 0;
+
+        for(int i=0;i<passengerList.size();i++){
+            if(passengerList.get(i) instanceof PrivilegedPassanger)
+                numberOfPrivileged++;
+        }
+        return numberOfPrivileged;
+    }
+
+    /** Metoda pokazująca czy winda jest otwarta */
+    public  boolean showIsOpen(){
+        return isOpen;
     }
 
     /** Metoda jazdy windy w górę*/
@@ -76,20 +162,8 @@ public class Elevator implements IElevator {
         currentFloor--;
     }
 
-    /** Metoda sprawdzająca obecność pasażerów uprzywilejowanych w windzie */
-    public int getNumberOfPrivilegedPassaenger()
-    {
-        int numberOfPrivileged = 0;
-
-        for(int i=0;i<passengerList.size();i++)
-        {
-            if(passengerList.get(i) instanceof PrivilegedPassanger)
-                numberOfPrivileged++;
-        }
-
-        return numberOfPrivileged;
-
+    /** @param isOpen Metoda otwierająca lub zamykająca windę */
+    private void setOpenElevator( boolean isOpen){
+        this.isOpen = isOpen;
     }
-
-
 }
