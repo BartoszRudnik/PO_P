@@ -122,17 +122,6 @@ public class Elevator implements IElevator {
         }
     }
 
-    /** Metoda sprawdzająca obecność pasażerów uprzywilejowanych w windzie */
-    public int getNumberOfPrivilegedPassaenger(){
-        int numberOfPrivileged = 0;
-
-        for(int i=0;i<passengerList.size();i++){
-            if(passengerList.get(i) instanceof PrivilegedPassanger)
-                numberOfPrivileged++;
-        }
-        return numberOfPrivileged;
-    }
-
     /** Metoda pokazująca czy winda jest otwarta */
     public  boolean showIsOpen(){
         return isOpen;

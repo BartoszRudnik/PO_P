@@ -2,9 +2,9 @@ package simulator;
 
 /** Publiczna klasa pasażera*/
 public class Passanger implements ISelectFloor, IEnterElevator{
-    private int startTime;
-    private int startFloor;
-    private int targetFloor;
+    protected int startTime;
+    protected int startFloor;
+    protected int targetFloor;
 
     /** Konstruktor pasażera*/
     Passanger( int startTime, int startFloor, int targetFloor){
@@ -29,8 +29,8 @@ public class Passanger implements ISelectFloor, IEnterElevator{
     }
 
     @Override
-    public int SelectFloor(){
-        return targetFloor;
+    public void SelectFloor( Elevator elevator){
+        elevator.setTargetFloor(targetFloor);
     }
 
     /**
@@ -39,6 +39,7 @@ public class Passanger implements ISelectFloor, IEnterElevator{
      * */
     public boolean GoInto(Elevator elevator){
         if(elevator.GetNumberOfFreePlaces()>0){
+            SelectFloor(elevator);
             return true;
         }
         else{
