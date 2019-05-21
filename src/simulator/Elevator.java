@@ -16,6 +16,7 @@ public class Elevator implements IElevator {
         currentFloor = 1;
     }
 
+    /** Metoda zwracająza obecne piętro windy*/
     public int GetCurrentFloor(){
         return currentFloor;
     }
