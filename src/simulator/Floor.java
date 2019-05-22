@@ -11,6 +11,9 @@ public class Floor {
     List<Passanger> passengerList = new ArrayList <>();
     /** Numer piętra*/
     private int number;
+
+    /** Konstruktor piętra
+     * @param number numer piętra*/
     Floor( int number){
         this.number = number;
     }
@@ -25,11 +28,19 @@ public class Floor {
         return passengerList.size();
     }
 
-    /** Metoda dodająca pasażera */
+    /** Metoda dodająca pasażera
+     * @param passanger dodawany pasażer
+     * */
     public void AddPassenger( Passanger passanger){
-        passengerList.add(passanger);
+        if( passanger instanceof  PrivilegedPassanger){
+            passengerList.add(0, passanger);
+        }
+        else
+            passengerList.add(passanger);
     }
 
+    /** Metoda wypuszczania pasażerów do windy
+     * @param elevator winda mająca stać na piętrze*/
     public void LetPassengerOut( Elevator elevator) {
         /** Tutaj pasażerowie są dodawani do windy */
         if(passengerList.size() > 0){

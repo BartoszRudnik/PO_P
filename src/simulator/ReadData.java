@@ -13,6 +13,7 @@ public class ReadData{
     private ArrayList<Integer>TargetFloor=new ArrayList<>();
     private ArrayList<Integer>IsPrivileged=new ArrayList<>();
 
+    /** Konstruktor klasy ReadData*/
     ReadData(){
         Read("test.txt");
     }

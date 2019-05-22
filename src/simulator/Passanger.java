@@ -30,7 +30,7 @@ public class Passanger implements ISelectFloor, IEnterElevator{
         return startTime;
     }
 
-    /** Metoda zwacająca piętro docelowepasażera*/
+    /** Metoda zwacająca piętro docelowe pasażera*/
     public int getTargetFloor(){
         return targetFloor;
     }
@@ -46,6 +46,10 @@ public class Passanger implements ISelectFloor, IEnterElevator{
      * @param elevator winda oczekująca na piętrze
      * */
     public boolean GoInto(Elevator elevator){
+        // Otwórz drzwi windy jeśli nie są otwarte
+        if(!elevator.showIsOpen()){
+            elevator.OpenDoor();
+        }
         if(elevator.GetNumberOfFreePlaces()>0){
             SelectFloor(elevator);
             return true;

@@ -15,7 +15,10 @@ public class Building{
     /** Maksymalna liczba pasazerow */
     private int MaxPassangerNumber = 8;
 
-    /** Konstruktor klasy Building*/
+    /** Konstruktor klasy Building
+     * @param numberOfFloors liczba pięter
+     * @param numberOfElevators liczba wind
+     * */
     Building( int numberOfFloors, int numberOfElevators)
     {
         /** Dodawanie pięter do budynku */
@@ -28,17 +31,21 @@ public class Building{
         }
     }
 
-    /** @param index Metoda zwracająca daną windę*/
+    /** Metoda zwracająca daną windę
+     * @param index
+     * */
     public Elevator GetElevator(int index){
         return elevatorList.get(index);
     }
 
-    /** Metoda zwracająca dane piętro*/
+    /** Metoda zwracająca piętro o danym indeksie
+     * @param index
+     * */
     public Floor GetFloor(int index){
         return floorList.get(index);
     }
 
-    /** Metoda zwracająca liczbę pięter w bdynku*/
+    /** Metoda zwracająca liczbę pięter w budynku*/
     public int GetNumberOfFloors(){
         return floorList.size();
     }

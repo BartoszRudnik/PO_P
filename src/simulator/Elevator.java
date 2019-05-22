@@ -120,7 +120,6 @@ public class Elevator implements IElevator {
             //W przeciwnym wypadku jesteś na piętrze docelowym, więc wysadź pasażerów
             else{
                 setOpenElevator(true);
-                timeOpen = 1;
                 LetPassenger();
             }
         }
@@ -133,8 +132,14 @@ public class Elevator implements IElevator {
     }
 
     /** Metoda pokazująca czy winda jest otwarta */
+    @Override
     public  boolean showIsOpen(){
         return isOpen;
+    }
+
+    /** Metoda otwierania windy*/
+    public void OpenDoor(){
+        setOpenElevator(true);
     }
 
     /** Metoda wypuszczająca pasażerów z windy*/
@@ -164,5 +169,6 @@ public class Elevator implements IElevator {
     /** @param isOpen Metoda otwierająca lub zamykająca windę */
     private void setOpenElevator( boolean isOpen){
         this.isOpen = isOpen;
+        timeOpen = 1;
     }
 }
