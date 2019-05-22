@@ -42,11 +42,20 @@ public class Elevator implements IElevator {
 
     /**
      * Metoda nadająca docelowe piętro windzie
-     * Dodaje je na koniec listy
+     * Dodaje je na koniec listy, jeśli nie zostało dodane wcześniej
+     * @param targetFloor nowe piętro celu windy
      * */
     @Override
     public void setTargetFloor(int targetFloor){
-        listTargetFloors.add(targetFloor);
+        // Pole informujące czy na liście jest już dany cel
+        boolean addNew = true;
+        for( int i = 0; i < listTargetFloors.size(); i++){
+            if (targetFloor == listTargetFloors.get(i)) {
+                addNew = false;
+            }
+        }
+        if(addNew)
+            listTargetFloors.add(targetFloor);
     }
 
     /**
@@ -92,11 +101,12 @@ public class Elevator implements IElevator {
         else if( listTargetFloors.size() != 0){
             targetFloor = listTargetFloors.get(0);
         }
+        /** Jeśli warunki nie spełnione*/
         else{
             isOpen = false;
             return;
         }
-
+        /** Jeśli winda jest zamknięta to może się poruszać*/
         if( isOpen == false){
 
             //Jeśli docelowe piętro jest wyżej od obecnego to jedź w górę

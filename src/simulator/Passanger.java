@@ -2,11 +2,18 @@ package simulator;
 
 /** Publiczna klasa pasażera*/
 public class Passanger implements ISelectFloor, IEnterElevator{
+    /** Pole zapisujące czas startu pasażera*/
     protected int startTime;
+    /** Pole zapisujące piętro startu pasażera*/
     protected int startFloor;
+    /** Pole zapisujące piętro docelowe pasażera*/
     protected int targetFloor;
 
-    /** Konstruktor pasażera*/
+    /** Konstruktor pasażera
+     * @param startTime czas startu
+     * @param startFloor piętro startowe
+     * @param targetFloor piętro docelowe
+     * */
     Passanger( int startTime, int startFloor, int targetFloor){
         this.startTime = startTime;
         this.startFloor = startFloor;
@@ -36,6 +43,7 @@ public class Passanger implements ISelectFloor, IEnterElevator{
     /**
      * Metoda wchodzenia do windy
      * Pasażer wchodzi do windy jeśli w windzie jest miejsce
+     * @param elevator winda oczekująca na piętrze
      * */
     public boolean GoInto(Elevator elevator){
         if(elevator.GetNumberOfFreePlaces()>0){
