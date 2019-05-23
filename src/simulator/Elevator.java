@@ -16,7 +16,7 @@ public class Elevator implements IElevator {
     // Pole obecnego piętra windy
     private int currentFloor;
     // Pole piętra, na które winda została wezwana
-    private Floor call = null;
+    private int call = -1;
     // Lista pasażerów windy
     private List<Passanger> passengerList = new ArrayList<>();
     // Lista wybranych pięter
@@ -66,8 +66,13 @@ public class Elevator implements IElevator {
     }
 
     /** Metoda nadająca nowe wezwanie*/
-    public void setCall( Floor newCall){
+    public void setCall( int newCall){
         call = newCall;
+    }
+
+    /** Metoda ozwacające piętro na które została wezwana winda*/
+    public int getCallFloor() {
+        return call;
     }
 
     /** Metoda dodająca pasażera do windy*/
@@ -78,43 +83,17 @@ public class Elevator implements IElevator {
     /** Metoda ruchu windy */
     @Override
     public void Move(){
-        // Pole piętra docelowego
-        int targetFloor;
-        // Pole dystansu między piętrem wezwanym a obecnym
-        int difference;
-        /** Jeśli winda została wezwana i posiada wybrane piętra*/
-        if(call != null && listTargetFloors.size() != 0){
-            difference = abs(call.getNumber() - currentFloor);
-            // Jeśli winda ma niewielki dystans do wezwanego piętra to tam jedzie
-            if( difference < 4){
-                targetFloor = call.getNumber();
-            }
-            else{
-                targetFloor = listTargetFloors.get(0);
-            }
-        }
-        /** Jeśli winda została wezwana i nie posada żadych celów*/
-        else if(call != null){
-            targetFloor = call.getNumber();
-        }
-        /**Jeśli winda nie została wezwana i ma cele*/
-        else if( listTargetFloors.size() != 0){
-            targetFloor = listTargetFloors.get(0);
-        }
-        /** Jeśli warunki nie spełnione*/
-        else{
-            isOpen = false;
-            return;
-        }
+        boolean move = checkCall();
+
         /** Jeśli winda jest zamknięta to może się poruszać*/
-        if( isOpen == false){
+        if( !isOpen && move ){
 
             //Jeśli docelowe piętro jest wyżej od obecnego to jedź w górę
-            if( targetFloor > currentFloor){
+            if( listTargetFloors.get(0) > currentFloor){
                 GoUp();
             }
             //Jeśli docelowe piętro jest niżej od obecnego to jedź w dół
-            else if( targetFloor < currentFloor){
+            else if( listTargetFloors.get(0) < currentFloor){
                 GoDown();
             }
             //W przeciwnym wypadku jesteś na piętrze docelowym, więc wysadź pasażerów
@@ -140,6 +119,26 @@ public class Elevator implements IElevator {
     /** Metoda otwierania windy*/
     public void OpenDoor(){
         setOpenElevator(true);
+    }
+
+    /** Metoda sprawdzająca czy winda powinna jechać*/
+    private boolean checkCall(){
+        int difference;
+        if(call >= 0){
+            if(listTargetFloors.size() != 0){
+                difference = abs(call - currentFloor);
+                if(difference < 4)
+                    setTargetFloor(call, 0);
+            }
+            else
+                setTargetFloor(call);
+            return true;
+        }
+        if(listTargetFloors.size() != 0) {
+            return true;
+        }
+        else
+            return false;
     }
 
     /** Metoda wypuszczająca pasażerów z windy*/
