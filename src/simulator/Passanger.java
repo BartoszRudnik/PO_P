@@ -27,7 +27,7 @@ public class Passanger implements ISelectFloor, IEnterElevator{
 
     /** Metoda zwacająca piętro początkowe pasażera*/
     public int getStartFloor(){
-        return startTime;
+        return startFloor;
     }
 
     /** Metoda zwacająca piętro docelowe pasażera*/

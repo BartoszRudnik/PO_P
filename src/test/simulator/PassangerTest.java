@@ -10,16 +10,16 @@ class PassangerTest {
 
     @Test
     void startTime() {
-        assertTrue(testpassanger.getStartTime()>0);
+        assertTrue(testpassanger.getStartTime()==10);
     }
 
     @Test
     void startFloor() {
-        assertTrue(testpassanger.getStartFloor()>0);
+        assertTrue(testpassanger.getStartFloor()==2);
     }
 
     @Test
     void targetFloor() {
-        assertTrue(testpassanger.getTargetFloor()>0);
+        assertTrue(testpassanger.getTargetFloor()==5);
     }
 }

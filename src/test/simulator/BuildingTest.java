@@ -8,11 +8,11 @@ class BuildingTest {
     Building testbuilding=new Building(5,10);
     @Test
     void NumberOfFloor() {
-        assertTrue(testbuilding.GetNumberOfFloors()>0);
+        assertTrue(testbuilding.GetNumberOfFloors()==5);
     }
 
     @Test
     void NumberofElevators() {
-        assertTrue(testbuilding.GetNumberOfElevators()>0);
+        assertTrue(testbuilding.GetNumberOfElevators()==10);
     }
 }
