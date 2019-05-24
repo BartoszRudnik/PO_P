@@ -29,6 +29,11 @@ public class Elevator implements IElevator {
         currentFloor = 0;
         isOpen = false;
     }
+    /** Metoda zwracajaca maksymalna liczbe pasazerow w windzie*/
+    public int MaxNumberPassangers()
+    {
+        return maxNumberOfPassanger;
+    }
 
     /** Metoda zwracająza obecne piętro windy*/
     public int GetCurrentFloor(){
