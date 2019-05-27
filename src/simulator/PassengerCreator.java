@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Klasa tworząca wszystkie obiekty pasarzerów w symulacji
- * Wyożystując klasę ReadData tworzy pasażerów argumentami dostarczonymi przez nią
+ * Wyorzystując klasę ReadData tworzy pasażerów argumentami dostarczonymi przez nią
  * */
 public class PassengerCreator
 {

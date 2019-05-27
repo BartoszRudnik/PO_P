@@ -31,12 +31,16 @@ public class ControlSystem implements IManageElevators{
         }
     }
 
+    /**Metoda wyznaczajaca indeks pietra z najwieksza kolejka*/
     private int TheLongestQueue(Building building){
         int theLongestQueue = 0;
-        int numberOfPasseggers = 0;
-        for( int indexFloor = 0; indexFloor > building.GetNumberOfFloors(); indexFloor++)
-            if(building.GetFloor(indexFloor).GetQueueLength() > numberOfPasseggers)
+        int numberOfPassengers = 0;
+        for( int indexFloor = 0; indexFloor < building.GetNumberOfFloors(); indexFloor++) {
+            if (building.GetFloor(indexFloor).GetQueueLength() > numberOfPassengers) {
                 theLongestQueue = indexFloor;
+                numberOfPassengers=building.GetFloor(indexFloor).GetQueueLength();
+            }
+        }
             return theLongestQueue;
     }
 
