@@ -12,6 +12,8 @@ public class Floor {
     List<Passanger> passengerList = new ArrayList <>();
     /** Numer piętra*/
     private int number;
+    /** wezwanie*/
+    private boolean call = false;
 
     /** Konstruktor piętra
      * @param number numer piętra*/
@@ -45,15 +47,25 @@ public class Floor {
     public void LetPassengerOut( Elevator elevator) {
         /** Tutaj pasażerowie są dodawani do windy */
         if(passengerList.size() > 0){
-            while (passengerList.get(0).GoInto(elevator)) {
+            while (passengerList.get(0).GoInto(elevator)){
                 // Dodawanie pasażera do windy
                 elevator.AddPassanger(passengerList.get(0));
                 // Pasażer jest usuwany z listy pasażerów oczekujących
                 passengerList.remove(passengerList.get(0));
                 if( passengerList.size() < 1){
+                    call = false;
                     break;
                 }
             }
         }
+    }
+
+    /** Metoda wezwania windy*/
+    public void CallElevator(){
+        call = true;
+    }
+
+    public boolean getCall(){
+        return call;
     }
 }

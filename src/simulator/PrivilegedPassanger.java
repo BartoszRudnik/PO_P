@@ -15,4 +15,6 @@ public class PrivilegedPassanger extends Passanger {
     public void SelectFloor( Elevator elevator){
         elevator.setTargetFloor(targetFloor, 0);
     }
+
+
 }

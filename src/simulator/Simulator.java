@@ -1,6 +1,5 @@
 package simulator;
 import java.util.Scanner;
-import java.io.*;
 
 /* Klasa symulacji
  * Główna klasa pliku, zawiera funkcją main
@@ -17,6 +16,6 @@ public class Simulator{
         numberOfElevators = scan.nextInt();
 
         Building building = new Building( numberOfFloors, numberOfElevators);
-        Control control = new Control();
+        ControlSystem control = new ControlSystem();
     }
 }

@@ -132,14 +132,19 @@ public class Elevator implements IElevator {
         if(call >= 0){
             if(listTargetFloors.size() != 0){
                 difference = abs(call - currentFloor);
-                if(difference < 4)
+                if(difference < 4){
                     setTargetFloor(call, 0);
+                    call = -1;
+                }
+
             }
-            else
+            else{
                 setTargetFloor(call);
+                call = -1;
+            }
             return true;
         }
-        if(listTargetFloors.size() != 0) {
+        else if(listTargetFloors.size() != 0) {
             return true;
         }
         else
