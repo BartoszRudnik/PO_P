@@ -6,7 +6,8 @@ import java.util.Scanner;
   * */
 public class Simulator{
 
-    public static void main(String[]args){
+    //public static void main(String[]args)
+    {
         int numberOfFloors;
         int numberOfElevators;
         Scanner scan = new Scanner(System.in);
