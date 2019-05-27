@@ -10,22 +10,22 @@ public class ControlSystem implements IManageElevators{
      * */
     @Override
     public void ManageElevators(Building building){
-        int diference;
+        int difference;
         int indexTheLongestQueue = TheLongestQueue(building);
         for( int i = 0; i < building.GetNumberOfElevators(); i++){
             Elevator elevator = building.GetElevator(i);
             if(elevator.GetNumberOfFreePlaces() == 0)
                 continue;
-            diference = abs(elevator.GetCurrentFloor()-indexTheLongestQueue);
+            difference = abs(elevator.GetCurrentFloor()-indexTheLongestQueue);
             if(elevator.GetNumberOfFreePlaces() == elevator.MaxNumberPassangers()){
                 elevator.setCall(indexTheLongestQueue);
                 break;
             }
-            else if( diference < 5 && elevator.GetNumberOfFreePlaces() < 4){
+            else if( difference < 5 && elevator.GetNumberOfFreePlaces() < 4){
                 elevator.setCall(indexTheLongestQueue);
                 break;
             }
-            else if(diference < 4 && elevator.GetNumberOfFreePlaces() > 3){
+            else if(difference < 4 && elevator.GetNumberOfFreePlaces() > 3){
                 elevator.setCall(indexTheLongestQueue);
             }
         }
