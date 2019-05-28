@@ -1,6 +1,7 @@
 package simulator;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,18 +21,20 @@ public class FormMain extends JFrame implements ActionListener
 
     public static void main(String[]args)
     {
-        int numberOfFloors;
-        int numberOfElevators;
+        EventQueue.invokeLater(()->
+        {
+            int numberOfFloors;
+            int numberOfElevators;
+            FormMain okno = new FormMain();
+        });
 
-
-        FormMain okno = new FormMain();
     }
 
 
     /** konstruktor pierwszego okna */
     public FormMain()
     {
-        setSize(400,300);
+        setSize(900,900);
         setTitle("Symulacja Windy");
         setLayout(null);
 
