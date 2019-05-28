@@ -8,7 +8,6 @@ public class Passanger implements ISelectFloor, IEnterElevator{
     protected int startFloor;
     /** Pole zapisujące piętro docelowe pasażera*/
     protected int targetFloor;
-    private Floor currentFloor = null;
 
     /** Konstruktor pasażera
      * @param startTime czas startu
@@ -21,16 +20,12 @@ public class Passanger implements ISelectFloor, IEnterElevator{
         this.targetFloor = targetFloor;
     }
 
-    public void setCurrentFloor(Floor floor){
-        currentFloor = floor;
-    }
-
-    /** Metoda zwacająca czas pojawienia się na piętrze*/
+    /** Metoda zwacająca czas pojawienia się na piętrze */
     public int getStartTime(){
         return startTime;
     }
 
-    /** Metoda zwacająca piętro początkowe pasażera*/
+    /** Metoda zwacająca piętro początkowe pasażera */
     public int getStartFloor(){
         return startFloor;
     }

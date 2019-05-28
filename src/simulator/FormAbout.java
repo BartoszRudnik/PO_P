@@ -16,7 +16,7 @@ class FormAbout extends JFrame{
         Dimension screenSize=kit.getScreenSize();
         int screenHeight=screenSize.height;
         int screenWidth=screenSize.width;
-        setSize(screenWidth/2,screenHeight/2);
+        setSize(screenWidth/2,screenHeight*2/3);
         setLocationByPlatform(true);
         setTitle("Symulacja Windy");
         setLayout(null);
@@ -25,7 +25,6 @@ class FormAbout extends JFrame{
         labelTime.setBounds(10,10,150,20);
         add(labelTime);
 
-        Building building = new Building( numberOfFloors, numberOfElevators);
-        ControlSystem control = new ControlSystem();
+        Simulator simulator = new Simulator(numberOfFloors, numberOfElevators);
     }
 }

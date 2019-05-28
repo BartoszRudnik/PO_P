@@ -1,5 +1,6 @@
 package simulator;
 
+import javax.naming.InitialContext;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,20 +13,17 @@ import java.awt.event.ActionListener;
  * */
 public class FormMain extends JFrame implements ActionListener
 {
-
     private JButton buttonStart,buttonClose;
-    private JLabel  lLiczbaPieter,lLiczbaWind;
-    private JTextField tLiczbaPieter,tLiczbaWind;
+    private JLabel labelNumberOfFloors, labelNumberOfElevators;
+    private JTextField textBoxFloors, textBoxElevators;
 
     public static void main(String[]args)
     {
-        EventQueue.invokeLater(()->
-        {
+        EventQueue.invokeLater(()->{
             int numberOfFloors;
             int numberOfElevators;
             FormMain okno = new FormMain();
         });
-
     }
 
 
@@ -43,36 +41,37 @@ public class FormMain extends JFrame implements ActionListener
 
         /** przycisk wyjście */
         buttonClose = new JButton("Wyjście");
-        buttonClose.setBounds(screenWidth/5-90,50,100,20);
+        buttonClose.setBounds(screenWidth/5+90,50,100,20);
         add(buttonClose);
         buttonClose.addActionListener(this);
 
 
         /** przycisk start */
         buttonStart = new JButton("Start");
-        buttonStart.setBounds(screenWidth/5+90,50,100,20);
+        buttonStart.setBounds(screenWidth/5-90,50,100,20);
         add(buttonStart);
         buttonStart.addActionListener(this);
 
         /** etykieta */
-        lLiczbaPieter = new JLabel("Podaj liczbę pięter: ");
-        lLiczbaPieter.setBounds(40,130,150,20);
-        add(lLiczbaPieter);
+        labelNumberOfFloors = new JLabel("Podaj liczbę pięter: ");
+        labelNumberOfFloors.setBounds(40,130,150,20);
+        add(labelNumberOfFloors);
 
         /** etykieta */
-        lLiczbaWind = new JLabel("Podaj liczbę wind: ");
-        lLiczbaWind.setBounds(40,180,150,20);
-        add(lLiczbaWind);
+        labelNumberOfElevators = new JLabel("Podaj liczbę wind: ");
+        labelNumberOfElevators.setBounds(40,180,150,20);
+        add(labelNumberOfElevators);
 
         /** pole do wpisania liczby pięter */
-        tLiczbaPieter = new JTextField();
-        tLiczbaPieter.setBounds(160,130,120,20);
-        add(tLiczbaPieter);
+        textBoxFloors = new JTextField("5");
+        textBoxFloors.setBounds(160,130,120,20);
+
+        add(textBoxFloors);
 
         /** pole do wpisania liczby wind*/
-        tLiczbaWind = new JTextField();
-        tLiczbaWind.setBounds(160,180,120,20);
-        add(tLiczbaWind);
+        textBoxElevators = new JTextField("1");
+        textBoxElevators.setBounds(160,180,120,20);
+        add(textBoxElevators);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -89,8 +88,8 @@ public class FormMain extends JFrame implements ActionListener
         /** akcja po naciśnięciu start */
         else if(źródło == buttonStart)
         {
-            int numberOfFloors = Integer.parseInt(tLiczbaPieter.getText());
-            int numberOfElevators = Integer.parseInt(tLiczbaWind.getText());
+            int numberOfFloors = Integer.parseInt(textBoxFloors.getText());
+            int numberOfElevators = Integer.parseInt(textBoxElevators.getText());
             FormAbout okno2 = new FormAbout(numberOfFloors, numberOfElevators);
             okno2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             okno2.setVisible(true);
