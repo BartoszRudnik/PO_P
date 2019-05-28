@@ -13,10 +13,8 @@ import java.awt.event.ActionListener;
 public class FormMain extends JFrame implements ActionListener
 {
 
-    private JButton buttonStart,
-            buttonClose;
-    private JLabel  lLiczbaPieter,
-            lLiczbaWind;
+    private JButton buttonStart,buttonClose;
+    private JLabel  lLiczbaPieter,lLiczbaWind;
     private JTextField tLiczbaPieter,tLiczbaWind;
 
     public static void main(String[]args)
@@ -34,20 +32,25 @@ public class FormMain extends JFrame implements ActionListener
     /** konstruktor pierwszego okna */
     public FormMain()
     {
-        setSize(900,900);
+        Toolkit kit=Toolkit.getDefaultToolkit();
+        Dimension screenSize=kit.getScreenSize();
+        int screenHeight=screenSize.height;
+        int screenWidth=screenSize.width;
+        setSize(screenWidth/2,screenHeight/2);
+        setLocationByPlatform(true);
         setTitle("Symulacja Windy");
         setLayout(null);
 
         /** przycisk wyjście */
         buttonClose = new JButton("Wyjście");
-        buttonClose.setBounds(220,50,100,20);
+        buttonClose.setBounds(screenWidth/5-90,50,100,20);
         add(buttonClose);
         buttonClose.addActionListener(this);
 
 
         /** przycisk start */
         buttonStart = new JButton("Start");
-        buttonStart.setBounds(70,50,100,20);
+        buttonStart.setBounds(screenWidth/5+90,50,100,20);
         add(buttonStart);
         buttonStart.addActionListener(this);
 
@@ -93,4 +96,5 @@ public class FormMain extends JFrame implements ActionListener
             okno2.setVisible(true);
         }
     }
+
 }
