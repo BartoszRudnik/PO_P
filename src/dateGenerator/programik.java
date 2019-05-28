@@ -33,7 +33,7 @@ public class programik
             czasy.add(random.nextInt(1000));
         }
 
-        /** sortowanie list */
+        /** Sortowanie list */
 
         Collections.sort(czasy);
 
@@ -83,20 +83,20 @@ public class programik
             /** czas pojawienia się pobierany z list czasy */
             timepassenger = czasy.get(i);
             /** zapis */
-            writer.print(timepassenger);
-            writer.println();
+            writer.println(timepassenger);
+
 
             /** obecne piętre */
         currentFloor = random.nextInt(numberOfFloors);
             /** zapis */
-        writer.print(currentFloor);
-            writer.println();
+        writer.println(currentFloor);
+
 
             /** docelowe piętro */
         targetFloor = random.nextInt(numberOfFloors);
             /** zapis */
-        writer.print(targetFloor);
-            writer.println();
+        writer.println(targetFloor);
+
 
             /** czy uprzywilejowany? */
         if(i%10==0)
@@ -104,15 +104,9 @@ public class programik
         else
             isPrivileged = 0;
             /** zapis */
-        writer.print(isPrivileged);
-            writer.println();
-
-
-        writer.println();
+        writer.println(isPrivileged);
 
         }
-
-
         writer.close();
     }
 
