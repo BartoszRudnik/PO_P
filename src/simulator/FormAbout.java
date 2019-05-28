@@ -1,7 +1,6 @@
 package simulator;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 
 class FormAbout extends JFrame{
 
@@ -10,17 +9,18 @@ class FormAbout extends JFrame{
     private JLabel labelTime;
 
     /** konstruktor  drugiego okna */
-    FormAbout ()
+    FormAbout( int numberOfFloors, int numberOfElevators)
     {
-        setSize(1000,700);
+        setSize(700,700);
         setTitle("Symulacja Windy");
         setLayout(null);
 
         labelTime = new JLabel("Czas: ");
-        labelTime.setBounds(40,50,150,20);
+        labelTime.setBounds(10,10,150,20);
         add(labelTime);
 
-
+        Building building = new Building( numberOfFloors, numberOfElevators);
+        ControlSystem control = new ControlSystem();
 
 
     }
