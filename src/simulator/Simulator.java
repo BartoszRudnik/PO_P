@@ -7,13 +7,13 @@ import java.awt.event.ActionListener;
 /* Klasa symulacji
  * Główna klasa pliku, zawiera funkcją main
   * */
-public class Simulator implements ActionListener{
+public class Simulator{
     private Timer timer;
     private Building building;
     private PassengerCreator passengerCreator;
     private ControlSystem control;
     private int delay = 1000;
-    private int time = 0;
+    public int time = 0;
 
     Simulator(int numberOfFloors, int numberOfElevators){
         building = new Building( numberOfFloors, numberOfElevators);
@@ -23,15 +23,8 @@ public class Simulator implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 passengerCreator.AddingPassengers( building, time );
-
             }
         });
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        passengerCreator.AddingPassengers( building, time );
-
     }
 
 }
