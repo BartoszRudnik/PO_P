@@ -1,10 +1,12 @@
 package simulator;
 
+import javax.imageio.ImageIO;
 import javax.naming.InitialContext;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 /**
  * Okno wejściowe

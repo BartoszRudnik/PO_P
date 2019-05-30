@@ -11,7 +11,7 @@ public class PassengerCreator
     /** Pole zawierające liczbę danych pasażerów, które zawiera ReadData*/
     private int numberOfPassengers;
 
-    private List<Passanger> passangerList = new ArrayList <>();
+    public List<Passanger> passangerList = new ArrayList <>();
     /** Tworzymy obiekt do wczytywania danych */
     ReadData data = new ReadData();
 

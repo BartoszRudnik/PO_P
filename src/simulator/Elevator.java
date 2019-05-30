@@ -22,6 +22,8 @@ public class Elevator implements IElevator {
     // Lista wybranych pięter
     private List<Integer> listTargetFloors = new ArrayList<>();
 
+    public String information;
+
 
     /** @param maxNumberOfPassanger Konstruktor windy*/
     Elevator( int maxNumberOfPassanger){
@@ -153,6 +155,7 @@ public class Elevator implements IElevator {
 
     /** Metoda wypuszczająca pasażerów z windy*/
     private void LetPassenger(){
+        information = "Pasażerowie wychodzą z windy";
         for(int number = 0; number < passengerList.size(); number++){
 
             // Sprawdzanie czy obecne piętro jest piętrem docelowym danego pasażera windy
@@ -168,11 +171,13 @@ public class Elevator implements IElevator {
     /** Metoda jazdy windy w górę*/
     private void GoUp(){
         currentFloor++;
+        information = "Winda jedzie w górę";
     }
 
     /** Metoda jazdy windy w dół*/
     private void GoDown(){
         currentFloor--;
+        information = "Winda jedzie w dół";
     }
 
     /** @param isOpen Metoda otwierająca lub zamykająca windę */
