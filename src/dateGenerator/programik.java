@@ -23,7 +23,6 @@ public class programik
     public  void time (int set,ArrayList czasy)
     {
 
-        /** tworzenie tablicy na czasy */
         Random random = new Random();
 
         /** wypełnienie listy */
@@ -33,7 +32,7 @@ public class programik
             czasy.add(random.nextInt(1000));
         }
 
-        /** Sortowanie list */
+        /** sortowanie list */
 
         Collections.sort(czasy);
 
@@ -81,30 +80,34 @@ public class programik
             /** czas pojawienia się pobierany z list czasy */
             timepassenger = czasy.get(i);
             /** zapis */
-            writer.println(timepassenger);
-
+            writer.print(timepassenger);
+            writer.println();
 
             /** obecne piętre */
         currentFloor = random.nextInt(numberOfFloors);
             /** zapis */
-        writer.println(currentFloor);
-
+        writer.print(currentFloor);
+            writer.println();
 
             /** docelowe piętro */
         targetFloor = random.nextInt(numberOfFloors);
             /** zapis */
-        writer.println(targetFloor);
-
+        writer.print(targetFloor);
+            writer.println();
 
             /** czy uprzywilejowany? */
         if(i%10==0)
             isPrivileged = 1;
         else
             isPrivileged = 0;
-            /** zapis */
-        writer.println(isPrivileged);
+            /** Zapis */
+        writer.print(isPrivileged);
+            writer.println();
+
 
         }
+
+
         writer.close();
     }
 
