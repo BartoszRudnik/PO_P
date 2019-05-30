@@ -44,9 +44,7 @@ public class programik
     public static void main(String[] args) throws IOException
     {
         /** tworzenie pliku */
-        File file = new File("plik.txt");
-        file.createNewFile();
-        PrintWriter writer = new PrintWriter(file);
+        PrintWriter writer = new PrintWriter("test.txt");
         /** tworzenie funkcji losowej */
         Random random = new Random();
         /**  Tworzenie obiektu scan do pobrania zadanej wartości */
