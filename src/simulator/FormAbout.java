@@ -15,11 +15,13 @@ class FormAbout extends JFrame{
     private JLabel labelInformation;
     private JLabel labelPassengers;
     private JLabel labelTargetFloor;
+    private JLabel labelBackground;
 
     private JLabel labelTime;
     private int vspace = 10;
     private int hspace = 5;
     private int lastLine;
+
 
 
     /** Konstruktor
@@ -30,9 +32,9 @@ class FormAbout extends JFrame{
     {
         Toolkit kit=Toolkit.getDefaultToolkit();
         Dimension screenSize=kit.getScreenSize();
-        int screenHeight=screenSize.height;
-        int screenWidth=screenSize.width;
-        setSize(screenWidth/2,screenHeight*2/3);
+        int screenHeight=689;
+        int screenWidth=1000;
+        setSize(screenWidth,screenHeight);
         setLocationByPlatform(true);
         setTitle("Symulacja Windy");
         setLayout(null);
@@ -43,6 +45,12 @@ class FormAbout extends JFrame{
 
         CreateElevatorFiled(numberOfElevators);
         CreateFloorFiled(numberOfFloors);
+
+        /** pole do ustawiania tła */
+        labelBackground=new JLabel(new ImageIcon("tlo2.jpg"));
+        labelBackground.setOpaque(true);
+        labelBackground.setBounds(0,0,screenWidth,screenHeight);
+        add(labelBackground);
 
         Simulator simulator = new Simulator(numberOfFloors, numberOfElevators);
     }
