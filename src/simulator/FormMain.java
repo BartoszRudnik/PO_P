@@ -32,7 +32,7 @@ public class FormMain extends JFrame implements ActionListener
     /** konstruktor pierwszego okna */
     public FormMain()
     {
-        /** Ustawianie wielkosci okien na podstawie wielkosci ekranu uzytkownika */
+        /** Ustawianie rozmiaru okna */
         Toolkit kit=Toolkit.getDefaultToolkit();
         Dimension screenSize=kit.getScreenSize();
         int screenHeight=689;

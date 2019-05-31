@@ -30,11 +30,13 @@ class FormAbout extends JFrame{
      * */
     FormAbout( int numberOfFloors, int numberOfElevators)
     {
+        /** Ustawianie rozmiaru okna */
         Toolkit kit=Toolkit.getDefaultToolkit();
         Dimension screenSize=kit.getScreenSize();
         int screenHeight=689;
         int screenWidth=1000;
         setSize(screenWidth,screenHeight);
+
         setLocationByPlatform(true);
         setTitle("Symulacja Windy");
         setLayout(null);
