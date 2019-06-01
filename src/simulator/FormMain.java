@@ -28,7 +28,6 @@ public class FormMain extends JFrame implements ActionListener
         });
     }
 
-
     /** konstruktor pierwszego okna */
     public FormMain()
     {

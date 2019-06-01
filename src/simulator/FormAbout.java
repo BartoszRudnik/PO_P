@@ -28,6 +28,7 @@ class FormAbout extends JFrame{
      * */
     FormAbout( int numberOfFloors, int numberOfElevators)
     {
+
         /** Ustawianie rozmiaru okna */
         Toolkit kit=Toolkit.getDefaultToolkit();
         Dimension screenSize=kit.getScreenSize();
@@ -81,19 +82,19 @@ class FormAbout extends JFrame{
             labelNumber.setBounds(10,60 + i*(hspace+height),80,height);
             add(labelNumber);
 
-            // Pole tekstowe informacji o windzie
+            /** Pole tekstowe informacji o windzie */
             listFieldsElevator.add(new JTextField());
             listFieldsElevator.get(i).setBounds(width,60+i*(hspace+height),width,height);
             listFieldsElevator.get(i).setEditable(false);
             add(listFieldsElevator.get(i));
 
-            // Pole tekstowe informacji o liczbie pasażerów windy
+            /** Pole tekstowe informacji o liczbie pasażerów windy */
             listFieldsNumberOfPassengers.add(new JTextField());
             listFieldsNumberOfPassengers.get(i).setBounds(width+(width+vspace),60+i*(hspace+height),width,height);
             listFieldsNumberOfPassengers.get(i).setEditable(false);
             add(listFieldsNumberOfPassengers.get(i));
 
-            // Pole tekstowe informacji o docelowym piętrze windy
+            /** Pole tekstowe informacji o docelowym piętrze windy */
             listFieldsTargetFloor.add(new JTextField());
             listFieldsTargetFloor.get(i).setBounds(width+(width+vspace)*2,60+i*(hspace+height),width,height);
             listFieldsTargetFloor.get(i).setEditable(false);
@@ -105,15 +106,15 @@ class FormAbout extends JFrame{
     /** Metoda tworząca Tabele pięter*/
     private void CreateFloorFiled(int numberOfFloors){
         for(int i = 0; i < numberOfFloors; i++){
-            // Szerokość pola tekstowego
+            /** Szerokość pola tekstowego */
             int width = 120;
-            // Wysokość pola tekstowego
+            /** Wysokość pola tekstowego */
             int height  = 20;
             JLabel numberFloor = new JLabel("Piętro nr " + Integer.toString(i +1) + ":");
             numberFloor.setBounds(10,lastLine+i*(hspace+height),width,height);
             add(numberFloor);
 
-            // Pole tekstowe informacji o liczbie pasażerów w kolejce
+            /** Pole tekstowe informacji o liczbie pasażerów w kolejce */
             listFieldsFloors.add(new JTextField());
             listFieldsFloors.get(i).setBounds(width,lastLine+i*(hspace+height),width,height);
             listFieldsFloors.get(i).setEditable(false);
