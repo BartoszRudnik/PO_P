@@ -84,6 +84,7 @@ public class FormMain extends JFrame implements ActionListener
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
     }
 
     @Override
@@ -104,6 +105,4 @@ public class FormMain extends JFrame implements ActionListener
             okno2.setVisible(true);
         }
     }
-
-
 }
