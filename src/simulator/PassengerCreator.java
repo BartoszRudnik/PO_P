@@ -11,19 +11,19 @@ public class PassengerCreator
     /** Pole zawierające liczbę danych pasażerów, które zawiera ReadData*/
     private int numberOfPassengers;
 
-    public List<Passanger> passangerList = new ArrayList <>();
+    private List<Passanger> passangerList = new ArrayList <>();
     /** Tworzymy obiekt do wczytywania danych */
     ReadData data = new ReadData();
 
     PassengerCreator( int numberOfFloors)
     {
-        /** Wyznaczamy liczbe pasazerow */
+        // Wyznaczamy liczbe pasazerow
         numberOfPassengers = data.NumberOfPassangers();
         for( int i = 0; i < numberOfPassengers; i++)
         {
-            /** Sprawdzamy czy piętro pasażera istnieje */
+            // Sprawdzamy czy piętro pasażera istnieje
             if( data.GetTargetFloor(i) <= numberOfFloors && data.GetStartFloor(i) <= numberOfFloors){
-                /** Dodajemy do listy stworzonego opisanego pasazera */
+                // Dodajemy do listy stworzonego opisanego pasazera
                 if( data.GetIsPrivileged(i) == 0){
                     passangerList.add(new Passanger(data.GetTime(i),data.GetStartFloor(i),data.GetTargetFloor(i)));
                 }
@@ -32,6 +32,7 @@ public class PassengerCreator
                 }
             }
         }
+        data = null;
     }
 
     public void AddingPassengers( Building building, int currentTime ){

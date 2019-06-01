@@ -47,6 +47,10 @@ public class Elevator implements IElevator {
         return maxNumberOfPassanger - passengerList.size();
     }
 
+    public int getTargetFloor(){
+        return listTargetFloors.get(0);
+    }
+
     /**
      * Metoda nadająca docelowe piętro windzie
      * Dodaje je na koniec listy, jeśli nie zostało dodane wcześniej
@@ -56,11 +60,17 @@ public class Elevator implements IElevator {
     public void setTargetFloor(int targetFloor){
         // Pole informujące czy na liście jest już dany cel
         boolean addNew = true;
-        for( int i = 0; i < listTargetFloors.size(); i++){
+        for (int i: listTargetFloors) {
             if (targetFloor == listTargetFloors.get(i)) {
                 addNew = false;
             }
         }
+
+        /*for( int i = 0; i < listTargetFloors.size(); i++){
+            if (targetFloor == listTargetFloors.get(i)) {
+                addNew = false;
+            }
+        }*/
         if(addNew)
             listTargetFloors.add(targetFloor);
     }
@@ -138,7 +148,6 @@ public class Elevator implements IElevator {
                     setTargetFloor(call, 0);
                     call = -1;
                 }
-
             }
             else{
                 setTargetFloor(call);

@@ -21,10 +21,10 @@ public class ReadData{
     /** Metoda wczytujaca dane pasażerów z pilku */
     public void Read(String filename){
                 try{
-                    /** Wczytujemy caly plik tekstowy do allLines */
+                    // Wczytujemy caly plik tekstowy do allLines */
                     List<String>allLines = Files.readAllLines(Paths.get(filename));
                     int j=0;
-                    /** Dodajemy do tablic odpowiednie pola*/
+                    // Dodajemy do tablic odpowiednie pola*/
                     for(int i=0;i<allLines.size()/4;i++){
                         Time.add(Integer.parseInt(allLines.get(j++)));
                         StartFloor.add(Integer.parseInt(allLines.get(j++)));

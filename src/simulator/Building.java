@@ -16,30 +16,31 @@ public class Building{
     private int MaxPassangerNumber = 8;
 
     /** Konstruktor klasy Building
+     * Tworzy piętra i windy w budynku
      * @param numberOfFloors liczba pięter
      * @param numberOfElevators liczba wind
      * */
     Building( int numberOfFloors, int numberOfElevators)
     {
-        /** Dodawanie pięter do budynku */
+        // Dodawanie pięter do budynku
         for( int i = 0; i < numberOfFloors; i++){
             floorList.add(new Floor(i));
         }
-        /** Dodawanie wind do budynku */
+        // Dodawanie wind do budynku
         for( int i = 0; i < numberOfElevators;i++){
             elevatorList.add(new Elevator(MaxPassangerNumber));
         }
     }
 
     /** Metoda zwracająca daną windę
-     * @param index
+     * @param index indeks windy
      * */
     public Elevator GetElevator(int index){
         return elevatorList.get(index);
     }
 
     /** Metoda zwracająca piętro o danym indeksie
-     * @param index
+     * @param index indeks pietra
      * */
     public Floor GetFloor(int index){
         return floorList.get(index);

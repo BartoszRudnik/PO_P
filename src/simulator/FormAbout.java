@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 class FormAbout extends JFrame{
 
@@ -18,13 +21,22 @@ class FormAbout extends JFrame{
     private JLabel labelBackground;
     private JLabel labelTime;
 
+    private Simulator simulator;
+
+    private Timer timer = new Timer(1000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            getTimerAction();
+        }
+    });
+
     private int vspace = 10;
     private int hspace = 5;
     private int lastLine;
 
     /** Konstruktor
-     * @param numberOfFloors
-     * @param numberOfElevators
+     * @param numberOfFloors liczba pięter budynku
+     * @param numberOfElevators liczba wind budynku
      * */
     FormAbout( int numberOfFloors, int numberOfElevators)
     {
@@ -54,7 +66,7 @@ class FormAbout extends JFrame{
         add(labelBackground);
 
         setResizable(false);
-        Simulator simulator = new Simulator(numberOfFloors, numberOfElevators);
+        simulator = new Simulator(numberOfFloors, numberOfElevators);
     }
 
     /** Metoda tworząca tabelę textfiledów wind*/
@@ -110,7 +122,7 @@ class FormAbout extends JFrame{
             int width = 120;
             /** Wysokość pola tekstowego */
             int height  = 20;
-            JLabel numberFloor = new JLabel("Piętro nr " + Integer.toString(i +1) + ":");
+            JLabel numberFloor = new JLabel("Piętro nr " + (i + 1) + ":");
             numberFloor.setBounds(10,lastLine+i*(hspace+height),width,height);
             add(numberFloor);
 
@@ -119,6 +131,23 @@ class FormAbout extends JFrame{
             listFieldsFloors.get(i).setBounds(width,lastLine+i*(hspace+height),width,height);
             listFieldsFloors.get(i).setEditable(false);
             add(listFieldsFloors.get(i));
+        }
+    }
+
+    /** Metoda timera
+     * Aktualizuje wszystkie pola symulacji*/
+    private void getTimerAction(){
+        // Aktualizacja pól wind
+        for(int i = 0; i < listFieldsElevator.size(); i++){
+            Elevator elevator = simulator.getBuilding().GetElevator(i);
+            listFieldsElevator.get(i).setText(elevator.information);
+            listFieldsNumberOfPassengers.get(i).setText(Integer.toString(elevator.MaxNumberPassangers()-elevator.GetNumberOfFreePlaces()));
+            listFieldsTargetFloor.get(i).setText(Integer.toString(elevator.getTargetFloor()));
+        }
+        // Aktualizacja pól pięter
+        for(int i = 0; i < listFieldsFloors.size(); i++){
+            Floor floor = simulator.getBuilding().GetFloor(i);
+            listFieldsFloors.get(i).setText(Integer.toString(floor.GetQueueLength()));
         }
     }
 }
