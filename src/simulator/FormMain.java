@@ -4,8 +4,7 @@ import javax.imageio.ImageIO;
 import javax.naming.InitialContext;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.File;
 
 /**
@@ -13,8 +12,7 @@ import java.io.File;
  * Zawiera zapytanie użytkownika o liczbę pięter i wind
  * Zawiera przyciski wyjścia i zamknięcia okna
  * */
-public class FormMain extends JFrame implements ActionListener
-{
+public class FormMain extends JFrame implements ActionListener, KeyListener {
     private JButton buttonStart,buttonClose;
     private JLabel labelNumberOfFloors, labelNumberOfElevators,labelBackground;
     private JTextField textBoxFloors, textBoxElevators;
@@ -68,11 +66,14 @@ public class FormMain extends JFrame implements ActionListener
         textBoxFloors = new JTextField("5");
         textBoxFloors.setBounds(160,130,120,20);
         add(textBoxFloors);
+        textBoxFloors.addKeyListener(this);
+
 
         /** pole do wpisania liczby wind*/
         textBoxElevators = new JTextField("1");
         textBoxElevators.setBounds(160,180,120,20);
         add(textBoxElevators);
+        textBoxElevators.addKeyListener(this);
 
         /** pole do ustawiania tła */
         labelBackground=new JLabel(new ImageIcon("tlo2.jpg"));
@@ -84,6 +85,10 @@ public class FormMain extends JFrame implements ActionListener
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);
+
+
+
+
     }
 
     @Override
@@ -94,14 +99,47 @@ public class FormMain extends JFrame implements ActionListener
         if(źródło == buttonClose)
             dispose();
 
-        /** akcja po naciśnięciu start */
-        else if(źródło == buttonStart)
+        /** konwersja */
+        int numberOfFloors = Integer.parseInt(textBoxFloors.getText());
+        int numberOfElevators = Integer.parseInt(textBoxElevators.getText());
+
+            /** oknienko */
+            if((numberOfElevators == 0 || numberOfFloors ==0) && (źródło == buttonStart))
+            {
+                JOptionPane.showMessageDialog(this,"Liczba pięter i wind nie może być równa 0 !");
+            }
+
+
+
+            /** akcja po naciśnięciu start */
+           else if (źródło == buttonStart)
         {
-            int numberOfFloors = Integer.parseInt(textBoxFloors.getText());
-            int numberOfElevators = Integer.parseInt(textBoxElevators.getText());
             FormAbout okno2 = new FormAbout(numberOfFloors, numberOfElevators);
             okno2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             okno2.setVisible(true);
         }
+
     }
+
+
+    @Override
+    public void keyTyped(KeyEvent e)
+    {
+        char caracter = e.getKeyChar();
+        if (((caracter < '0') || (caracter > '9')) && (caracter != '\b'))
+        {
+            e.consume();
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) { }
+
+    @Override
+    public void keyReleased(KeyEvent e) { }
+
+
 }
+
+
+
