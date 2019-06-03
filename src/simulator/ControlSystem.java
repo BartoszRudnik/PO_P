@@ -6,7 +6,7 @@ import static java.lang.Math.abs;
 public class ControlSystem implements IManageElevators{
 
     /** Metoda zarządzania windami w danym budynku
-     * @param building
+     * @param building budynek w którym mają być zarządzane piętra
      * */
     @Override
     public void ManageElevators(Building building){
@@ -33,7 +33,9 @@ public class ControlSystem implements IManageElevators{
 
     /**Metoda wyznaczajaca indeks pietra z najwieksza kolejka*/
     private int TheLongestQueue(Building building){
+        // indeks piętra z największą kolejką
         int theLongestQueue = 0;
+        // liczba pasażerów w kolejce z największą liczbą pasażerów
         int numberOfPassengers = 0;
         for( int indexFloor = 0; indexFloor < building.GetNumberOfFloors(); indexFloor++) {
             if (building.GetFloor(indexFloor).GetQueueLength() > numberOfPassengers) {

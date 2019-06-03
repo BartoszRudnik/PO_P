@@ -16,7 +16,7 @@ import java.io.File;
 public class FormMain extends JFrame implements ActionListener
 {
     private JButton buttonStart,buttonClose;
-    private JLabel labelNumberOfFloors, labelNumberOfElevators;
+    private JLabel labelNumberOfFloors, labelNumberOfElevators,labelBackground;
     private JTextField textBoxFloors, textBoxElevators;
 
     public static void main(String[]args)
@@ -28,16 +28,15 @@ public class FormMain extends JFrame implements ActionListener
         });
     }
 
-
     /** konstruktor pierwszego okna */
     public FormMain()
     {
-        /** Ustawianie wielkosci okien na podstawie wielkosci ekranu uzytkownika */
+        /** Ustawianie rozmiaru okna */
         Toolkit kit=Toolkit.getDefaultToolkit();
         Dimension screenSize=kit.getScreenSize();
-        int screenHeight=screenSize.height;
-        int screenWidth=screenSize.width;
-        setSize(screenWidth/2,screenHeight/2);
+        int screenHeight=689;
+        int screenWidth=1000;
+        setSize(screenWidth,screenHeight);
         setLocationByPlatform(true);
         setTitle("Symulacja Windy");
         setLayout(null);
@@ -68,7 +67,6 @@ public class FormMain extends JFrame implements ActionListener
         /** pole do wpisania liczby pięter */
         textBoxFloors = new JTextField("5");
         textBoxFloors.setBounds(160,130,120,20);
-
         add(textBoxFloors);
 
         /** pole do wpisania liczby wind*/
@@ -76,8 +74,16 @@ public class FormMain extends JFrame implements ActionListener
         textBoxElevators.setBounds(160,180,120,20);
         add(textBoxElevators);
 
+        /** pole do ustawiania tła */
+        labelBackground=new JLabel(new ImageIcon("tlo2.jpg"));
+        labelBackground.setOpaque(true);
+        labelBackground.setBounds(0,0,screenWidth,screenHeight);
+        add(labelBackground);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
     }
 
     @Override
@@ -98,5 +104,4 @@ public class FormMain extends JFrame implements ActionListener
             okno2.setVisible(true);
         }
     }
-
 }

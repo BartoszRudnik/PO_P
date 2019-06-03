@@ -9,7 +9,7 @@ import java.util.List;
 public class Floor {
 
     /** Lista pasażerów*/
-    List<Passanger> passengerList = new ArrayList <>();
+    private List<Passanger> passengerList = new ArrayList <>();
     /** Numer piętra*/
     private int number;
     /** wezwanie*/
@@ -43,9 +43,10 @@ public class Floor {
     }
 
     /** Metoda wypuszczania pasażerów do windy
-     * @param elevator winda mająca stać na piętrze*/
+     * @param elevator winda mająca stać na piętrze
+     * */
     public void LetPassengerOut( Elevator elevator) {
-        /** Tutaj pasażerowie są dodawani do windy */
+        // Tutaj pasażerowie są dodawani do windy
         if(passengerList.size() > 0){
             while (passengerList.get(0).GoInto(elevator)){
                 // Dodawanie pasażera do windy

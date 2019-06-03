@@ -64,13 +64,7 @@ public class Passanger implements ISelectFloor, IEnterElevator{
      * Pasażer wychodzi z windy jeśli obecne piętro jest jego docelowym piętrem
      * */
     public boolean GetOut( int currentFloor){
-        if( currentFloor == targetFloor){
-            return true;
-        }
-        else{
-            return false;
-        }
-
+        return currentFloor == targetFloor;
     }
 
     /** Metoda wezwania windy*/
