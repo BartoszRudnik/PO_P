@@ -22,7 +22,7 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
     // Lista wybranych pięter
     private List<Integer> listTargetFloors = new ArrayList<>();
 
-    public String information;
+    public String information = "-";
 
 
     /** @param maxNumberOfPassanger Konstruktor windy*/
@@ -49,7 +49,10 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
     }
 
     public int getTargetFloor(){
-        return listTargetFloors.get(0);
+        //TODO
+        if(listTargetFloors.size() > 0)
+            return listTargetFloors.get(0);
+        return 1;
     }
 
     /**

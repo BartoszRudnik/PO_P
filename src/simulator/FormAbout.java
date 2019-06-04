@@ -25,7 +25,7 @@ class FormAbout extends JFrame implements ActionListener{
 
     private Simulator simulator;
 
-    private Timer timer = new Timer(1000, new ActionListener() {
+    private Timer timer = new Timer(100, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             getTimerAction();
@@ -66,7 +66,7 @@ class FormAbout extends JFrame implements ActionListener{
         setResizable(false);
         simulator = new Simulator(numberOfFloors, numberOfElevators);
 
-        labelTime = new JLabel("Czas: " + Integer.toString(simulator.getTime()));
+        labelTime = new JLabel("Czas: ");
         labelTime.setBounds(10,10,150,20);
         add(labelTime);
 
@@ -166,7 +166,7 @@ class FormAbout extends JFrame implements ActionListener{
         Object źródło = e.getSource();
 
         if(źródło == buttonStart) {
-            //timer.start();
+            timer.start();
             simulator.startTimer();
             labelTime.setText("Czas: " + Integer.toString(simulator.getTime()));
         }

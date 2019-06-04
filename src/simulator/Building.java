@@ -54,6 +54,14 @@ public class Building{
         return floors;
     }
 
+    public Floor GetFloor(int i){
+        return floorList.get(i);
+    }
+
+    public Elevator GetElevator(int i){
+        return elevatorList.get(i);
+    }
+
     /** Metoda zwracająca liczbę pięter w budynku*/
     public int GetNumberOfFloors(){
         return floorList.size();

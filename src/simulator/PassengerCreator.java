@@ -1,5 +1,5 @@
 package simulator;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,9 +11,11 @@ public class PassengerCreator
     /** Pole zawierające liczbę danych pasażerów, które zawiera ReadData*/
     private int numberOfPassengers;
 
-    private List<Passanger> passangerList = new ArrayList <>();
+    /** Lista pasażerów w całym programie*/
+    private List<Passanger> passangerList = new LinkedList<>();
+
     /** Tworzymy obiekt do wczytywania danych */
-    ReadData data = new ReadData();
+    private ReadData data = new ReadData();
 
     PassengerCreator( int numberOfFloors)
     {
@@ -37,7 +39,7 @@ public class PassengerCreator
 
     public void AddingPassengers( List<IPassengerControl> floors, int currentTime ){
         while(passangerList.get(0).getStartTime() == currentTime){
-            floors.get(passangerList.get(0).getStartFloor()).AddPassenger(passangerList.get(0));
+            floors.get(passangerList.get(0).getStartFloor()-1).AddPassenger(passangerList.get(0));
             passangerList.remove(0);
         }
     }
