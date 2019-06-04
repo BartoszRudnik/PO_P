@@ -46,7 +46,6 @@ public class Passanger implements IPassanger {
      * @param elevator winda oczekująca na piętrze
      * */
     public boolean GoInto(IEnterElevator elevator, IPassengerControl floor){
-        System.out.print("Pasażer wsiada" + targetFloor + "\n");
         // Otwórz drzwi windy jeśli nie są otwarte
         if(!elevator.showIsOpen()){
             elevator.OpenDoor();

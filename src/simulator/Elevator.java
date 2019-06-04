@@ -109,6 +109,10 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
     public void Move(){
         boolean move = checkCall();
 
+        if( passengerList.size() > maxNumberOfPassanger - 1){
+            setOpenElevator(false);
+        }
+
         /** Jeśli winda jest zamknięta to może się poruszać*/
         if( !isOpen && move ){
 
@@ -149,6 +153,7 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
 
     /** Metoda sprawdzająca czy winda powinna jechać*/
     private boolean checkCall(){
+        System.out.print("Winda"+ currentFloor +" " + listTargetFloors.size());
         int difference;
         if(call >= 0){
             if(listTargetFloors.size() != 0){

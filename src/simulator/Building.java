@@ -32,7 +32,8 @@ public class Building{
         }
     }
 
-    /** Metoda zwracająca daną windę
+    /** Metoda zwracająca listę wind w postaci interfejsu Elevators
+     *
      * */
     public List<IElevator> GetIElevators(){
         List<IElevator> elevators = new ArrayList<>();
