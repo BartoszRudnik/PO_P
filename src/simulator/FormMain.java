@@ -63,14 +63,13 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
         add(labelNumberOfElevators);
 
         /** pole do wpisania liczby pięter */
-        textBoxFloors = new JTextField("5");
+        textBoxFloors = new JTextField("50");
         textBoxFloors.setBounds(160,130,120,20);
         add(textBoxFloors);
         textBoxFloors.addKeyListener(this);
 
-
         /** pole do wpisania liczby wind*/
-        textBoxElevators = new JTextField("1");
+        textBoxElevators = new JTextField("20");
         textBoxElevators.setBounds(160,180,120,20);
         add(textBoxElevators);
         textBoxElevators.addKeyListener(this);
@@ -85,10 +84,6 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);
-
-
-
-
     }
 
     @Override
