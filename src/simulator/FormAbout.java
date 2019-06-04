@@ -63,7 +63,7 @@ class FormAbout extends JFrame implements ActionListener{
         labelBackground=new JLabel(new ImageIcon("tlo2.jpg"));
         labelBackground.setOpaque(true);
         labelBackground.setBounds(0,0,screenWidth,screenHeight);
-        //add(labelBackground);
+        add(labelBackground);
 
         setResizable(false);
         simulator = new Simulator(numberOfFloors, numberOfElevators);
@@ -165,6 +165,7 @@ class FormAbout extends JFrame implements ActionListener{
             listFieldsElevator.get(i).setText(elevator.information);
             listFieldsNumberOfPassengers.get(i).setText(Integer.toString(simulator.getBuilding().GetElevator(i).getNumberOfPassanger()));
             listFieldsTargetFloor.get(i).setText(Integer.toString(elevator.getTargetFloor()));
+            listFieldsCurrentFloor.get(i).setText(Integer.toString(elevator.GetCurrentFloor()));
         }
         // Aktualizacja pól pięter
         for(int i = 0; i < listFieldsFloors.size(); i++){
