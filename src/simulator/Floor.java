@@ -6,7 +6,7 @@ import java.util.List;
  * Publiczna klasa piętra
  * Zawiera w sobie kolejkę pasażerów
  * */
-public class Floor {
+public class Floor implements IFloor, IPassengerControl{
 
     /** Lista pasażerów*/
     private List<Passanger> passengerList = new ArrayList <>();
@@ -27,6 +27,7 @@ public class Floor {
     }
 
     /**Metoda Pokazująca długość kolejki*/
+    @Override
     public int GetQueueLength(){
         return passengerList.size();
     }
@@ -34,6 +35,7 @@ public class Floor {
     /** Metoda dodająca pasażera
      * @param passanger dodawany pasażer
      * */
+    @Override
     public void AddPassenger( Passanger passanger){
         if( passanger instanceof  PrivilegedPassanger){
             passengerList.add(0, passanger);
@@ -42,22 +44,19 @@ public class Floor {
             passengerList.add(passanger);
     }
 
+    @Override
+    public void LetPassenger(Passanger passenger) {
+        // Pasażer jest usuwany z listy pasażerów oczekujących
+        passengerList.remove(passenger);
+    }
+
     /** Metoda wypuszczania pasażerów do windy
      * @param elevator winda mająca stać na piętrze
      * */
-    public void LetPassengerOut( Elevator elevator) {
+    public void LetPassengersOut(IEnterElevator elevator) {
         // Tutaj pasażerowie są dodawani do windy
-        if(passengerList.size() > 0){
-            while (passengerList.get(0).GoInto(elevator)){
-                // Dodawanie pasażera do windy
-                elevator.AddPassanger(passengerList.get(0));
-                // Pasażer jest usuwany z listy pasażerów oczekujących
-                passengerList.remove(passengerList.get(0));
-                if( passengerList.size() < 1){
-                    call = false;
-                    break;
-                }
-            }
+        while (passengerList.size() > 0){
+            passengerList.get(0).GoInto(elevator, this);
         }
     }
 

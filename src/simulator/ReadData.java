@@ -15,7 +15,7 @@ public class ReadData{
 
     /** Konstruktor klasy ReadData*/
     ReadData(){
-        Read("test.txt");
+        Read("Passengers.txt");
     }
 
     /** Metoda wczytujaca dane pasażerów z pilku */

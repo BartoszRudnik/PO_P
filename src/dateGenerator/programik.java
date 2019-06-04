@@ -43,7 +43,7 @@ public class programik
     public static void main(String[] args) throws IOException
     {
         /** tworzenie pliku */
-        PrintWriter writer = new PrintWriter("test.txt");
+        PrintWriter writer = new PrintWriter("Passangers.txt");
         /** tworzenie funkcji losowej */
         Random random = new Random();
         /**  Tworzenie obiektu scan do pobrania zadanej wartości */

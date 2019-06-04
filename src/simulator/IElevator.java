@@ -10,4 +10,12 @@ public interface IElevator {
 
     /** Metoda pokazująca czy winda jest otwarta */
     boolean showIsOpen();
+
+    int GetNumberOfFreePlaces();
+
+    int GetCurrentFloor();
+
+    int MaxNumberPassangers();
+
+    void setCall(int floor);
 }

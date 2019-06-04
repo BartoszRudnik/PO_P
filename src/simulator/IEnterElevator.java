@@ -1,11 +1,10 @@
 package simulator;
 
-/** Interfejs wchodzenia i wychodzenia z windy*/
-public interface IEnterElevator {
+public interface IEnterElevator extends IPassengerControl {
 
-    /** Metoda wchodzenia do windy*/
-    boolean GoInto(Elevator elevator);
-
-    /** Metoda wychodzenia z windy*/
-    boolean GetOut( int currentFloor);
+    boolean showIsOpen();
+    int GetNumberOfFreePlaces();
+    void OpenDoor();
+    void setTargetFloor(int targetFloor);
+    void setTargetFloor(int targetFloor, int priority);
 }

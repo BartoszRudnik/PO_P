@@ -8,7 +8,7 @@ import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class FormAbout extends JFrame{
+class FormAbout extends JFrame implements ActionListener{
 
     private List <JTextField> listFieldsElevator = new ArrayList<>();
     private List <JTextField> listFieldsNumberOfPassengers = new ArrayList<>();
@@ -20,6 +20,8 @@ class FormAbout extends JFrame{
     private JLabel labelTargetFloor;
     private JLabel labelBackground;
     private JLabel labelTime;
+
+    JButton buttonStart;
 
     private Simulator simulator;
 
@@ -52,10 +54,6 @@ class FormAbout extends JFrame{
         setTitle("Symulacja Windy");
         setLayout(null);
 
-        labelTime = new JLabel("Czas: ");
-        labelTime.setBounds(10,10,150,20);
-        add(labelTime);
-
         CreateElevatorFiled(numberOfElevators);
         CreateFloorFiled(numberOfFloors);
 
@@ -67,6 +65,15 @@ class FormAbout extends JFrame{
 
         setResizable(false);
         simulator = new Simulator(numberOfFloors, numberOfElevators);
+
+        labelTime = new JLabel("Czas: " + Integer.toString(simulator.getTime()));
+        labelTime.setBounds(10,10,150,20);
+        add(labelTime);
+
+        buttonStart = new JButton("Start");
+        buttonStart.setBounds(170,10,100,20);
+        add(buttonStart);
+        buttonStart.addActionListener(this);
     }
 
     /** Metoda tworząca tabelę textfiledów wind*/
@@ -76,17 +83,18 @@ class FormAbout extends JFrame{
         /** Wysokość pola tekstowego */
         int height  = 20;
 
-        labelInformation = new JLabel("Informacje");
-        labelInformation.setBounds(width,30,width,height);
-        add(labelInformation);
 
         labelPassengers = new JLabel("Liczba pasażerów");
-        labelPassengers.setBounds(width+(width+vspace),30,width,height);
+        labelPassengers.setBounds(width,30,width,height);
         add(labelPassengers);
 
         labelTargetFloor = new JLabel("Docelowe piętro");
-        labelTargetFloor.setBounds(width+(width+vspace)*2,30,width,height);
+        labelTargetFloor.setBounds(width+(width+vspace),30,width,height);
         add(labelTargetFloor);
+
+        labelInformation = new JLabel("Informacje");
+        labelInformation.setBounds(width+(width+vspace)*2,30,width,height);
+        add(labelInformation);
 
         for(int i = 0; i < numberOfElevators; i++) {
 
@@ -94,23 +102,24 @@ class FormAbout extends JFrame{
             labelNumber.setBounds(10,60 + i*(hspace+height),80,height);
             add(labelNumber);
 
-            /** Pole tekstowe informacji o windzie */
-            listFieldsElevator.add(new JTextField());
-            listFieldsElevator.get(i).setBounds(width,60+i*(hspace+height),width,height);
-            listFieldsElevator.get(i).setEditable(false);
-            add(listFieldsElevator.get(i));
 
             /** Pole tekstowe informacji o liczbie pasażerów windy */
             listFieldsNumberOfPassengers.add(new JTextField());
-            listFieldsNumberOfPassengers.get(i).setBounds(width+(width+vspace),60+i*(hspace+height),width,height);
+            listFieldsNumberOfPassengers.get(i).setBounds(width,60+i*(hspace+height),width,height);
             listFieldsNumberOfPassengers.get(i).setEditable(false);
             add(listFieldsNumberOfPassengers.get(i));
 
             /** Pole tekstowe informacji o docelowym piętrze windy */
             listFieldsTargetFloor.add(new JTextField());
-            listFieldsTargetFloor.get(i).setBounds(width+(width+vspace)*2,60+i*(hspace+height),width,height);
+            listFieldsTargetFloor.get(i).setBounds(width+(width+vspace),60+i*(hspace+height),width,height);
             listFieldsTargetFloor.get(i).setEditable(false);
             add(listFieldsTargetFloor.get(i));
+
+            /** Pole tekstowe informacji o windzie */
+            listFieldsElevator.add(new JTextField());
+            listFieldsElevator.get(i).setBounds(width+(width+vspace)*2,60+i*(hspace+height),width*3,height);
+            listFieldsElevator.get(i).setEditable(false);
+            add(listFieldsElevator.get(i));
         }
         lastLine = listFieldsTargetFloor.get(numberOfElevators-1).getY()+height*2;
     }
@@ -141,13 +150,25 @@ class FormAbout extends JFrame{
         for(int i = 0; i < listFieldsElevator.size(); i++){
             Elevator elevator = simulator.getBuilding().GetElevator(i);
             listFieldsElevator.get(i).setText(elevator.information);
-            listFieldsNumberOfPassengers.get(i).setText(Integer.toString(elevator.MaxNumberPassangers()-elevator.GetNumberOfFreePlaces()));
+            listFieldsNumberOfPassengers.get(i).setText(Integer.toString(simulator.getBuilding().GetElevator(i).getNumberOfPassanger()));
             listFieldsTargetFloor.get(i).setText(Integer.toString(elevator.getTargetFloor()));
         }
         // Aktualizacja pól pięter
         for(int i = 0; i < listFieldsFloors.size(); i++){
             Floor floor = simulator.getBuilding().GetFloor(i);
             listFieldsFloors.get(i).setText(Integer.toString(floor.GetQueueLength()));
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        Object źródło = e.getSource();
+
+        if(źródło == buttonStart) {
+            //timer.start();
+            simulator.startTimer();
+            labelTime.setText("Czas: " + Integer.toString(simulator.getTime()));
         }
     }
 }

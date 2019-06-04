@@ -33,17 +33,25 @@ public class Building{
     }
 
     /** Metoda zwracająca daną windę
-     * @param index indeks windy
      * */
-    public Elevator GetElevator(int index){
-        return elevatorList.get(index);
+    public List<IElevator> GetIElevators(){
+        List<IElevator> elevators = new ArrayList<>();
+        elevators.addAll(elevatorList);
+        return elevators;
     }
 
     /** Metoda zwracająca piętro o danym indeksie
-     * @param index indeks pietra
      * */
-    public Floor GetFloor(int index){
-        return floorList.get(index);
+    public List<IFloor> GetIFloors(){
+        List<IFloor> floors = new ArrayList<>();
+        floors.addAll(floorList);
+        return floors;
+    }
+
+    public List<IPassengerControl> GetIPassengerControl(){
+        List<IPassengerControl> floors = new ArrayList<>();
+        floors.addAll(floorList);
+        return floors;
     }
 
     /** Metoda zwracająca liczbę pięter w budynku*/

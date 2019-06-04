@@ -6,7 +6,7 @@ import java.util.List;
 import static java.lang.Math.abs;
 
 /** Publiczna klasa windy*/
-public class Elevator implements IElevator {
+public class Elevator implements IElevator, IEnterElevator, IExit {
     // Pole liczby jednostek czasu otwarcia windy
     private int timeOpen = 1;
     // Pole mówiące o tym, czy winda jest otwarta
@@ -31,6 +31,7 @@ public class Elevator implements IElevator {
         currentFloor = 0;
         isOpen = false;
     }
+
     /** Metoda zwracajaca maksymalna liczbe pasazerow w windzie*/
     public int MaxNumberPassangers()
     {
@@ -66,11 +67,6 @@ public class Elevator implements IElevator {
             }
         }
 
-        /*for( int i = 0; i < listTargetFloors.size(); i++){
-            if (targetFloor == listTargetFloors.get(i)) {
-                addNew = false;
-            }
-        }*/
         if(addNew)
             listTargetFloors.add(targetFloor);
     }
@@ -87,14 +83,19 @@ public class Elevator implements IElevator {
         call = newCall;
     }
 
-    /** Metoda ozwacające piętro na które została wezwana winda*/
-    public int getCallFloor() {
-        return call;
+    public int getNumberOfPassanger(){
+        return passengerList.size();
     }
 
     /** Metoda dodająca pasażera do windy*/
-    public void AddPassanger( Passanger passanger){
+    @Override
+    public void AddPassenger(Passanger passanger){
         passengerList.add(passanger);
+    }
+
+    @Override
+    public void LetPassenger(Passanger passenger) {
+        passengerList.remove(passenger);
     }
 
     /** Metoda ruchu windy */
@@ -134,6 +135,7 @@ public class Elevator implements IElevator {
     }
 
     /** Metoda otwierania windy*/
+    @Override
     public void OpenDoor(){
         setOpenElevator(true);
     }
@@ -166,12 +168,7 @@ public class Elevator implements IElevator {
     private void LetPassenger(){
         information = "Pasażerowie wychodzą z windy";
         for(int number = 0; number < passengerList.size(); number++){
-
-            // Sprawdzanie czy obecne piętro jest piętrem docelowym danego pasażera windy
-            if( passengerList.get(number).GetOut(currentFloor)){
-                passengerList.remove(number);
-                number--;
-            }
+            passengerList.get(number).GetOut(this);
         }
         // Usuwanie danego piętra z listy pięter docelowych
         listTargetFloors.remove(0);

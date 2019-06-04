@@ -12,7 +12,7 @@ public class PrivilegedPassanger extends Passanger {
      * @param elevator winda do której wsiada pasażer
      * */
     @Override
-    public void SelectFloor( Elevator elevator){
+    public void SelectFloor( IEnterElevator elevator){
         elevator.setTargetFloor(targetFloor, 0);
     }
 

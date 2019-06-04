@@ -35,9 +35,9 @@ public class PassengerCreator
         data = null;
     }
 
-    public void AddingPassengers( Building building, int currentTime ){
+    public void AddingPassengers( List<IPassengerControl> floors, int currentTime ){
         while(passangerList.get(0).getStartTime() == currentTime){
-            building.GetFloor(passangerList.get(0).getStartFloor()).AddPassenger(passangerList.get(0));
+            floors.get(passangerList.get(0).getStartFloor()).AddPassenger(passangerList.get(0));
             passangerList.remove(0);
         }
     }
@@ -45,12 +45,6 @@ public class PassengerCreator
     /** Metoda wyznaczajaca liczbe wczytanych zestawow danych pasazerow */
     public void setNumberOfPassengers(int numberOfPassengers) {
         this.numberOfPassengers = numberOfPassengers;
-    }
-
-    /** Zwracanie pasażera -- do testów*/
-    public Passanger ReturnPassenger(int index)
-    {
-        return passangerList.get(index);
     }
 }
 

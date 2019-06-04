@@ -1,7 +1,7 @@
 package simulator;
 
 /** Publiczna klasa pasażera*/
-public class Passanger implements ISelectFloor, IEnterElevator{
+public class Passanger implements IPassanger {
     /** Pole zapisujące czas startu pasażera*/
     protected int startTime;
     /** Pole zapisujące piętro startu pasażera*/
@@ -36,7 +36,7 @@ public class Passanger implements ISelectFloor, IEnterElevator{
     }
 
     @Override
-    public void SelectFloor( Elevator elevator){
+    public void SelectFloor( IEnterElevator elevator){
         elevator.setTargetFloor(targetFloor);
     }
 
@@ -45,12 +45,14 @@ public class Passanger implements ISelectFloor, IEnterElevator{
      * Pasażer wchodzi do windy jeśli w windzie jest miejsce
      * @param elevator winda oczekująca na piętrze
      * */
-    public boolean GoInto(Elevator elevator){
+    public boolean GoInto(IEnterElevator elevator, IPassengerControl floor){
         // Otwórz drzwi windy jeśli nie są otwarte
         if(!elevator.showIsOpen()){
             elevator.OpenDoor();
         }
         if(elevator.GetNumberOfFreePlaces()>0){
+            floor.LetPassenger(this);
+            elevator.AddPassenger(this);
             SelectFloor(elevator);
             return true;
         }
@@ -63,8 +65,9 @@ public class Passanger implements ISelectFloor, IEnterElevator{
      * Metoda wychodzenia z windy
      * Pasażer wychodzi z windy jeśli obecne piętro jest jego docelowym piętrem
      * */
-    public boolean GetOut( int currentFloor){
-        return currentFloor == targetFloor;
+    public void GetOut(IExit elevator){
+        if(elevator.GetCurrentFloor() == targetFloor)
+            elevator.LetPassenger(this);
     }
 
     /** Metoda wezwania windy*/

@@ -1,19 +1,22 @@
 package simulator;
 
+import java.util.List;
+
 import static java.lang.Math.abs;
 
 /** Klasa sterująca windami w budynku*/
 public class ControlSystem implements IManageElevators{
 
     /** Metoda zarządzania windami w danym budynku
-     * @param building budynek w którym mają być zarządzane piętra
+     * @param floors piętra budynku
+     * @param elevators windy budynku
      * */
     @Override
-    public void ManageElevators(Building building){
+    public void ManageElevators(List<IFloor> floors, List<IElevator> elevators){
         int difference;
-        int indexTheLongestQueue = TheLongestQueue(building);
-        for( int i = 0; i < building.GetNumberOfElevators(); i++){
-            Elevator elevator = building.GetElevator(i);
+        int indexTheLongestQueue = TheLongestQueue(floors);
+        for( int i = 0; i < elevators.size(); i++){
+            IElevator elevator = elevators.get(i);
             if(elevator.GetNumberOfFreePlaces() == 0)
                 continue;
             difference = abs(elevator.GetCurrentFloor()-indexTheLongestQueue);
@@ -32,15 +35,15 @@ public class ControlSystem implements IManageElevators{
     }
 
     /**Metoda wyznaczajaca indeks pietra z najwieksza kolejka*/
-    private int TheLongestQueue(Building building){
+    private int TheLongestQueue(List<IFloor> floors){
         // indeks piętra z największą kolejką
         int theLongestQueue = 0;
         // liczba pasażerów w kolejce z największą liczbą pasażerów
         int numberOfPassengers = 0;
-        for( int indexFloor = 0; indexFloor < building.GetNumberOfFloors(); indexFloor++) {
-            if (building.GetFloor(indexFloor).GetQueueLength() > numberOfPassengers) {
+        for( int indexFloor = 0; indexFloor < floors.size(); indexFloor++) {
+            if (floors.get(indexFloor).GetQueueLength() > numberOfPassengers) {
                 theLongestQueue = indexFloor;
-                numberOfPassengers=building.GetFloor(indexFloor).GetQueueLength();
+                numberOfPassengers=floors.get(indexFloor).GetQueueLength();
             }
         }
             return theLongestQueue;
