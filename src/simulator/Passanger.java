@@ -51,8 +51,8 @@ public class Passanger implements IPassanger {
             elevator.OpenDoor();
         }
         if(elevator.GetNumberOfFreePlaces()>0){
-            floor.LetPassenger(this);
             elevator.AddPassenger(this);
+            floor.LetPassenger(this);
             SelectFloor(elevator);
             return true;
         }
