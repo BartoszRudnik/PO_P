@@ -12,11 +12,13 @@ class FormAbout extends JFrame implements ActionListener{
 
     private List <JTextField> listFieldsElevator = new ArrayList<>();
     private List <JTextField> listFieldsNumberOfPassengers = new ArrayList<>();
+    private List <JTextField> listFieldsCurrentFloor = new ArrayList<>();
     private List <JTextField> listFieldsTargetFloor = new ArrayList<>();
     private List <JTextField> listFieldsFloors = new ArrayList<>();
 
     private JLabel labelInformation;
     private JLabel labelPassengers;
+    private JLabel labelCurrentFloor;
     private JLabel labelTargetFloor;
     private JLabel labelBackground;
     private JLabel labelTime;
@@ -68,6 +70,7 @@ class FormAbout extends JFrame implements ActionListener{
 
         labelTime = new JLabel("Czas: ");
         labelTime.setBounds(10,10,150,20);
+        labelTime.setOpaque(true);
         add(labelTime);
 
         buttonStart = new JButton("Start");
@@ -88,12 +91,16 @@ class FormAbout extends JFrame implements ActionListener{
         labelPassengers.setBounds(width,30,width,height);
         add(labelPassengers);
 
+        labelCurrentFloor= new JLabel(("Obecne piętro"));
+        labelCurrentFloor.setBounds(width+(width+vspace),30,width,height);
+        add(labelCurrentFloor);
+
         labelTargetFloor = new JLabel("Docelowe piętro");
-        labelTargetFloor.setBounds(width+(width+vspace),30,width,height);
+        labelTargetFloor.setBounds(width+(width+vspace)*2,30,width,height);
         add(labelTargetFloor);
 
         labelInformation = new JLabel("Informacje");
-        labelInformation.setBounds(width+(width+vspace)*2,30,width,height);
+        labelInformation.setBounds(width+(width+vspace)*3,30,width,height);
         add(labelInformation);
 
         for(int i = 0; i < numberOfElevators; i++) {
@@ -109,15 +116,21 @@ class FormAbout extends JFrame implements ActionListener{
             listFieldsNumberOfPassengers.get(i).setEditable(false);
             add(listFieldsNumberOfPassengers.get(i));
 
+            /** Pole tekstowe informacji o obecnym piętrze windy */
+            listFieldsCurrentFloor.add(new JTextField());
+            listFieldsCurrentFloor.get(i).setBounds(width+(width+vspace),60+i*(hspace+height),width,height);
+            listFieldsCurrentFloor.get(i).setEditable(false);
+            add(listFieldsCurrentFloor.get(i));
+
             /** Pole tekstowe informacji o docelowym piętrze windy */
             listFieldsTargetFloor.add(new JTextField());
-            listFieldsTargetFloor.get(i).setBounds(width+(width+vspace),60+i*(hspace+height),width,height);
+            listFieldsTargetFloor.get(i).setBounds(width+(width+vspace)*2,60+i*(hspace+height),width,height);
             listFieldsTargetFloor.get(i).setEditable(false);
             add(listFieldsTargetFloor.get(i));
 
             /** Pole tekstowe informacji o windzie */
             listFieldsElevator.add(new JTextField());
-            listFieldsElevator.get(i).setBounds(width+(width+vspace)*2,60+i*(hspace+height),width*3,height);
+            listFieldsElevator.get(i).setBounds(width+(width+vspace)*3,60+i*(hspace+height),width*3,height);
             listFieldsElevator.get(i).setEditable(false);
             add(listFieldsElevator.get(i));
         }
