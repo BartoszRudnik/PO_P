@@ -42,6 +42,7 @@ public class Floor implements IFloor, IPassengerControl{
         }
         else
             passengerList.add(passanger);
+        CallElevator();
     }
 
     @Override
@@ -56,7 +57,12 @@ public class Floor implements IFloor, IPassengerControl{
     public void LetPassengersOut(IEnterElevator elevator) {
         // Tutaj pasażerowie są dodawani do windy
         while (passengerList.size() > 0){
-            passengerList.get(0).GoInto(elevator, this);
+            if(!passengerList.get(0).GoInto(elevator, this)){
+                break;
+            }
+        }
+        if(passengerList.size() == 0) {
+            call = false;
         }
     }
 

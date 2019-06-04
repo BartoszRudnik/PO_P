@@ -64,11 +64,12 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
     public void setTargetFloor(int targetFloor){
         // Pole informujące czy na liście jest już dany cel
         boolean addNew = true;
-        for (int i: listTargetFloors) {
-            if (targetFloor == listTargetFloors.get(i)) {
-                addNew = false;
+        if( listTargetFloors.size() > 0)
+            for (int i: listTargetFloors) {
+                if (targetFloor == i) {
+                    addNew = false;
+                }
             }
-        }
 
         if(addNew)
             listTargetFloors.add(targetFloor);

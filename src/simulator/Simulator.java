@@ -67,7 +67,7 @@ public class Simulator{
         for (int i = 0; i < building.GetNumberOfFloors(); i++) {
             if(building.GetFloor(i).getCall()){
                 for(int j = 0; j < building.GetNumberOfElevators(); j++){
-                    if(building.GetElevator(j).GetCurrentFloor() == i && building.GetElevator(j).showIsOpen()){
+                    if(building.GetElevator(j).GetCurrentFloor() == i){
                         building.GetFloor(i).LetPassengersOut(building.GetElevator(j));
                         break;
                     }

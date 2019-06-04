@@ -5,4 +5,5 @@ public interface IFloor {
     int GetQueueLength();
     void AddPassenger( Passanger passanger);
     boolean getCall();
+    void CallElevator();
 }

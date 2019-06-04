@@ -46,11 +46,13 @@ public class Passanger implements IPassanger {
      * @param elevator winda oczekująca na piętrze
      * */
     public boolean GoInto(IEnterElevator elevator, IPassengerControl floor){
+        System.out.print("Pasażer wsiada" + targetFloor + "\n");
         // Otwórz drzwi windy jeśli nie są otwarte
         if(!elevator.showIsOpen()){
             elevator.OpenDoor();
         }
         if(elevator.GetNumberOfFreePlaces()>0){
+
             elevator.AddPassenger(this);
             floor.LetPassenger(this);
             SelectFloor(elevator);
@@ -71,7 +73,7 @@ public class Passanger implements IPassanger {
     }
 
     /** Metoda wezwania windy*/
-    public void CallElevator( Floor floor){
+    public void CallElevator( IFloor floor){
         floor.CallElevator();
     }
 }
