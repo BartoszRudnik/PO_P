@@ -77,11 +77,13 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
     /**
      * Metoda nadająca docelowe piętro windzie o większym piorytecie
      * */
+    @Override
     public void setTargetFloor(int targetFloor, int priority){
         listTargetFloors.add(priority, targetFloor);
     }
 
     /** Metoda nadająca nowe wezwanie*/
+    @Override
     public void setCall( int newCall){
         call = newCall;
     }
@@ -140,6 +142,7 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
     /** Metoda otwierania windy*/
     @Override
     public void OpenDoor(){
+        information = "Winda ma otwarte drzwi";
         setOpenElevator(true);
     }
 

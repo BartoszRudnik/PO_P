@@ -24,7 +24,7 @@ public class PassengerCreator
         for( int i = 0; i < numberOfPassengers; i++)
         {
             // Sprawdzamy czy piętro pasażera istnieje
-            if( data.GetTargetFloor(i) <= numberOfFloors && data.GetStartFloor(i) <= numberOfFloors){
+            if( data.GetTargetFloor(i) < numberOfFloors && data.GetStartFloor(i) < numberOfFloors){
                 // Dodajemy do listy stworzonego opisanego pasazera
                 if( data.GetIsPrivileged(i) == 0){
                     passangerList.add(new Passanger(data.GetTime(i),data.GetStartFloor(i),data.GetTargetFloor(i)));
@@ -39,7 +39,7 @@ public class PassengerCreator
 
     public void AddingPassengers( List<IPassengerControl> floors, int currentTime ){
         while(passangerList.get(0).getStartTime() == currentTime){
-            floors.get(passangerList.get(0).getStartFloor()-1).AddPassenger(passangerList.get(0));
+            floors.get(passangerList.get(0).getStartFloor()).AddPassenger(passangerList.get(0));
             passangerList.remove(0);
         }
     }

@@ -63,12 +63,12 @@ class FormAbout extends JFrame implements ActionListener{
         labelBackground=new JLabel(new ImageIcon("tlo2.jpg"));
         labelBackground.setOpaque(true);
         labelBackground.setBounds(0,0,screenWidth,screenHeight);
-        add(labelBackground);
+        //add(labelBackground);
 
         setResizable(false);
         simulator = new Simulator(numberOfFloors, numberOfElevators);
 
-        labelTime = new JLabel("Czas: ");
+        labelTime = new JLabel("Czas: " + Integer.toString(simulator.getTime()));
         labelTime.setBounds(10,10,150,20);
         labelTime.setOpaque(true);
         add(labelTime);
@@ -171,6 +171,7 @@ class FormAbout extends JFrame implements ActionListener{
             Floor floor = simulator.getBuilding().GetFloor(i);
             listFieldsFloors.get(i).setText(Integer.toString(floor.GetQueueLength()));
         }
+        labelTime.setText("Czas: " + Integer.toString(simulator.getTime()));
     }
 
     @Override
@@ -181,7 +182,6 @@ class FormAbout extends JFrame implements ActionListener{
         if(źródło == buttonStart) {
             timer.start();
             simulator.startTimer();
-            labelTime.setText("Czas: " + Integer.toString(simulator.getTime()));
         }
     }
 }
