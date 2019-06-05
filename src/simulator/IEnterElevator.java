@@ -2,8 +2,11 @@ package simulator;
 
 public interface IEnterElevator extends IPassengerControl {
 
+    /** Metoda informująca o otwarych drzwiach windy */
     boolean showIsOpen();
+    /** Metoda zwracająca liczbę wolnych miejsc w windzie */
     int GetNumberOfFreePlaces();
+    /** Metoda otwierająca dzwi windy */
     void OpenDoor();
 
     /** Metoda nadająca nowe docelowe piętor

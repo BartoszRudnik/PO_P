@@ -14,10 +14,13 @@ public interface IElevator {
     /** Metoda pokazująca czy winda jest otwarta */
     boolean showIsOpen();
 
+    /** Metoda liczbę wolnych miejsc w windzie */
     int GetNumberOfFreePlaces();
 
+    /** Metoda zwracająca obecne piętro */
     int GetCurrentFloor();
 
+    /** Metoda zwracająca maksymalną liczbę pasażerów w windzie */
     int MaxNumberPassangers();
     /**
      *  @param floor
