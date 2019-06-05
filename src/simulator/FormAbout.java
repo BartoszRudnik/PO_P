@@ -27,6 +27,8 @@ class FormAbout extends JFrame implements ActionListener{
 
     JButton buttonStart;
 
+    boolean check=false;
+
     private Simulator simulator;
 
     private Timer timer = new Timer(100, new ActionListener() {
@@ -59,7 +61,7 @@ class FormAbout extends JFrame implements ActionListener{
         getContentPane().add(scrPane);
 
         //Wyłączenie maksymalizacji okna
-        setResizable(true);
+        setResizable(false);
         setLocationByPlatform(true);
         setTitle("Symulacja Windy");
 
@@ -83,7 +85,6 @@ class FormAbout extends JFrame implements ActionListener{
         buttonStart.setBounds(170,10,100,20);
         container.add(buttonStart);
         buttonStart.addActionListener(this);
-
     }
 
     /** Metoda tworząca tabelę textfiledów wind*/
@@ -185,11 +186,22 @@ class FormAbout extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        Object źródło = e.getSource();
+        Object source = e.getSource();
 
-        if(źródło == buttonStart) {
+        if(source == buttonStart && !check)
+        {
             timer.start();
             simulator.startTimer();
+            buttonStart.setText("Stop");
+            check=true;
+        }
+
+        else if(source==buttonStart && check)
+        {
+            timer.stop();
+            simulator.stopTimer();
+            buttonStart.setText("Start");
+            check=false;
         }
     }
 }
