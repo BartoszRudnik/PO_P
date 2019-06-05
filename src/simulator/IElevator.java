@@ -19,6 +19,8 @@ public interface IElevator {
     int GetCurrentFloor();
 
     int MaxNumberPassangers();
-
+    /**
+     *  @param floor
+     */
     void setCall(int floor);
 }
