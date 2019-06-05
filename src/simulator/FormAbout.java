@@ -208,7 +208,7 @@ class FormAbout extends JFrame implements ActionListener{
         {
             timer.start();
             simulator.startTimer();
-            buttonStart.setText("Stop");
+            buttonStart.setText("Pauza");
             check=true;
         }
 
@@ -216,7 +216,7 @@ class FormAbout extends JFrame implements ActionListener{
         {
             timer.stop();
             simulator.stopTimer();
-            buttonStart.setText("Start");
+            buttonStart.setText("Wznów");
             check=false;
         }
     }
