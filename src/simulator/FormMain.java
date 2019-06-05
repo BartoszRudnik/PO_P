@@ -86,7 +86,7 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
         Object źródło = e.getSource();
 
         if(źródło == buttonClose)
-            dispose();
+            System.exit(0);
 
         /** konwersja */
         int numberOfFloors = Integer.parseInt(textBoxFloors.getText());
