@@ -17,6 +17,9 @@ public class PassengerCreator
     /** Tworzymy obiekt do wczytywania danych */
     private ReadData data = new ReadData();
 
+    /** Metoda służąca do stworzenia pasażera
+     * @param numberOfFloors
+     */
     PassengerCreator( int numberOfFloors)
     {
         // Wyznaczamy liczbe pasazerow
@@ -37,6 +40,10 @@ public class PassengerCreator
         data = null;
     }
 
+    /** Metoda dodająca pasażerów
+     * @param floors liczba pięter
+     * @param currentTime obecny czas
+     */
     public void AddingPassengers( List<IPassengerControl> floors, int currentTime ){
         while(passangerList.get(0).getStartTime() == currentTime){
             floors.get(passangerList.get(0).getStartFloor()).AddPassenger(passangerList.get(0));
@@ -44,7 +51,9 @@ public class PassengerCreator
         }
     }
 
-    /** Metoda wyznaczajaca liczbe wczytanych zestawow danych pasazerow */
+    /** Metoda wyznaczajaca liczbe wczytanych zestawow danych pasazerów
+     * @param numberOfPassengers liczba pasażerów
+     */
     public void setNumberOfPassengers(int numberOfPassengers) {
         this.numberOfPassengers = numberOfPassengers;
     }

@@ -3,7 +3,11 @@ package simulator;
 /** Publiczna klasa Pasażera uprzywilejowanego*/
 public class PrivilegedPassanger extends Passanger {
 
-    /** Konstruktor PrivilegedPassanger*/
+    /** Konstruktor PrivilegedPassanger
+     * @param startFloor początkowe piętor
+     * @param targetFloor docelowe piętro
+     * @param startTime początkowy czas
+     * */
     PrivilegedPassanger( int startTime, int startFloor, int targetFloor){
         super( startTime, startFloor, targetFloor);
     }

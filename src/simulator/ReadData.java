@@ -18,7 +18,9 @@ public class ReadData{
         Read("Passengers.txt");
     }
 
-    /** Metoda wczytujaca dane pasażerów z pilku */
+    /** Metoda wczytujaca dane pasażerów z pilku
+     * @param filename
+     * */
     public void Read(String filename){
                 try{
                     // Wczytujemy caly plik tekstowy do allLines */
@@ -42,22 +44,30 @@ public class ReadData{
         return Time.size();
     }
 
-    /** Metoda zwracajaca czas pasazera o indeksie 'index' */
+    /** Metoda zwracajaca czas pasazera o indeksie 'index'
+     * @param index indeks
+     * */
     public int  GetTime(int index){
         return Time.get(index);
     }
 
-    /** Metoda zwracajaca pietro startowe pasazera o indeksie 'index' */
+    /** Metoda zwracajaca pietro startowe pasazera o indeksie 'index'
+     * @param index
+     * */
     public int GetStartFloor(int index){
         return StartFloor.get(index);
     }
 
-    /** Metoda zwracajaca pietro docelowe pasazera o indeksie 'index' */
+    /** Metoda zwracajaca pietro docelowe pasazera o indeksie 'index'
+     * @param index
+     */
     public int GetTargetFloor(int index){
         return TargetFloor.get(index);
     }
 
-    /** Metoda zwracajaca informacje o tym czy pasazer o indeksie 'index' jest uprzywilejowany */
+    /** Metoda zwracajaca informacje o tym czy pasazer o indeksie 'index' jest uprzywilejowany
+     * @param index
+     * s*/
     public int GetIsPrivileged(int index){
         return IsPrivileged.get(index);
     }

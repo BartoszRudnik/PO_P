@@ -35,6 +35,9 @@ public class Passanger implements IPassanger {
         return targetFloor;
     }
 
+    /** Metoda wyboru piętra
+     * @param elevator winda
+     */
     @Override
     public void SelectFloor( IEnterElevator elevator){
         elevator.setTargetFloor(targetFloor);
@@ -44,6 +47,7 @@ public class Passanger implements IPassanger {
      * Metoda wchodzenia do windy
      * Pasażer wchodzi do windy jeśli w windzie jest miejsce
      * @param elevator winda oczekująca na piętrze
+     * @param floor piętro
      * */
     public boolean GoInto(IEnterElevator elevator, IPassengerControl floor){
         // Otwórz drzwi windy jeśli nie są otwarte
@@ -65,13 +69,16 @@ public class Passanger implements IPassanger {
     /**
      * Metoda wychodzenia z windy
      * Pasażer wychodzi z windy jeśli obecne piętro jest jego docelowym piętrem
+     * @param elevator winda
      * */
     public void GetOut(IExit elevator){
         if(elevator.GetCurrentFloor() == targetFloor)
             elevator.LetPassenger(this);
     }
 
-    /** Metoda wezwania windy*/
+    /** Metoda wezwania windy
+     * @param floor piętro
+     * */
     public void CallElevator( IFloor floor){
         floor.CallElevator();
     }
