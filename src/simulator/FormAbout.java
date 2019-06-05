@@ -198,8 +198,11 @@ class FormAbout extends JFrame implements ActionListener{
     {
         Object source = e.getSource();
 
-        if(source== buttonEnd)
+        if(source== buttonEnd) {
             dispose();
+            timer.stop();
+            simulator.stopTimer();
+        }
 
         if(source == buttonStart && !check)
         {
