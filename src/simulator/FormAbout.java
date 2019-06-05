@@ -26,6 +26,7 @@ class FormAbout extends JFrame implements ActionListener{
     private JPanel container;
 
     JButton buttonStart;
+    JButton buttonEnd;
 
     boolean check=false;
 
@@ -60,6 +61,16 @@ class FormAbout extends JFrame implements ActionListener{
         JScrollPane scrPane = new JScrollPane(container);
         getContentPane().add(scrPane);
 
+        buttonStart = new JButton("Start");
+        buttonStart.setBounds(170,10,100,20);
+        container.add(buttonStart);
+        buttonStart.addActionListener(this);
+
+        buttonEnd = new JButton("Wylacz symulacje");
+        buttonEnd.setBounds(280,10,150,20);
+        container.add(buttonEnd);
+        buttonEnd.addActionListener(this);
+
         //Wyłączenie maksymalizacji okna
         setResizable(false);
         setLocationByPlatform(true);
@@ -80,11 +91,6 @@ class FormAbout extends JFrame implements ActionListener{
         labelTime.setBounds(10,10,150,20);
         labelTime.setOpaque(true);
         container.add(labelTime);
-
-        buttonStart = new JButton("Start");
-        buttonStart.setBounds(170,10,100,20);
-        container.add(buttonStart);
-        buttonStart.addActionListener(this);
     }
 
     /** Metoda tworząca tabelę textfiledów wind
@@ -191,6 +197,9 @@ class FormAbout extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e)
     {
         Object source = e.getSource();
+
+        if(source== buttonEnd)
+            dispose();
 
         if(source == buttonStart && !check)
         {
