@@ -48,7 +48,7 @@ public class Simulator{
     }
 
     public void stopTimer(){
-        stopTimer();
+        timer.stop();
     }
 
     public int getTime() {
