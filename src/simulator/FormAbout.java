@@ -87,7 +87,9 @@ class FormAbout extends JFrame implements ActionListener{
         buttonStart.addActionListener(this);
     }
 
-    /** Metoda tworząca tabelę textfiledów wind*/
+    /** Metoda tworząca tabelę textfiledów wind
+     * @param numberOfElevators liczba wind
+     * */
     private void CreateElevatorFiled(int numberOfElevators){
         /** Szerokość pola tekstowego */
         int width = 120;
@@ -144,7 +146,9 @@ class FormAbout extends JFrame implements ActionListener{
         lastLine = listFieldsTargetFloor.get(numberOfElevators-1).getY()+height*2;
     }
 
-    /** Metoda tworząca Tabele pięter*/
+    /** Metoda tworząca Tabele pięter
+     * @param numberOfFloors   liczba pięter
+     * */
     private void CreateFloorFiled(int numberOfFloors){
         for(int i = 0; i < numberOfFloors; i++){
             /** Szerokość pola tekstowego */

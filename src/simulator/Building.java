@@ -53,10 +53,16 @@ public class Building{
         return floors;
     }
 
+    /** Metoda zwracająca numer piętra
+     * @param i indeks
+     */
     public Floor GetFloor(int i){
         return floorList.get(i);
     }
 
+    /** Metoda zwracająca numer windy
+     * @param i indeks
+     */
     public Elevator GetElevator(int i){
         return elevatorList.get(i);
     }
