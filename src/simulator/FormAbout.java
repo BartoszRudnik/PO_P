@@ -61,11 +61,13 @@ class FormAbout extends JFrame implements ActionListener{
         JScrollPane scrPane = new JScrollPane(container);
         getContentPane().add(scrPane);
 
+        //Etykieta przycisku start
         buttonStart = new JButton("Start");
         buttonStart.setBounds(170,10,100,20);
         container.add(buttonStart);
         buttonStart.addActionListener(this);
 
+        //Etykieta wylaczenie symulacji
         buttonEnd = new JButton("Wylacz symulacje");
         buttonEnd.setBounds(280,10,150,20);
         container.add(buttonEnd);
@@ -87,6 +89,7 @@ class FormAbout extends JFrame implements ActionListener{
 
         simulator = new Simulator(numberOfFloors, numberOfElevators);
 
+        //Etykieta czasu
         labelTime = new JLabel("Czas: " + Integer.toString(simulator.getTime()));
         labelTime.setBounds(10,10,150,20);
         labelTime.setOpaque(true);
@@ -198,12 +201,14 @@ class FormAbout extends JFrame implements ActionListener{
     {
         Object source = e.getSource();
 
+        //Zamkniecie tego okna symulacji
         if(source== buttonEnd) {
             dispose();
             timer.stop();
             simulator.stopTimer();
         }
 
+        //Zamienienie przycisku start na pauza
         if(source == buttonStart && !check)
         {
             timer.start();
@@ -212,6 +217,7 @@ class FormAbout extends JFrame implements ActionListener{
             check=true;
         }
 
+        //Zamienienie przycisku pauza na wznow
         else if(source==buttonStart && check)
         {
             timer.stop();
