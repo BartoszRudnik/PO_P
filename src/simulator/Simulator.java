@@ -37,7 +37,6 @@ public class Simulator{
                 time++;
             }
         });
-        stopTimer();
     }
 
     public Building getBuilding() {
@@ -49,7 +48,7 @@ public class Simulator{
     }
 
     public void stopTimer(){
-        timer.stop();
+        stopTimer();
     }
 
     public int getTime() {

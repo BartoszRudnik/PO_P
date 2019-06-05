@@ -6,7 +6,7 @@ import java.util.List;
 import static java.lang.Math.abs;
 
 /** Publiczna klasa windy*/
-public class Elevator implements IElevator, IEnterElevator, IExit {
+public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit {
     // Pole liczby jednostek czasu otwarcia windy
     private int timeOpen = 1;
     // Pole mówiące o tym, czy winda jest otwarta
@@ -17,22 +17,23 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
     private int currentFloor;
     // Pole piętra, na które winda została wezwana
     private int call = -1;
-    // Lista pasażerów windy
-    private List<Passanger> passengerList = new ArrayList<>();
     // Lista wybranych pięter
     private List<Integer> listTargetFloors = new ArrayList<>();
 
     public String information = "-";
 
 
-    /** @param maxNumberOfPassanger Konstruktor windy*/
+    /** Konstruktor windy
+     * @param maxNumberOfPassanger maksymalna liczba pasażerów
+     *`*/
     Elevator( int maxNumberOfPassanger){
         this.maxNumberOfPassanger = maxNumberOfPassanger;
         currentFloor = 0;
         isOpen = false;
     }
 
-    /** Metoda zwracajaca maksymalna liczbe pasazerow w windzie*/
+    /** Metoda zwracajaca maksymalna liczbe pasazerow w windzie
+     * @return  maxNumberOfPassanger */
     public int MaxNumberPassangers()
     {
         return maxNumberOfPassanger;
@@ -89,21 +90,6 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
         call = newCall;
     }
 
-    public int getNumberOfPassanger(){
-        return passengerList.size();
-    }
-
-    /** Metoda dodająca pasażera do windy*/
-    @Override
-    public void AddPassenger(Passanger passanger){
-        passengerList.add(passanger);
-    }
-
-    @Override
-    public void LetPassenger(Passanger passenger) {
-        passengerList.remove(passenger);
-    }
-
     /** Metoda ruchu windy */
     @Override
     public void Move(){
@@ -127,7 +113,7 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
             //W przeciwnym wypadku jesteś na piętrze docelowym, więc wysadź pasażerów
             else{
                 setOpenElevator(true);
-                LetPassenger();
+                LetPassengers();
             }
         }
         else{
@@ -177,7 +163,7 @@ public class Elevator implements IElevator, IEnterElevator, IExit {
     }
 
     /** Metoda wypuszczająca pasażerów z windy*/
-    private void LetPassenger(){
+    private void LetPassengers(){
         information = "Pasażerowie wychodzą z windy";
         for(int number = 0; number < passengerList.size(); number++){
             passengerList.get(number).GetOut(this);

@@ -6,10 +6,8 @@ import java.util.List;
  * Publiczna klasa piętra
  * Zawiera w sobie kolejkę pasażerów
  * */
-public class Floor implements IFloor, IPassengerControl{
+public class Floor extends ASpace implements IFloor{
 
-    /** Lista pasażerów*/
-    private List<Passanger> passengerList = new ArrayList <>();
     /** Numer piętra*/
     private int number;
     /** wezwanie*/
@@ -43,12 +41,6 @@ public class Floor implements IFloor, IPassengerControl{
         else
             passengerList.add(passanger);
         CallElevator();
-    }
-
-    @Override
-    public void LetPassenger(Passanger passenger) {
-        // Pasażer jest usuwany z listy pasażerów oczekujących
-        passengerList.remove(passenger);
     }
 
     /** Metoda wypuszczania pasażerów do windy

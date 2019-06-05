@@ -48,6 +48,4 @@ public class ControlSystem implements IManageElevators{
         }
             return theLongestQueue;
     }
-
-
 }
