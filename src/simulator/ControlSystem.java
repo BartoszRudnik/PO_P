@@ -34,7 +34,9 @@ public class ControlSystem implements IManageElevators{
         }
     }
 
-    /**Metoda wyznaczajaca indeks pietra z najwieksza kolejka*/
+    /**Metoda wyznaczajaca indeks pietra z najwieksza kolejka
+     * @param floors piętra budynku
+     * */
     private int TheLongestQueue(List<IFloor> floors){
         // indeks piętra z największą kolejką
         int theLongestQueue = 0;
