@@ -32,9 +32,9 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
         /** Ustawianie rozmiaru okna */
         Toolkit kit=Toolkit.getDefaultToolkit();
         Dimension screenSize=kit.getScreenSize();
-        int screenHeight=689;
-        int screenWidth=1000;
-        setSize(screenWidth,screenHeight);
+        int screenHeight=screenSize.height;
+        int screenWidth=screenSize.width;
+        setSize(screenWidth/2,screenHeight/2);
         setLocationByPlatform(true);
         setTitle("Symulacja Windy");
         setLayout(null);
@@ -63,22 +63,16 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
         add(labelNumberOfElevators);
 
         /** pole do wpisania liczby pięter */
-        textBoxFloors = new JTextField("50");
+        textBoxFloors = new JTextField("5");
         textBoxFloors.setBounds(160,130,120,20);
         add(textBoxFloors);
         textBoxFloors.addKeyListener(this);
 
         /** pole do wpisania liczby wind*/
-        textBoxElevators = new JTextField("20");
+        textBoxElevators = new JTextField("2");
         textBoxElevators.setBounds(160,180,120,20);
         add(textBoxElevators);
         textBoxElevators.addKeyListener(this);
-
-        /** pole do ustawiania tła */
-        labelBackground=new JLabel(new ImageIcon("tlo2.jpg"));
-        labelBackground.setOpaque(true);
-        labelBackground.setBounds(0,0,screenWidth,screenHeight);
-        add(labelBackground);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -103,8 +97,6 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
             {
                 JOptionPane.showMessageDialog(this,"Liczba pięter i wind nie może być równa 0 !");
             }
-
-
 
             /** akcja po naciśnięciu start */
            else if (źródło == buttonStart)
