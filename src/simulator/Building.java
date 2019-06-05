@@ -33,25 +33,23 @@ public class Building{
     }
 
     /** Metoda zwracająca listę wind w postaci interfejsu Elevators
-     *
+     * @return List<IElevator>
      * */
     public List<IElevator> GetIElevators(){
-        List<IElevator> elevators = new ArrayList<>();
-        elevators.addAll(elevatorList);
+        List<IElevator> elevators = new ArrayList<>(elevatorList);
         return elevators;
     }
 
-    /** Metoda zwracająca piętro o danym indeksie
+    /** Metoda zwracająca listę pięter w postaci interfejsu IFloor
+     * @return List<IFloor>
      * */
     public List<IFloor> GetIFloors(){
-        List<IFloor> floors = new ArrayList<>();
-        floors.addAll(floorList);
+        List<IFloor> floors = new ArrayList<>(floorList);
         return floors;
     }
 
     public List<IPassengerControl> GetIPassengerControl(){
-        List<IPassengerControl> floors = new ArrayList<>();
-        floors.addAll(floorList);
+        List<IPassengerControl> floors = new ArrayList<>(floorList);
         return floors;
     }
 

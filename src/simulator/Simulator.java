@@ -37,7 +37,6 @@ public class Simulator{
                 time++;
             }
         });
-        startTimer();
     }
 
     public Building getBuilding() {

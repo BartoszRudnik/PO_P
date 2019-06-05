@@ -24,8 +24,6 @@ class FormAbout extends JFrame implements ActionListener{
     private JLabel labelTime;
 
     private JPanel container;
-    private JPanel south;
-    private JFrame frame;
 
     JButton buttonStart;
 
@@ -56,14 +54,13 @@ class FormAbout extends JFrame implements ActionListener{
         setSize(screenWidth,screenHeight);
 
         container = new JPanel();
-        container.setLayout(null);
         JScrollPane scrPane = new JScrollPane(container);
         getContentPane().add(scrPane);
 
         //Wyłączenie maksymalizacji okna
         setResizable(false);
         setLocationByPlatform(true);
-        setTitle("Symulator Windy");
+        setTitle("Symulacja Windy");
 
         CreateElevatorFiled(numberOfElevators);
         CreateFloorFiled(numberOfFloors);
@@ -71,20 +68,21 @@ class FormAbout extends JFrame implements ActionListener{
         /** pole do ustawiania tła */
         labelBackground=new JLabel(new ImageIcon("tlo2.jpg"));
         labelBackground.setOpaque(true);
-        labelBackground.setBounds(0,0,screenWidth,screenHeight);
+        //labelBackground.setBounds(0,0,screenWidth,screenHeight);
         container.add(labelBackground);
 
         simulator = new Simulator(numberOfFloors, numberOfElevators);
 
         labelTime = new JLabel("Czas: " + Integer.toString(simulator.getTime()));
-        labelTime.setBounds(10,10,150,20);
+        //labelTime.setBounds(10,10,150,20);
         labelTime.setOpaque(true);
         container.add(labelTime);
 
         buttonStart = new JButton("Start");
-        buttonStart.setBounds(170,10,100,20);
+        //buttonStart.setBounds(170,10,100,20);
         container.add(buttonStart);
         buttonStart.addActionListener(this);
+
     }
 
     /** Metoda tworząca tabelę textfiledów wind*/
@@ -95,49 +93,49 @@ class FormAbout extends JFrame implements ActionListener{
         int height  = 20;
 
         labelPassengers = new JLabel("Liczba pasażerów");
-        labelPassengers.setBounds(width,30,width,height);
+        //labelPassengers.setBounds(width,30,width,height);
         container.add(labelPassengers);
 
         labelCurrentFloor= new JLabel(("Obecne piętro"));
-        labelCurrentFloor.setBounds(width+(width+vspace),30,width,height);
+        //labelCurrentFloor.setBounds(width+(width+vspace),30,width,height);
         container.add(labelCurrentFloor);
 
         labelTargetFloor = new JLabel("Docelowe piętro");
-        labelTargetFloor.setBounds(width+(width+vspace)*2,30,width,height);
+        //labelTargetFloor.setBounds(width+(width+vspace)*2,30,width,height);
         container.add(labelTargetFloor);
 
         labelInformation = new JLabel("Informacje");
-        labelInformation.setBounds(width+(width+vspace)*3,30,width,height);
+       // labelInformation.setBounds(width+(width+vspace)*3,30,width,height);
         container.add(labelInformation);
 
         for(int i = 0; i < numberOfElevators; i++) {
 
             JLabel labelNumber = new JLabel("Winda nr " + Integer.toString(i+1) + ":" );
-            labelNumber.setBounds(10,60 + i*(hspace+height),80,height);
+            //labelNumber.setBounds(10,60 + i*(hspace+height),80,height);
             container.add(labelNumber);
 
 
             /** Pole tekstowe informacji o liczbie pasażerów windy */
             listFieldsNumberOfPassengers.add(new JTextField());
-            listFieldsNumberOfPassengers.get(i).setBounds(width,60+i*(hspace+height),width,height);
+            //listFieldsNumberOfPassengers.get(i).setBounds(width,60+i*(hspace+height),width,height);
             listFieldsNumberOfPassengers.get(i).setEditable(false);
             container.add(listFieldsNumberOfPassengers.get(i));
 
             /** Pole tekstowe informacji o obecnym piętrze windy */
             listFieldsCurrentFloor.add(new JTextField());
-            listFieldsCurrentFloor.get(i).setBounds(width+(width+vspace),60+i*(hspace+height),width,height);
+            //listFieldsCurrentFloor.get(i).setBounds(width+(width+vspace),60+i*(hspace+height),width,height);
             listFieldsCurrentFloor.get(i).setEditable(false);
             container.add(listFieldsCurrentFloor.get(i));
 
             /** Pole tekstowe informacji o docelowym piętrze windy */
             listFieldsTargetFloor.add(new JTextField());
-            listFieldsTargetFloor.get(i).setBounds(width+(width+vspace)*2,60+i*(hspace+height),width,height);
+           // listFieldsTargetFloor.get(i).setBounds(width+(width+vspace)*2,60+i*(hspace+height),width,height);
             listFieldsTargetFloor.get(i).setEditable(false);
             container.add(listFieldsTargetFloor.get(i));
 
             /** Pole tekstowe informacji o windzie */
             listFieldsElevator.add(new JTextField());
-            listFieldsElevator.get(i).setBounds(width+(width+vspace)*3,60+i*(hspace+height),width*3,height);
+           // listFieldsElevator.get(i).setBounds(width+(width+vspace)*3,60+i*(hspace+height),width*3,height);
             listFieldsElevator.get(i).setEditable(false);
             container.add(listFieldsElevator.get(i));
         }
@@ -152,13 +150,13 @@ class FormAbout extends JFrame implements ActionListener{
             /** Wysokość pola tekstowego */
             int height  = 20;
             JLabel numberFloor = new JLabel("Piętro nr " + (i + 1) + ":");
-            numberFloor.setBounds(10,lastLine+i*(hspace+height),width,height);
+            //numberFloor.setBounds(10,lastLine+i*(hspace+height),width,height);
             container.add(numberFloor);
 
 
             /** Pole tekstowe informacji o liczbie pasażerów w kolejce */
             listFieldsFloors.add(new JTextField());
-            listFieldsFloors.get(i).setBounds(width,lastLine+i*(hspace+height),width,height);
+            //listFieldsFloors.get(i).setBounds(width,lastLine+i*(hspace+height),width,height);
             listFieldsFloors.get(i).setEditable(false);
             container.add(listFieldsFloors.get(i));
         }
