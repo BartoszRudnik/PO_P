@@ -72,25 +72,28 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
         add(textBoxElevators);
         textBoxElevators.addKeyListener(this);
 
+        // Uwidocznienie pierwszego okna
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);
     }
 
+    /** Metoda wykonująca akcję w zależności od wyboru użytkownika */
     @Override
     public void actionPerformed(ActionEvent e)
     {
         Object source = e.getSource();
 
+        // wyjście
         if(source == buttonClose)
             System.exit(0);
 
-        // konwersja
+        // konwersja zmiennych na typ int
         int numberOfFloors = Integer.parseInt(textBoxFloors.getText());
         int numberOfElevators = Integer.parseInt(textBoxElevators.getText());
 
-            // oknienko
+            // Wyświetlenie wiadomości z informacją o błędzie
             if((numberOfElevators == 0 || numberOfFloors ==0) && (source == buttonStart))
             {
                 JOptionPane.showMessageDialog(this,"Liczba pięter i wind nie może być równa 0 !");
@@ -106,7 +109,9 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
 
     }
 
-
+    /** Metoda blokująca wpisywanie innych znaków niż cyfr
+     * @param e
+     */
     @Override
     public void keyTyped(KeyEvent e)
     {

@@ -63,7 +63,7 @@ public class Simulator{
         return  building.GetElevator(index).getNumberOfPassanger();
     }
 
-    /**
+    /** Metoda zwraca informacje o windzie
      * @param index
      */
     public String GetInformation(int index)
@@ -92,6 +92,7 @@ public class Simulator{
         }
     }
 
+    /** Metoda wypuszczająca pasażerów */
     private void FloorLetPassengers(){
         //TODO
         for (int i = 0; i < building.GetNumberOfFloors(); i++) {
