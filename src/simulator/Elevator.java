@@ -49,7 +49,7 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
         return maxNumberOfPassanger - passengerList.size();
     }
 
-    public int getTargetFloor(){
+    public int GetTargetFloor(){
         //TODO
         if(listTargetFloors.size() > 0)
             return listTargetFloors.get(0);
@@ -71,7 +71,6 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
                     addNew = false;
                 }
             }
-
         if(addNew)
             listTargetFloors.add(targetFloor);
     }

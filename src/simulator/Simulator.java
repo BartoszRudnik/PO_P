@@ -60,6 +60,21 @@ public class Simulator{
         return  building.GetElevator(index).getNumberOfPassanger();
     }
 
+    public String GetInformation(int index)
+    {
+        return building.GetElevator(index).information;
+    }
+
+    public int GetTargetFloorElevator(int index)
+    {
+        return building.GetElevator(index).GetTargetFloor();
+    }
+
+    public int GetCurrentFloorElevator(int index)
+    {
+        return building.GetElevator(index).GetCurrentFloor();
+    }
+
     private void MoveElevators() {
         for (int i = 0; i < building.GetNumberOfElevators(); i++) {
             elevators.get(i).Move();

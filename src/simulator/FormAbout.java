@@ -173,11 +173,11 @@ class FormAbout extends JFrame implements ActionListener{
 
         // Aktualizacja pól wind
         for(int i = 0; i < listFieldsElevator.size(); i++){
-            Elevator elevator = simulator.getBuilding().GetElevator(i);
-            listFieldsElevator.get(i).setText(elevator.information);
-            listFieldsNumberOfPassengers.get(i).setText(Integer.toString(simulator.getBuilding().GetElevator(i).getNumberOfPassanger()));
-            listFieldsTargetFloor.get(i).setText(Integer.toString(elevator.getTargetFloor()));
-            listFieldsCurrentFloor.get(i).setText(Integer.toString(elevator.GetCurrentFloor()));
+            //Elevator elevator = simulator.getBuilding().GetElevator(i);
+            listFieldsElevator.get(i).setText(simulator.GetInformation(i));
+            listFieldsNumberOfPassengers.get(i).setText(Integer.toString(simulator.GetNumberofPassanger(i)));
+            listFieldsTargetFloor.get(i).setText(Integer.toString(simulator.GetTargetFloorElevator(i)));
+            listFieldsCurrentFloor.get(i).setText(Integer.toString(simulator.GetCurrentFloorElevator(i)));
         }
 
         // Aktualizacja pól pięter
