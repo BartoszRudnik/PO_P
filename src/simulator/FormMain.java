@@ -14,7 +14,6 @@ import java.awt.event.KeyListener;
  * */
 public class FormMain extends JFrame implements ActionListener, KeyListener {
     private JButton buttonStart,buttonClose;
-    private JLabel labelBackground;
     private JTextField textBoxFloors, textBoxElevators;
 
     public static void main(String[]args)
@@ -122,7 +121,6 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) { }
-
 
 }
 
