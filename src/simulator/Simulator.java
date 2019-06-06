@@ -78,6 +78,7 @@ public class Simulator{
     {
         return building.GetElevator(index).GetTargetFloor();
     }
+
     /** Metoda zwracająca obecne piętro windy
      * @param index
      */
@@ -85,6 +86,16 @@ public class Simulator{
     {
         return building.GetElevator(index).GetCurrentFloor();
     }
+
+    /** Metoda zwracajaca kolejke na pietrze
+     *
+     * @param index
+     */
+    public int GetQueueLengthFloor(int index)
+    {
+        return building.GetFloor(index).GetQueueLength();
+    }
+
     /** Metoda ruchu windy */
     private void MoveElevators() {
         for (int i = 0; i < building.GetNumberOfElevators(); i++) {
