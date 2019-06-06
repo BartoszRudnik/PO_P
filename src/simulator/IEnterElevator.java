@@ -23,4 +23,6 @@ public interface IEnterElevator {
      * @param priority piorytet
      */
     void setTargetFloor(int targetFloor, int priority);
+
+    void AddPassenger(Passanger passanger);
 }
