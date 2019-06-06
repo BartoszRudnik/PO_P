@@ -76,6 +76,7 @@ class FormAbout extends JFrame implements ActionListener{
         //Wyłączenie maksymalizacji okna
         setResizable(false);
         setLocationByPlatform(true);
+        //Tytul okienka
         setTitle("Symulacja Windy");
 
         CreateElevatorFiled(numberOfElevators);
@@ -126,7 +127,6 @@ class FormAbout extends JFrame implements ActionListener{
             JLabel labelNumber = new JLabel("Winda nr " + Integer.toString(i+1) + ":" );
             labelNumber.setBounds(10,60 + i*(hspace+height),80,height);
             container.add(labelNumber);
-
 
             /** Pole tekstowe informacji o liczbie pasażerów windy */
             listFieldsNumberOfPassengers.add(new JTextField());
@@ -180,6 +180,7 @@ class FormAbout extends JFrame implements ActionListener{
     /** Metoda timera
      * Aktualizuje wszystkie pola symulacji*/
     private void getTimerAction(){
+
         // Aktualizacja pól wind
         for(int i = 0; i < listFieldsElevator.size(); i++){
             Elevator elevator = simulator.getBuilding().GetElevator(i);
@@ -188,6 +189,7 @@ class FormAbout extends JFrame implements ActionListener{
             listFieldsTargetFloor.get(i).setText(Integer.toString(elevator.getTargetFloor()));
             listFieldsCurrentFloor.get(i).setText(Integer.toString(elevator.GetCurrentFloor()));
         }
+
         // Aktualizacja pól pięter
         for(int i = 0; i < listFieldsFloors.size(); i++){
             Floor floor = simulator.getBuilding().GetFloor(i);
