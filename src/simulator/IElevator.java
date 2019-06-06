@@ -1,21 +1,10 @@
 package simulator;
 
 /** Publiczny interfejs windy*/
-public interface IElevator {
-
-    /** Nadawanie windzie nowego piętra docelowego
-     * @param targetFloor piętro docelowe
-     **/
-    void setTargetFloor(int targetFloor);
+public interface IElevator extends IElevatorSpecial {
 
     /** Metoda ruchu windy */
     void Move();
-
-    /** Metoda pokazująca czy winda jest otwarta */
-    boolean showIsOpen();
-
-    /** Metoda liczbę wolnych miejsc w windzie */
-    int GetNumberOfFreePlaces();
 
     /** Metoda zwracająca obecne piętro */
     int GetCurrentFloor();
