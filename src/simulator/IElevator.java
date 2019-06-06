@@ -4,7 +4,7 @@ package simulator;
 public interface IElevator {
 
     /** Nadawanie windzie nowego piętra docelowego
-     * @param targetFloor
+     * @param targetFloor piętro docelowe
      **/
     void setTargetFloor(int targetFloor);
 
@@ -22,8 +22,9 @@ public interface IElevator {
 
     /** Metoda zwracająca maksymalną liczbę pasażerów w windzie */
     int MaxNumberPassangers();
-    /**
-     *  @param floor
+
+    /** Nadanie nowego wezwania
+     *  @param floor piętro na które jest wzywana winda
      */
     void setCall(int floor);
 }

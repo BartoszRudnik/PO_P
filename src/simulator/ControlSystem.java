@@ -15,20 +15,17 @@ public class ControlSystem implements IManageElevators{
     public void ManageElevators(List<IFloor> floors, List<IElevator> elevators){
         int difference;
         int indexTheLongestQueue = TheLongestQueue(floors);
-        for( int i = 0; i < elevators.size(); i++){
-            IElevator elevator = elevators.get(i);
-            if(elevator.GetNumberOfFreePlaces() == 0)
+        for (IElevator elevator : elevators) {
+            if (elevator.GetNumberOfFreePlaces() == 0)
                 continue;
-            difference = abs(elevator.GetCurrentFloor()-indexTheLongestQueue);
-            if(elevator.GetNumberOfFreePlaces() == elevator.MaxNumberPassangers()){
+            difference = abs(elevator.GetCurrentFloor() - indexTheLongestQueue);
+            if (elevator.GetNumberOfFreePlaces() == elevator.MaxNumberPassangers()) {
                 elevator.setCall(indexTheLongestQueue);
                 break;
-            }
-            else if( difference < 5 && elevator.GetNumberOfFreePlaces() < 4){
+            } else if (difference < 5 && elevator.GetNumberOfFreePlaces() < 4) {
                 elevator.setCall(indexTheLongestQueue);
                 break;
-            }
-            else if(difference < 4 && elevator.GetNumberOfFreePlaces() > 3){
+            } else if (difference < 4 && elevator.GetNumberOfFreePlaces() > 3) {
                 elevator.setCall(indexTheLongestQueue);
             }
         }

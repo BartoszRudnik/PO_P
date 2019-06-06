@@ -24,7 +24,7 @@ public class Building{
     {
         // Dodawanie pięter do budynku
         for( int i = 0; i < numberOfFloors; i++){
-            floorList.add(new Floor(i));
+            floorList.add(new Floor());
         }
         // Dodawanie wind do budynku
         for( int i = 0; i < numberOfElevators;i++){
@@ -36,21 +36,18 @@ public class Building{
      * @return List<IElevator>
      * */
     public List<IElevator> GetIElevators(){
-        List<IElevator> elevators = new ArrayList<>(elevatorList);
-        return elevators;
+        return new ArrayList<>(elevatorList);
     }
 
     /** Metoda zwracająca listę pięter w postaci interfejsu IFloor
      * @return List<IFloor>
      * */
     public List<IFloor> GetIFloors(){
-        List<IFloor> floors = new ArrayList<>(floorList);
-        return floors;
+        return new ArrayList<>(floorList);
     }
 
-    public List<IPassengerControl> GetIPassengerControl(){
-        List<IPassengerControl> floors = new ArrayList<>(floorList);
-        return floors;
+    public List<ASpace> GetIPassengerControl(){
+        return new ArrayList<>(floorList);
     }
 
     /** Metoda zwracająca numer piętra

@@ -14,15 +14,10 @@ public class PassengerCreator
     /** Lista pasażerów w całym programie*/
     private List<Passanger> passangerList = new LinkedList<>();
 
-    /** Tworzymy obiekt do wczytywania danych */
-    private ReadData data = new ReadData();
-
-    /** Metoda służąca do stworzenia pasażera
-     * @param numberOfFloors
-     */
     PassengerCreator( int numberOfFloors)
     {
         // Wyznaczamy liczbe pasazerow
+        ReadData data = new ReadData();
         numberOfPassengers = data.NumberOfPassangers();
         for( int i = 0; i < numberOfPassengers; i++)
         {
@@ -30,32 +25,20 @@ public class PassengerCreator
             if( data.GetTargetFloor(i) < numberOfFloors && data.GetStartFloor(i) < numberOfFloors){
                 // Dodajemy do listy stworzonego opisanego pasazera
                 if( data.GetIsPrivileged(i) == 0){
-                    passangerList.add(new Passanger(data.GetTime(i),data.GetStartFloor(i),data.GetTargetFloor(i)));
+                    passangerList.add(new Passanger(data.GetTime(i), data.GetStartFloor(i), data.GetTargetFloor(i)));
                 }
                 else {
                     passangerList.add(new PrivilegedPassanger(data.GetTime(i), data.GetStartFloor(i), data.GetTargetFloor(i)));
                 }
             }
         }
-        data = null;
     }
 
-    /** Metoda dodająca pasażerów
-     * @param floors liczba pięter
-     * @param currentTime obecny czas
-     */
-    public void AddingPassengers( List<IPassengerControl> floors, int currentTime ){
+    public void AddingPassengers(List<ASpace> floors, int currentTime ){
         while(passangerList.get(0).getStartTime() == currentTime){
             floors.get(passangerList.get(0).getStartFloor()).AddPassenger(passangerList.get(0));
             passangerList.remove(0);
         }
-    }
-
-    /** Metoda wyznaczajaca liczbe wczytanych zestawow danych pasazerów
-     * @param numberOfPassengers liczba pasażerów
-     */
-    public void setNumberOfPassengers(int numberOfPassengers) {
-        this.numberOfPassengers = numberOfPassengers;
     }
 }
 
