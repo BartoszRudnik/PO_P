@@ -169,7 +169,6 @@ class FormAbout extends JFrame implements ActionListener{
             numberFloor.setBounds(10,lastLine+i*(hspace+height),width,height);
             container.add(numberFloor);
 
-
             // Pole tekstowe informacji o liczbie pasażerów w kolejce
             listFieldsFloors.add(new JTextField());
             listFieldsFloors.get(i).setBounds(width,lastLine+i*(hspace+height),width,height);
