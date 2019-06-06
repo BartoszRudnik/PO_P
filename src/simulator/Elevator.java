@@ -99,7 +99,7 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
             setOpenElevator(false);
         }
 
-        /** Jeśli winda jest zamknięta to może się poruszać*/
+        // Jeśli winda jest zamknięta to może się poruszać*/
         if( !isOpen && move ){
 
             //Jeśli docelowe piętro jest wyżej od obecnego to jedź w górę
@@ -169,7 +169,11 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
             passengerList.get(number).GetOut(this);
         }
         // Usuwanie danego piętra z listy pięter docelowych
-        listTargetFloors.remove(0);
+        for( int i = 0; i < listTargetFloors.size(); i++){
+            if( listTargetFloors.get(i) == currentFloor){
+                listTargetFloors.remove(listTargetFloors.get(i));
+            }
+        }
     }
 
     /** Metoda jazdy windy w górę*/

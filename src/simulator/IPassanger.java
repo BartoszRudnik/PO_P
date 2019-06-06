@@ -7,7 +7,7 @@ public interface IPassanger {
      * @param elevator windy budynku
      * @param floor piętra budynku
      * */
-    boolean GoInto(IEnterElevator elevator, IPassengerControl floor);
+    boolean GoInto(IEnterElevator elevator, ASpace floor);
 
     /** Metoda wychodzenia z windy
      * @param elevator

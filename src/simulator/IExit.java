@@ -3,7 +3,8 @@ package simulator;
 public interface IExit {
 
     /**
-     * @param passenger
+     * Wypuszczanie pasażera
+     * @param passenger wypuszczany pasażer
      * */
     void LetPassenger(Passanger passenger);
 

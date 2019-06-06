@@ -1,6 +1,4 @@
 package simulator;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Publiczna klasa piętra
@@ -8,21 +6,8 @@ import java.util.List;
  * */
 public class Floor extends ASpace implements IFloor{
 
-    /** Numer piętra*/
-    private int number;
     /** wezwanie*/
     private boolean call = false;
-
-    /** Konstruktor piętra
-     * @param number numer piętra*/
-    Floor( int number){
-        this.number = number;
-    }
-
-    /** Metoda zwracająca numer piętra*/
-    public int getNumber() {
-        return number;
-    }
 
     /**Metoda Pokazująca długość kolejki*/
     @Override
@@ -46,7 +31,7 @@ public class Floor extends ASpace implements IFloor{
     /** Metoda wypuszczania pasażerów do windy
      * @param elevator winda mająca stać na piętrze
      * */
-    public void LetPassengersOut(IEnterElevator elevator) {
+    void LetPassengersOut(IEnterElevator elevator) {
         // Tutaj pasażerowie są dodawani do windy
         while (passengerList.size() > 0){
             if(!passengerList.get(0).GoInto(elevator, this)){

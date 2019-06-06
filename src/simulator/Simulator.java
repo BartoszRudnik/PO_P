@@ -1,24 +1,21 @@
 package simulator;
 
 import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
-/* Klasa symulacji
+/** Klasa symulacji
   * */
 public class Simulator{
     private Timer timer;
     private Building building;
     private PassengerCreator passengerCreator;
     private ControlSystem control;
-    private int delay = 500;
+    private int delay = 100;
     private int time = 0;
 
     List<IFloor> floors;
     List<IElevator> elevators;
-    List<IPassengerControl> addpassengers;
+    List<ASpace> addpassengers;
 
     Simulator(int numberOfFloors, int numberOfElevators){
         building = new Building( numberOfFloors, numberOfElevators);
@@ -27,15 +24,12 @@ public class Simulator{
         addpassengers = building.GetIPassengerControl();
         passengerCreator = new PassengerCreator(numberOfFloors);
         control = new ControlSystem();
-        timer = new Timer(delay, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                passengerCreator.AddingPassengers( addpassengers, time );
-                control.ManageElevators(floors, elevators);
-                MoveElevators();
-                FloorLetPassengers();
-                time++;
-            }
+        timer = new Timer(delay, e -> {
+            passengerCreator.AddingPassengers( addpassengers, time );
+            control.ManageElevators(floors, elevators);
+            MoveElevators();
+            FloorLetPassengers();
+            time++;
         });
     }
 

@@ -49,7 +49,7 @@ public class Passanger implements IPassanger {
      * @param elevator winda oczekująca na piętrze
      * @param floor piętro
      * */
-    public boolean GoInto(IEnterElevator elevator, IPassengerControl floor){
+    public boolean GoInto(IEnterElevator elevator, ASpace floor){
         // Otwórz drzwi windy jeśli nie są otwarte
         if(!elevator.showIsOpen()){
             elevator.OpenDoor();
