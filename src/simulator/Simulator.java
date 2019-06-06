@@ -55,6 +55,11 @@ public class Simulator{
         return time;
     }
 
+    public int GetNumberofPassanger(int index)
+    {
+        return  building.GetElevator(index).getNumberOfPassanger();
+    }
+
     private void MoveElevators() {
         for (int i = 0; i < building.GetNumberOfElevators(); i++) {
             elevators.get(i).Move();
