@@ -42,44 +42,52 @@ public class Simulator{
     public Building getBuilding() {
         return building;
     }
-    /**  */
+    /** Metoda rozpoczynająca mierzenie czasu  */
     public void startTimer(){
         timer.start();
     }
-
+    /** Metoda zatrzymująca mierzenie czasu */
     public void stopTimer(){
         timer.stop();
     }
-
+    /** Metoda zwracająca czas  */
     public int getTime() {
         return time;
     }
 
+    /** Metoda zwracająca liczbe pasażerów
+     * @param index
+     */
     public int GetNumberofPassanger(int index)
     {
         return  building.GetElevator(index).getNumberOfPassanger();
     }
 
+    /**
+     * @param index
+     */
     public String GetInformation(int index)
     {
         return building.GetElevator(index).information;
     }
 
+    /** Metoda zwracająca piętro docelowe dla windy
+     * @param index
+     */
     public int GetTargetFloorElevator(int index)
     {
         return building.GetElevator(index).GetTargetFloor();
     }
 
+    /** Metoda zwracająca obecne piętro windy
+     * @param index
+     */
     public int GetCurrentFloorElevator(int index)
     {
         return building.GetElevator(index).GetCurrentFloor();
     }
 
-    public int GetQueueLengthFloor(int index)
-    {
-       return building.GetFloor(index).GetQueueLength();
-    }
-
+    /** Metoda ruchu windy */
     private void MoveElevators() {
         for (int i = 0; i < building.GetNumberOfElevators(); i++) {
             elevators.get(i).Move();

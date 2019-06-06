@@ -53,7 +53,7 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
         //TODO
         if(listTargetFloors.size() > 0)
             return listTargetFloors.get(0);
-        return 1;
+        return currentFloor;
     }
 
     /**
@@ -154,11 +154,7 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
             }
             return true;
         }
-        else if(listTargetFloors.size() != 0) {
-            return true;
-        }
-        else
-            return false;
+        else return listTargetFloors.size() != 0;
     }
 
     /** Metoda wypuszczająca pasażerów z windy*/
