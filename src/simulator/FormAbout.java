@@ -10,19 +10,30 @@ import java.awt.event.ActionListener;
 
 class FormAbout extends JFrame implements ActionListener{
 
+    /** Lista Wind */
     private List <JTextField> listFieldsElevator = new ArrayList<>();
+    /** Lista zawierajaca liczbe pasazerow */
     private List <JTextField> listFieldsNumberOfPassengers = new ArrayList<>();
+    /** Lista zawierajaca "obecne pietra windy" */
     private List <JTextField> listFieldsCurrentFloor = new ArrayList<>();
+    /** Lista zawierajac docelowe pietra windy */
     private List <JTextField> listFieldsTargetFloor = new ArrayList<>();
+    /** Lista zawierajaca pietra */
     private List <JTextField> listFieldsFloors = new ArrayList<>();
 
+    /** Etykieta czasu */
     private JLabel labelTime;
 
+    /** Panel w ktorym umieszczone sa wszystkie elementy */
     private JPanel container;
 
-    JButton buttonStart;
-    JButton buttonEnd;
+    /** Przycisk rozpoczecia, stopu, wznowienia symulacji */
+    JButton buttonSimulation;
 
+    /** Przycisk zakonczenia symulacji */
+    JButton buttonClose;
+
+    /** Zmienna logiczna odpowiedzialna za zamiane stanu buttonSimulation */
     boolean check=false;
 
     private Simulator simulator;
@@ -52,16 +63,16 @@ class FormAbout extends JFrame implements ActionListener{
         getContentPane().add(scrPane);
 
         //Etykieta przycisku start
-        buttonStart = new JButton("Start");
-        buttonStart.setBounds(170,10,100,20);
-        container.add(buttonStart);
-        buttonStart.addActionListener(this);
+        buttonSimulation = new JButton("Start");
+        buttonSimulation.setBounds(170,10,100,20);
+        container.add(buttonSimulation);
+        buttonSimulation.addActionListener(this);
 
         //Etykieta wylaczenie symulacji
-        buttonEnd = new JButton("Wylacz symulacje");
-        buttonEnd.setBounds(280,10,150,20);
-        container.add(buttonEnd);
-        buttonEnd.addActionListener(this);
+        buttonClose = new JButton("Wylacz symulacje");
+        buttonClose.setBounds(280,10,150,20);
+        container.add(buttonClose);
+        buttonClose.addActionListener(this);
 
         //Wyłączenie maksymalizacji okna
         setResizable(false);
@@ -114,7 +125,7 @@ class FormAbout extends JFrame implements ActionListener{
 
         for(int i = 0; i < numberOfElevators; i++) {
 
-            JLabel labelNumber = new JLabel("Winda nr " + Integer.toString(i+1) + ":" );
+            JLabel labelNumber = new JLabel("Winda nr " + (i+1) + ":" );
             labelNumber.setBounds(10,60 + i*(hspace+height),80,height);
             container.add(labelNumber);
 
@@ -173,7 +184,6 @@ class FormAbout extends JFrame implements ActionListener{
 
         // Aktualizacja pól wind
         for(int i = 0; i < listFieldsElevator.size(); i++){
-            //Elevator elevator = simulator.getBuilding().GetElevator(i);
             listFieldsElevator.get(i).setText(simulator.GetInformation(i));
             listFieldsNumberOfPassengers.get(i).setText(Integer.toString(simulator.GetNumberofPassanger(i)));
             listFieldsTargetFloor.get(i).setText(Integer.toString(simulator.GetTargetFloorElevator(i)));
@@ -182,8 +192,7 @@ class FormAbout extends JFrame implements ActionListener{
 
         // Aktualizacja pól pięter
         for(int i = 0; i < listFieldsFloors.size(); i++){
-            Floor floor = simulator.getBuilding().GetFloor(i);
-            listFieldsFloors.get(i).setText(Integer.toString(floor.GetQueueLength()));
+            listFieldsFloors.get(i).setText(Integer.toString(simulator.GetQueueLengthFloor(i)));
         }
         labelTime.setText("Czas: " + Integer.toString(simulator.getTime()));
     }
@@ -194,27 +203,27 @@ class FormAbout extends JFrame implements ActionListener{
         Object source = e.getSource();
 
         //Zamkniecie tego okna symulacji
-        if(source== buttonEnd) {
+        if(source== buttonClose) {
             dispose();
             timer.stop();
             simulator.stopTimer();
         }
 
         //Zamienienie przycisku start na pauza
-        if(source == buttonStart && !check)
+        if(source == buttonSimulation && !check)
         {
             timer.start();
             simulator.startTimer();
-            buttonStart.setText("Pauza");
+            buttonSimulation.setText("Pauza");
             check=true;
         }
 
         //Zamienienie przycisku pauza na wznow
-        else if(source==buttonStart && check)
+        else if(source== buttonSimulation && check)
         {
             timer.stop();
             simulator.stopTimer();
-            buttonStart.setText("Wznów");
+            buttonSimulation.setText("Wznów");
             check=false;
         }
     }
