@@ -114,7 +114,7 @@ class FormAbout extends JFrame implements ActionListener{
 
         for(int i = 0; i < numberOfElevators; i++) {
 
-            JLabel labelNumber = new JLabel("Winda nr " + (i + 1) + ":" );
+            JLabel labelNumber = new JLabel("Winda nr " + Integer.toString(i+1) + ":" );
             labelNumber.setBounds(10,60 + i*(hspace+height),80,height);
             container.add(labelNumber);
 
@@ -185,7 +185,7 @@ class FormAbout extends JFrame implements ActionListener{
             Floor floor = simulator.getBuilding().GetFloor(i);
             listFieldsFloors.get(i).setText(Integer.toString(floor.GetQueueLength()));
         }
-        labelTime.setText("Czas: " + simulator.getTime());
+        labelTime.setText("Czas: " + Integer.toString(simulator.getTime()));
     }
 
     @Override

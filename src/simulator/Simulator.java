@@ -13,10 +13,15 @@ public class Simulator{
     private int delay = 100;
     private int time = 0;
 
-    List<IFloor> floors;
-    List<IElevator> elevators;
-    List<ASpace> addpassengers;
+    /** Utworzenie Listy pięter, wind i dodawania pasażerów */
+    private List<IFloor> floors;
+    private List<IElevator> elevators;
+    private List<ASpace> addpassengers;
 
+    /** Konstruktor klasy Sumulator
+     * @param numberOfFloors liczba pięter
+     * @param numberOfElevators liczba wind
+     */
     Simulator(int numberOfFloors, int numberOfElevators){
         building = new Building( numberOfFloors, numberOfElevators);
         floors = building.GetIFloors();
@@ -33,10 +38,11 @@ public class Simulator{
         });
     }
 
+    /** Metoda zwracająca budynek */
     public Building getBuilding() {
         return building;
     }
-
+    /**  */
     public void startTimer(){
         timer.start();
     }
