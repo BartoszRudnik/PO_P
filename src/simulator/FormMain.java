@@ -1,11 +1,11 @@
 package simulator;
 
-import javax.imageio.ImageIO;
-import javax.naming.InitialContext;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Okno wejściowe
@@ -14,14 +14,12 @@ import java.io.File;
  * */
 public class FormMain extends JFrame implements ActionListener, KeyListener {
     private JButton buttonStart,buttonClose;
-    private JLabel labelNumberOfFloors, labelNumberOfElevators,labelBackground;
+    private JLabel labelBackground;
     private JTextField textBoxFloors, textBoxElevators;
 
     public static void main(String[]args)
     {
         EventQueue.invokeLater(()->{
-            int numberOfFloors;
-            int numberOfElevators;
             FormMain okno = new FormMain();
         });
     }
@@ -29,7 +27,7 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
     /** konstruktor pierwszego okna */
     public FormMain()
     {
-        /** Ustawianie rozmiaru okna */
+        // Ustawianie rozmiaru okna
         Toolkit kit=Toolkit.getDefaultToolkit();
         Dimension screenSize=kit.getScreenSize();
         int screenHeight=screenSize.height;
@@ -39,36 +37,36 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
         setTitle("Symulacja Windy");
         setLayout(null);
 
-        /** przycisk wyjście */
+        // przycisk wyjście
         buttonClose = new JButton("Wyjście");
         buttonClose.setBounds(screenWidth/5+90,50,100,20);
         add(buttonClose);
         buttonClose.addActionListener(this);
 
 
-        /** przycisk start */
+        // przycisk start
         buttonStart = new JButton("Start");
         buttonStart.setBounds(screenWidth/5-90,50,100,20);
         add(buttonStart);
         buttonStart.addActionListener(this);
 
-        /** etykieta */
-        labelNumberOfFloors = new JLabel("Podaj liczbę pięter: ");
+        // etykieta
+        JLabel labelNumberOfFloors = new JLabel("Podaj liczbę pięter: ");
         labelNumberOfFloors.setBounds(40,130,150,20);
         add(labelNumberOfFloors);
 
-        /** etykieta */
-        labelNumberOfElevators = new JLabel("Podaj liczbę wind: ");
+        // etykieta
+        JLabel labelNumberOfElevators = new JLabel("Podaj liczbę wind: ");
         labelNumberOfElevators.setBounds(40,180,150,20);
         add(labelNumberOfElevators);
 
-        /** pole do wpisania liczby pięter */
+        // pole do wpisania liczby pięter
         textBoxFloors = new JTextField("5");
         textBoxFloors.setBounds(160,130,120,20);
         add(textBoxFloors);
         textBoxFloors.addKeyListener(this);
 
-        /** pole do wpisania liczby wind*/
+        // pole do wpisania liczby wind
         textBoxElevators = new JTextField("2");
         textBoxElevators.setBounds(160,180,120,20);
         add(textBoxElevators);
@@ -83,23 +81,23 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        Object źródło = e.getSource();
+        Object source = e.getSource();
 
-        if(źródło == buttonClose)
+        if(source == buttonClose)
             System.exit(0);
 
-        /** konwersja */
+        // konwersja
         int numberOfFloors = Integer.parseInt(textBoxFloors.getText());
         int numberOfElevators = Integer.parseInt(textBoxElevators.getText());
 
-            /** oknienko */
-            if((numberOfElevators == 0 || numberOfFloors ==0) && (źródło == buttonStart))
+            // oknienko
+            if((numberOfElevators == 0 || numberOfFloors ==0) && (source == buttonStart))
             {
                 JOptionPane.showMessageDialog(this,"Liczba pięter i wind nie może być równa 0 !");
             }
 
-            /** akcja po naciśnięciu start */
-           else if (źródło == buttonStart)
+            // akcja po naciśnięciu start
+           else if (source == buttonStart)
         {
             FormAbout okno2 = new FormAbout(numberOfFloors, numberOfElevators);
             okno2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
