@@ -14,6 +14,9 @@ public class PassengerCreator
     /** Lista pasażerów w całym programie*/
     private List<Passanger> passangerList = new LinkedList<>();
 
+    /** Konstruktor klasy PassengerCreator
+     * @param numberOfFloors liczba pięter
+     */
     PassengerCreator( int numberOfFloors)
     {
         // Wyznaczamy liczbe pasazerow
@@ -34,6 +37,10 @@ public class PassengerCreator
         }
     }
 
+    /** Metoda dodająca pasażera
+     * @param floors piętra
+     * @param currentTime obecny czas
+     */
     public void AddingPassengers(List<ASpace> floors, int currentTime ){
         while(passangerList.get(0).getStartTime() == currentTime){
             floors.get(passangerList.get(0).getStartFloor()).AddPassenger(passangerList.get(0));

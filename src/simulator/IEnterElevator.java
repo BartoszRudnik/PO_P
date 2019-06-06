@@ -12,5 +12,6 @@ public interface IEnterElevator extends IElevatorSpecial{
      */
     void setTargetFloor(int targetFloor, int priority);
 
+    /** Metoda dodająca pasażera */
     void AddPassenger(Passanger passanger);
 }

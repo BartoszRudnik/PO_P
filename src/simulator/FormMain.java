@@ -13,15 +13,12 @@ import java.awt.event.KeyListener;
  * Zawiera przyciski wyjścia i zamknięcia okna
  * */
 public class FormMain extends JFrame implements ActionListener, KeyListener {
+    /** Utworzenie przycisku start i close */
     private JButton buttonStart,buttonClose;
+    /** Utworzenie pola tekstowego liczby pięter i wind */
     private JTextField textBoxFloors, textBoxElevators;
 
-    public static void main(String[]args)
-    {
-        EventQueue.invokeLater(()->{
-            FormMain okno = new FormMain();
-        });
-    }
+
 
     /** konstruktor pierwszego okna */
     public FormMain()
@@ -29,7 +26,9 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
         // Ustawianie rozmiaru okna
         Toolkit kit=Toolkit.getDefaultToolkit();
         Dimension screenSize=kit.getScreenSize();
+        // zmienna wyskokości ekranu
         int screenHeight=screenSize.height;
+        //zmienna szerokości ekranu
         int screenWidth=screenSize.width;
         setSize(screenWidth/2,screenHeight/2);
         setLocationByPlatform(true);
@@ -78,6 +77,14 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
         setResizable(false);
     }
 
+    /** Metoda statyczna */
+    public static void main(String[]args)
+    {
+        EventQueue.invokeLater(()->{
+            FormMain okno = new FormMain();
+        });
+    }
+
     /** Metoda wykonująca akcję w zależności od wyboru użytkownika */
     @Override
     public void actionPerformed(ActionEvent e)
@@ -109,7 +116,7 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
     }
 
     /** Metoda blokująca wpisywanie innych znaków niż cyfr
-     * @param e
+     * @param e 
      */
     @Override
     public void keyTyped(KeyEvent e)

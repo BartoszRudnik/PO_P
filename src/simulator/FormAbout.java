@@ -35,9 +35,9 @@ class FormAbout extends JFrame implements ActionListener{
 
     /** Zmienna logiczna odpowiedzialna za zamiane stanu buttonSimulation */
     boolean check=false;
-
+    /** zmienna typu sumulator */
     private Simulator simulator;
-
+    /** utworzenie stopera */
     private Timer timer = new Timer(100, e -> getTimerAction());
 
     private int vspace = 10;
@@ -98,6 +98,42 @@ class FormAbout extends JFrame implements ActionListener{
         container.add(labelTime);
     }
 
+
+    /** Metoda wykonująca akcję w zależności od wyboru użytkownika
+     * */
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        Object source = e.getSource();
+
+        //Zamkniecie tego okna symulacji
+        if(source== buttonClose) {
+            dispose();
+            timer.stop();
+            simulator.stopTimer();
+        }
+
+        //Zamienienie przycisku start na pauza
+        if(source == buttonSimulation && !check)
+        {
+            timer.start();
+            simulator.startTimer();
+            buttonSimulation.setText("Pauza");
+            check=true;
+        }
+
+        //Zamienienie przycisku pauza na wznow
+        else if(source== buttonSimulation && check)
+        {
+            timer.stop();
+            simulator.stopTimer();
+            buttonSimulation.setText("Wznów");
+            check=false;
+        }
+    }
+
+
+
     /** Metoda tworząca tabelę textfiledów wind
      * @param numberOfElevators liczba wind
      * */
@@ -107,18 +143,22 @@ class FormAbout extends JFrame implements ActionListener{
         // Wysokość pola tekstowego
         int height  = 20;
 
+        // Etykieta liczba pasażerów
         JLabel labelPassengers = new JLabel("Liczba pasażerów");
         labelPassengers.setBounds(width,30,width,height);
         container.add(labelPassengers);
 
+        // Etykieta obecne piętro
         JLabel labelCurrentFloor = new JLabel(("Obecne piętro"));
         labelCurrentFloor.setBounds(width+(width+vspace),30,width,height);
         container.add(labelCurrentFloor);
 
+        // Etykieta docelowe piętro
         JLabel labelTargetFloor = new JLabel("Docelowe piętro");
         labelTargetFloor.setBounds(width+(width+vspace)*2,30,width,height);
         container.add(labelTargetFloor);
 
+        // Etykieta informacje
         JLabel labelInformation = new JLabel("Informacje");
         labelInformation.setBounds(width+(width+vspace)*3,30,width,height);
         container.add(labelInformation);
@@ -196,34 +236,5 @@ class FormAbout extends JFrame implements ActionListener{
         labelTime.setText("Czas: " + Integer.toString(simulator.getTime()));
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        Object source = e.getSource();
 
-        //Zamkniecie tego okna symulacji
-        if(source== buttonClose) {
-            dispose();
-            timer.stop();
-            simulator.stopTimer();
-        }
-
-        //Zamienienie przycisku start na pauza
-        if(source == buttonSimulation && !check)
-        {
-            timer.start();
-            simulator.startTimer();
-            buttonSimulation.setText("Pauza");
-            check=true;
-        }
-
-        //Zamienienie przycisku pauza na wznow
-        else if(source== buttonSimulation && check)
-        {
-            timer.stop();
-            simulator.stopTimer();
-            buttonSimulation.setText("Wznów");
-            check=false;
-        }
-    }
 }

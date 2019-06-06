@@ -3,14 +3,20 @@ package simulator;
 import javax.swing.Timer;
 import java.util.List;
 
-/** Klasa symulacji
+/** Główna klasa symulacji
   * */
 public class Simulator{
+    /** Zmienna timer */
     private Timer timer;
+    /** Zmienna budynek */
     private Building building;
+    /** Zmienna kreowania pasażera*/
     private PassengerCreator passengerCreator;
+    /** Zmienna kontrol */
     private ControlSystem control;
+    /** zmienna opóźnienia symulacji */
     private int delay = 100;
+    /** zmienna czasu symulacji */
     private int time = 0;
 
     /** Utworzenie Listy pięter, wind i dodawania pasażerów */

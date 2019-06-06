@@ -6,7 +6,7 @@ package simulator;
  * */
 public class Floor extends ASpace implements IFloor{
 
-    /** wezwanie*/
+    /** zmienna wezwanie windy */
     private boolean call = false;
 
     /**Metoda Pokazująca długość kolejki*/
@@ -31,7 +31,7 @@ public class Floor extends ASpace implements IFloor{
     /** Metoda wypuszczania pasażerów do windy
      * @param elevator winda mająca stać na piętrze
      * */
-    void LetPassengersOut(IEnterElevator elevator) {
+    public void LetPassengersOut(IEnterElevator elevator) {
         // Tutaj pasażerowie są dodawani do windy
         while (passengerList.size() > 0){
             if(!passengerList.get(0).GoInto(elevator, this)){
@@ -48,6 +48,7 @@ public class Floor extends ASpace implements IFloor{
         call = true;
     }
 
+    /** Metoda zwracająca wartość call */
     public boolean getCall(){
         return call;
     }

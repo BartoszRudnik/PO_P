@@ -12,14 +12,22 @@ import java.util.Collections;
 
 public class programik
 {
+    // zmienna wyznaczająca obence piętro
     private static int currentFloor;
+    // zmienna wyznaczająca docelowe piętro
     private static int targetFloor;
+    // zmienna informująca czy pasażer jest uprzywilejowany
     private static int isPrivileged;
+    // zmienna czasu pojawienia się pasażera na piętrze
     private static int timepassenger;
+    // zmienna liczby pięter w budynku
     private static int numberOfFloors;
 
 
-/** metoda losowania czasów pasażera i sortowania rosnącego */
+/** metoda losowania czasów pasażera i sortowania rosnącego
+    @param czasy
+    @param set
+ */
     public  void time (int set,ArrayList czasy)
     {
 

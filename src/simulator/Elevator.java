@@ -7,9 +7,11 @@ import static java.lang.Math.abs;
 
 /** Publiczna klasa windy*/
 public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit {
-    // Pole liczby jednostek czasu otwarcia windy
+
+    public String information = "-";
+    /** Pole liczby jednostek czasu otwarcia windy */
     private int timeOpen = 1;
-    // Pole mówiące o tym, czy winda jest otwarta
+    /** Pole mówiące o tym, czy winda jest otwarta */
     private boolean isOpen;
     // Pole maksymalnej liczby pasażerów
     private int maxNumberOfPassanger;
@@ -19,8 +21,6 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
     private int call = -1;
     // Lista wybranych pięter
     private List<Integer> listTargetFloors = new ArrayList<>();
-
-    public String information = "-";
 
 
     /** Konstruktor windy
@@ -49,6 +49,7 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
         return maxNumberOfPassanger - passengerList.size();
     }
 
+    /** Metoda zwracająca cel udania się windy */
     public int GetTargetFloor(){
         //TODO
         if(listTargetFloors.size() > 0)
@@ -92,6 +93,7 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
     /** Metoda ruchu windy */
     @Override
     public void Move(){
+        //zmienna ruchu windy
         boolean move = checkCall();
 
         if( passengerList.size() > maxNumberOfPassanger - 1){
