@@ -11,14 +11,15 @@ import java.awt.event.KeyListener;
  * Okno wejściowe
  * Zawiera zapytanie użytkownika o liczbę pięter i wind
  * Zawiera przyciski wyjścia i zamknięcia okna
+ * @author Stanisław Franczyk
+ * @author Bartosz Rudnik
+ * @author Michał Grabek
  * */
 public class FormMain extends JFrame implements ActionListener, KeyListener {
     /** Utworzenie przycisku start i close */
     private JButton buttonStart,buttonClose;
     /** Utworzenie pola tekstowego liczby pięter i wind */
     private JTextField textBoxFloors, textBoxElevators;
-
-
 
     /** konstruktor pierwszego okna */
     public FormMain()

@@ -77,7 +77,7 @@ public class Simulator{
     }
 
     /** Metoda zwraca informacje o windzie
-     * @param index
+     * @param index indeks windy z której pobieramy informację
      */
     public String GetInformation(int index)
     {
@@ -85,7 +85,7 @@ public class Simulator{
     }
 
     /** Metoda zwracająca piętro docelowe dla windy
-     * @param index
+     * @param index indeks windy z której pobieramy docelowe piętro
      */
     public int GetTargetFloorElevator(int index)
     {
@@ -102,7 +102,7 @@ public class Simulator{
 
     /** Metoda zwracajaca kolejke na pietrze
      *
-     * @param index
+     * @param index indeks piętra z któego pobieramy liczbę pasażerów
      */
     public int GetQueueLengthFloor(int index)
     {
