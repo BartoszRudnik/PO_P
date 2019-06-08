@@ -82,7 +82,7 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
     public static void main(String[]args)
     {
         EventQueue.invokeLater(()->{
-            FormMain okno = new FormMain();
+            FormMain main = new FormMain();
         });
     }
 
