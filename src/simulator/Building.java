@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Publiczna klasa budynku
- * W budynku znajdują się windy i piętra
- * Symbolizują je listy floorList (dla pięter) i elevatorList (dla wind)
+ * W budynku znajdują sie windy i piętra
+ * Symbolizują je listy floorList (dla pieter) i elevatorList (dla wind)
  * */
 public class Building{
 
-    /** Lista pięter*/
+    /** Lista pieter*/
     private List<Floor> floorList = new ArrayList <>();
     /** Lista wind*/
     private List<Elevator> elevatorList = new ArrayList <>();
@@ -16,7 +16,7 @@ public class Building{
     private int MaxPassangerNumber = 8;
 
     /** Konstruktor klasy Building
-     * Tworzy piętra i windy w budynku
+     * Tworzy pietra i windy w budynku
      * @param numberOfFloors liczba pięter
      * @param numberOfElevators liczba wind
      * */
@@ -33,25 +33,29 @@ public class Building{
     }
 
     /** Metoda zwracająca listę wind w postaci interfejsu Elevators
-     * @return List<IElevator>
+     * @return Lista wind w postaci interfejsow IElevator
      * */
     public List<IElevator> GetIElevators(){
         return new ArrayList<>(elevatorList);
     }
 
     /** Metoda zwracająca listę pięter w postaci interfejsu IFloor
-     * @return List<IFloor>
+     * @return Lista pieter w postaci interfejsow IFloor
      * */
     public List<IFloor> GetIFloors(){
         return new ArrayList<>(floorList);
     }
 
+    /** Publiczna metoda zwracajaca miejsce z pasazerami do ich obslugi
+     * @return Lista pieter
+     * */
     public List<ASpace> GetIPassengerControl(){
         return new ArrayList<>(floorList);
     }
 
     /** Metoda zwracająca numer piętra
      * @param i indeks
+     * @return Pietro
      */
     public Floor GetFloor(int i){
         return floorList.get(i);
@@ -59,17 +63,22 @@ public class Building{
 
     /** Metoda zwracająca numer windy
      * @param i indeks
+     * @return Winda
      */
     public Elevator GetElevator(int i){
         return elevatorList.get(i);
     }
 
-    /** Metoda zwracająca liczbę pięter w budynku*/
+    /** Metoda zwracająca liczbe pieter w budynku
+     * @return Liczba pieter
+     * */
     public int GetNumberOfFloors(){
         return floorList.size();
     }
 
-    /** Metoda zwracająca liczbę wind w budynku*/
+    /** Metoda zwracająca liczbe wind w budynku
+     * @return Liczbę wind
+     * */
     public int GetNumberOfElevators(){
         return elevatorList.size();
     }

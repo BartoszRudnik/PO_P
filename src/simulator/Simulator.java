@@ -118,7 +118,6 @@ public class Simulator{
 
     /** Metoda wypuszczająca pasażerów */
     private void FloorLetPassengers(){
-        //TODO
         for (int i = 0; i < building.GetNumberOfFloors(); i++) {
             if(building.GetFloor(i).getCall()){
                 for(int j = 0; j < building.GetNumberOfElevators(); j++){

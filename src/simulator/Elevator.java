@@ -8,10 +8,12 @@ import static java.lang.Math.abs;
 /** Publiczna klasa windy*/
 public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit {
 
+    /** Publiczne pole lancucha zawierajacego informacje o windzie*/
     public String information = "-";
+
     /** Pole liczby jednostek czasu otwarcia windy */
     private int timeOpen = 1;
-    /** Pole mówiące o tym, czy winda jest otwarta */
+    /** Pole mowiące o tym, czy winda jest otwarta */
     private boolean isOpen;
     // Pole maksymalnej liczby pasażerów
     private int maxNumberOfPassanger;
@@ -19,9 +21,8 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
     private int currentFloor;
     // Pole piętra, na które winda została wezwana
     private int call = -1;
-    /** Lista wybranych pięter */
+    /** Lista wybranych pieter */
     private List<Integer> listTargetFloors = new LinkedList<>();
-
 
     /** Konstruktor windy
      * @param maxNumberOfPassanger maksymalna liczba pasażerów
@@ -75,8 +76,9 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
             listTargetFloors.add(targetFloor);
     }
 
-    /**
-     * Metoda nadająca docelowe piętro windzie o większym piorytecie
+    /**Metoda nadająca docelowe piętro windzie o większym piorytecie
+     * @param targetFloor pietro docelowe
+     * @param priority piorytet
      * */
     @Override
     public void setTargetFloor(int targetFloor, int priority){
