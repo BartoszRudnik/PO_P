@@ -8,6 +8,9 @@ import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Klasa wizualizująca działanie wszystkich wind w budynku
+ */
 class FormAbout extends JFrame implements ActionListener{
 
     /** Lista Wind */
