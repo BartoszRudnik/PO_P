@@ -36,7 +36,7 @@ public class ControlSystem implements IManageElevators{
      * */
     private int TheLongestQueue(List<IFloor> floors){
         // indeks piętra z największą kolejką
-        int theLongestQueue = 0;
+        int theLongestQueue = -1;
         // liczba pasażerów w kolejce z największą liczbą pasażerów
         int numberOfPassengers = 0;
         for( int indexFloor = 0; indexFloor < floors.size(); indexFloor++) {

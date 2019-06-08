@@ -3,20 +3,20 @@ package simulator;
 import javax.swing.Timer;
 import java.util.List;
 
-/** Główna klasa symulacji
+/** Klasa symulacji
   * */
 public class Simulator{
-    /** Zmienna timer */
+    /** Pole timer */
     private Timer timer;
-    /** Zmienna budynek */
+    /** Pole budynek */
     private Building building;
-    /** Zmienna kreowania pasażera*/
+    /** Pole kreowania pasażera*/
     private PassengerCreator passengerCreator;
-    /** Zmienna kontrol */
+    /** Pole kontrol */
     private ControlSystem control;
-    /** zmienna opóźnienia symulacji */
-    private int delay = 100;
-    /** zmienna czasu symulacji */
+    /** Pole opóźnienia symulacji */
+    private int delay = 5000;
+    /** Pole czasu symulacji */
     private int time = 0;
 
     /** Utworzenie Listy pięter, wind i dodawania pasażerów */
@@ -36,7 +36,18 @@ public class Simulator{
         passengerCreator = new PassengerCreator(numberOfFloors);
         control = new ControlSystem();
         timer = new Timer(delay, e -> {
-            passengerCreator.AddingPassengers( addpassengers, time );
+            if(!passengerCreator.AddingPassengers( addpassengers, time )){
+                int counter = 0;
+                for( IElevator elevator : elevators){
+                    if(elevator.GetNumberOfFreePlaces() == elevator.MaxNumberPassangers()){
+                        counter++;
+                    }
+                }
+                if(counter == elevators.size()){
+                    timer.stop();
+                    System.out.println("End");
+                }
+            }
             control.ManageElevators(floors, elevators);
             MoveElevators();
             FloorLetPassengers();
@@ -44,10 +55,6 @@ public class Simulator{
         });
     }
 
-    /** Metoda zwracająca budynek */
-    public Building getBuilding() {
-        return building;
-    }
     /** Metoda rozpoczynająca mierzenie czasu  */
     public void startTimer(){
         timer.start();

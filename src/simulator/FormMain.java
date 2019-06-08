@@ -108,9 +108,9 @@ public class FormMain extends JFrame implements ActionListener, KeyListener {
             // akcja po naciśnięciu start
            else if (source == buttonStart)
         {
-            FormAbout okno2 = new FormAbout(numberOfFloors, numberOfElevators);
-            okno2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            okno2.setVisible(true);
+            FormAbout window = new FormAbout(numberOfFloors, numberOfElevators);
+            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            window.setVisible(true);
         }
 
     }

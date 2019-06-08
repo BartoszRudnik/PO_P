@@ -6,7 +6,7 @@ package simulator;
  * */
 public class Floor extends ASpace implements IFloor{
 
-    /** zmienna wezwanie windy */
+    /** Pole wezwanie windy */
     private boolean call = false;
 
     /**Metoda Pokazująca długość kolejki*/

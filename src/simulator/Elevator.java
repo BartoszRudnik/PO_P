@@ -1,6 +1,6 @@
 package simulator;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static java.lang.Math.abs;
@@ -19,8 +19,8 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
     private int currentFloor;
     // Pole piętra, na które winda została wezwana
     private int call = -1;
-    // Lista wybranych pięter
-    private List<Integer> listTargetFloors = new ArrayList<>();
+    /** Lista wybranych pięter */
+    private List<Integer> listTargetFloors = new LinkedList<>();
 
 
     /** Konstruktor windy
@@ -51,7 +51,6 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
 
     /** Metoda zwracająca cel udania się windy */
     public int GetTargetFloor(){
-        //TODO
         if(listTargetFloors.size() > 0)
             return listTargetFloors.get(0);
         return currentFloor;
@@ -140,7 +139,6 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
 
     /** Metoda sprawdzająca czy winda powinna jechać*/
     private boolean checkCall(){
-        System.out.print("Winda"+ currentFloor +" " + listTargetFloors.size());
         int difference;
         if(call >= 0){
             if(listTargetFloors.size() != 0){
