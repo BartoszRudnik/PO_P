@@ -13,7 +13,7 @@ public class Simulator{
     /** Pole kreowania pasażera*/
     private PassengerCreator passengerCreator;
     /** Pole kontrol */
-    private ControlSystem control;
+    private IManageElevators control;
     /** Pole opóźnienia symulacji */
     private int delay = 5000;
     /** Pole czasu symulacji */
