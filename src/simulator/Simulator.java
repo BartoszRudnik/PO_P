@@ -15,7 +15,7 @@ public class Simulator{
     /** Pole kontrol */
     private IManageElevators control;
     /** Pole opóźnienia symulacji */
-    private int delay = 5000;
+    private int delay = 500;
     /** Pole czasu symulacji */
     private int time = 0;
 
