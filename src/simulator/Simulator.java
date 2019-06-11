@@ -38,12 +38,12 @@ public class Simulator{
         timer = new Timer(delay, e -> {
             if(!passengerCreator.AddingPassengers( addpassengers, time )){
                 int counter = 0;
-                for( IFloor floor : floors){
-                    if(floor.GetQueueLength() == 0){
+                for( IElevator elevator : elevators){
+                    if(elevator.GetNumberOfFreePlaces() == elevator.MaxNumberPassangers()){
                         counter++;
                     }
                 }
-                if(counter == floors.size()){
+                if(counter == elevators.size()){
                     timer.stop();
                     System.out.println("End");
                 }
