@@ -1,5 +1,8 @@
 package simulator;
 
+/**
+ * Interfejs wychodzenia z windy
+ */
 public interface IExit {
 
     /**

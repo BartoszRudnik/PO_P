@@ -1,5 +1,8 @@
 package simulator;
 
+/**
+ * Ogólny interfejs dodawania pasażera do windy
+ */
 public interface IEnterElevator extends IElevatorSpecial{
 
     /** Metoda otwierająca dzwi windy */

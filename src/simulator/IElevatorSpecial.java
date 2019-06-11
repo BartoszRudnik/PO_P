@@ -1,5 +1,8 @@
 package simulator;
 
+/**
+ * Ogólny interfejs windy
+ */
 public interface IElevatorSpecial  {
 
     /** Metoda pokazująca czy winda jest otwarta */
