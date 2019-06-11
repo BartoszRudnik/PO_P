@@ -154,9 +154,13 @@ public class Elevator extends ASpace implements IElevator, IEnterElevator, IExit
                 setTargetFloor(call);
                 call = -1;
             }
-            return true;
         }
-        else return listTargetFloors.size() != 0;
+        if(listTargetFloors.size() == 0 && passengerList.size() > 0){
+            for( Passanger passanger: passengerList){
+                passanger.SelectFloor(this);
+            }
+        }
+        return (listTargetFloors.size() != 0);
     }
 
     /** Metoda wypuszczająca pasażerów z windy*/
